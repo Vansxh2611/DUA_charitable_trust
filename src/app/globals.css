@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@theme {
+  /* Exact Colors */
+  --color-cream: #F4F6F0;
+  --color-sage: #E6EEDC;
+  --color-mint: #D5E0D5;
+  --color-charcoal: #1B221E;
+  --color-navy: #0F2A37;
+  --color-accent: #F7DF7C;
+  --color-beige: #EFE7D6;
+  --color-forest: #2D5B45;
+
+  /* Fonts */
+  --font-heading: var(--font-playfair), serif;
+  --font-body: var(--font-inter), sans-serif;
+  --font-display: var(--font-display), serif;
+}
+
+:root {
+  --background: #F4F6F0;
+  --foreground: #1B221E;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Custom interaction utilities */
+.card-interactive {
+  transition: all 0.3s ease-in-out;
+}
+.card-interactive:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary {
+  transition: all 0.3s ease-in-out;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-forest);
+  outline-offset: 2px;
+}
+
+/* ── Gold gradient stops ─────────────────────────────────────────────────── */
+:root {
+  --gold-text-from: #B38728;
+  --gold-text-via:  #D4A847;
+  --gold-text-to:   #BF953F;
+  --gold-from:      #BF953F;
+  --gold-via:       #FCF6BA;
+  --gold-to:        #AA771C;
+
+  --shadow-soft:    0 2px 8px 0 rgba(27,34,30,0.06), 0 1px 2px 0 rgba(27,34,30,0.04);
+  --shadow-card:    0 4px 16px 0 rgba(27,34,30,0.08), 0 1px 4px 0 rgba(27,34,30,0.05);
+  --shadow-premium: 0 8px 32px 0 rgba(27,34,30,0.10), 0 2px 8px 0 rgba(27,34,30,0.06);
+  --shadow-gold:    0 4px 24px 0 rgba(212,168,71,0.18);
+}
+
+/* ── Gold gradient text ──────────────────────────────────────────────────── */
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--gold-text-from) 0%, var(--gold-text-via) 50%, var(--gold-text-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ── Gold gradient background ────────────────────────────────────────────── */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, var(--gold-from) 0%, var(--gold-via) 50%, var(--gold-to) 100%);
+}
+
+/* ── Shadow utilities ────────────────────────────────────────────────────── */
+.shadow-soft    { box-shadow: var(--shadow-soft); }
+.shadow-card    { box-shadow: var(--shadow-card); }
+.shadow-premium { box-shadow: var(--shadow-premium); }
+.shadow-gold    { box-shadow: var(--shadow-gold); }
+
+/* ── Card system ─────────────────────────────────────────────────────────── */
+.card-base {
+  background-color: #FFFFFF;
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card-hover:hover {
+  box-shadow: var(--shadow-premium);
+  transform: translateY(-3px);
+}
+
+/* ── Gold divider line ───────────────────────────────────────────────────── */
+.divider-gold {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold-text-from) 20%, var(--gold-text-via) 50%, var(--gold-text-to) 80%, transparent);
+  border-radius: 9999px;
+}
+
+/* ── Gold badge pill ─────────────────────────────────────────────────────── */
+.badge-gold {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.875rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background-color: rgba(212, 168, 71, 0.12);
+  color: var(--gold-text-from);
+  border: 1px solid rgba(212, 168, 71, 0.25);
+  font-family: var(--font-heading);
+}
+
+/* ── Prose wrapper ───────────────────────────────────────────────────────── */
+.prose-premium {
+  max-width: 65ch;
+  line-height: 1.8;
+  color: rgba(27,34,30,0.75);
+  font-family: var(--font-body);
+}
+.prose-premium p + p { margin-top: 1.25em; }
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #f0ede8 25%, #e6e2dc 50%, #f0ede8 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+.animate-spin-slow  { animation: spin-slow 12s linear infinite; }
+.animate-fade-up    { animation: fadeUp 0.6s ease both; }
+
