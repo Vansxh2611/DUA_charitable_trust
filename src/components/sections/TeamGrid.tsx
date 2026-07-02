@@ -56,7 +56,7 @@ export const TeamGrid: React.FC<TeamGridProps> = ({
             {coreValues.map((value, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-3xl p-8 flex flex-col items-center text-center shadow-xs card-interactive"
+                className="bg-card-bg border border-card-border rounded-3xl p-8 flex flex-col items-center text-center shadow-xs card-interactive"
               >
                 {/* Rounded Icon Wrapper */}
                 <div className="w-12 h-12 rounded-full bg-forest/5 flex items-center justify-center text-forest mb-6">

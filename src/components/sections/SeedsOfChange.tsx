@@ -8,15 +8,109 @@ import { cn } from "@/utils/cn";
 import { seedsIntro, seedsItems } from "@/constants/seedsOfChange";
 import { Container } from "../ui/Container";
 
+const SeedsTextReveal: React.FC<{
+  title: string;
+  description: string;
+  href: string;
+  textContainer: any;
+  textItem: any;
+}> = ({ title, description, href, textContainer, textItem }) => {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!ref.current) return;
+
+    let observer: IntersectionObserver;
+    const timer = setTimeout(() => {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsInView(entry.isIntersecting);
+        },
+        { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
+      );
+      if (ref.current) {
+        observer.observe(ref.current);
+      }
+    }, 150);
+
+    return () => {
+      clearTimeout(timer);
+      if (observer) observer.disconnect();
+    };
+  }, []);
+
+  return (
+    <m.div
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={textContainer}
+      className="relative z-10 w-full text-left"
+    >
+      <div className="overflow-hidden">
+        <m.h3
+          variants={textItem}
+          style={{ willChange: "transform, opacity" }}
+          className="text-2xl sm:text-3xl font-extrabold text-charcoal font-heading leading-tight mb-4"
+        >
+          {title}
+        </m.h3>
+      </div>
+      
+      <div className="overflow-hidden">
+        <m.p
+          variants={textItem}
+          style={{ willChange: "transform, opacity" }}
+          className="text-sm sm:text-base text-charcoal/70 leading-relaxed font-body mb-6"
+        >
+          {description}
+        </m.p>
+      </div>
+
+      <div className="overflow-hidden">
+        <m.div 
+          variants={textItem}
+          style={{ willChange: "transform, opacity" }}
+        >
+          <Link
+            href={href}
+            className="inline-flex items-center text-sm font-bold font-body text-forest hover:text-charcoal transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded px-1 -ml-1"
+          >
+            Learn More
+          </Link>
+        </m.div>
+      </div>
+    </m.div>
+  );
+};
+
 export const SeedsOfChange: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
 
-  // Animation variants for card fades/slides
-  const cardVariants = {
-    hidden: shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 16 },
-    visible: shouldReduceMotion
-      ? { opacity: 1 }
-      : { opacity: 1, y: 0 },
+  // Animation variants for text reveal
+  const textContainer = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.12,
+      },
+    },
+  };
+
+  const textItem = {
+    hidden: { 
+      opacity: 0, 
+      x: shouldReduceMotion ? 0 : -24 
+    },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { 
+        duration: 0.9, 
+        ease: [0.22, 1, 0.36, 1] // smooth easeOutQuart
+      }
+    },
   };
 
   // Wash variants to theme color classes mapping (made more saturated/darker as requested)
@@ -28,16 +122,11 @@ export const SeedsOfChange: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-[#FAF9F5] relative overflow-hidden" aria-labelledby="seeds-section-title">
+    <section className="pt-8 pb-20 bg-cream relative overflow-hidden" aria-labelledby="seeds-section-title">
       <Container>
         <div className="flex flex-col gap-10 sm:gap-12 md:gap-16 max-w-6xl mx-auto">
-          {/* Top Intro Card */}
-          <m.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={cardVariants}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+          {/* Top Intro Card - Static */}
+          <div
             className={cn(
               "relative bg-gradient-to-br from-cream via-sage/10 to-cream p-8 sm:p-12 md:p-14 rounded-[2rem] border border-charcoal/10 shadow-soft overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-6",
               "hover:shadow-card hover:-translate-y-0.5 transition-all duration-300"
@@ -69,7 +158,7 @@ export const SeedsOfChange: React.FC = () => {
                 {seedsIntro.buttonLabel}
               </Link>
             </div>
-          </m.div>
+          </div>
 
           {/* alternating row items */}
           <div className="flex flex-col gap-8 sm:gap-10">
@@ -78,13 +167,8 @@ export const SeedsOfChange: React.FC = () => {
 
               return (
                 <div key={item.id} className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-                  {/* Image Tile - Always first in DOM so it stacks first on mobile */}
-                  <m.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                    variants={cardVariants}
-                    transition={{ duration: 0.5, ease: "easeOut", delay: shouldReduceMotion ? 0 : 0.1 }}
+                  {/* Image Tile - Static */}
+                  <div
                     className={cn(
                       "relative h-[260px] sm:h-[300px] lg:h-[320px] rounded-[2rem] overflow-hidden border border-charcoal/10 shadow-soft",
                       isEven ? "lg:order-1" : "lg:order-2",
@@ -101,15 +185,10 @@ export const SeedsOfChange: React.FC = () => {
                     />
                     {/* Barely visible gradient overlay for depth */}
                     <div className="absolute inset-0 bg-gradient-to-t from-charcoal/15 via-transparent to-transparent pointer-events-none z-10" />
-                  </m.div>
+                  </div>
 
-                  {/* Text Tile */}
-                  <m.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                    variants={cardVariants}
-                    transition={{ duration: 0.5, ease: "easeOut", delay: shouldReduceMotion ? 0 : 0.2 }}
+                  {/* Text Tile - Static Container */}
+                  <div
                     className={cn(
                       "relative p-8 sm:p-12 md:p-14 rounded-[2rem] overflow-hidden border border-charcoal/10 shadow-soft flex flex-col justify-center items-start",
                       isEven ? "lg:order-2" : "lg:order-1",
@@ -123,21 +202,15 @@ export const SeedsOfChange: React.FC = () => {
                       aria-hidden="true"
                     />
 
-                    <div className="relative z-10 w-full">
-                      <h3 className="text-2xl sm:text-3xl font-extrabold text-charcoal font-heading leading-tight mb-4">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm sm:text-base text-charcoal/70 leading-relaxed font-body mb-6">
-                        {item.description}
-                      </p>
-                      <Link
-                        href={item.href}
-                        className="inline-flex items-center text-sm font-bold font-body text-forest hover:text-charcoal transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded px-1 -ml-1"
-                      >
-                        Learn More
-                      </Link>
-                    </div>
-                  </m.div>
+                    {/* Staggered text reveal container */}
+                    <SeedsTextReveal
+                      title={item.title}
+                      description={item.description}
+                      href={item.href}
+                      textContainer={textContainer}
+                      textItem={textItem}
+                    />
+                  </div>
                 </div>
               );
             })}

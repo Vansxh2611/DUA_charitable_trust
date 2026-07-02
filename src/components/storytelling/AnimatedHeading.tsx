@@ -19,7 +19,7 @@ export const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
   return (
     <Component
       className={cn(
-        "font-heading font-extrabold text-[#111827] leading-tight flex flex-wrap gap-x-2 select-none overflow-hidden py-1",
+        "font-heading font-extrabold text-charcoal leading-tight flex flex-wrap gap-x-2 select-none overflow-hidden py-1",
         className
       )}
     >

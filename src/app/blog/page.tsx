@@ -18,7 +18,7 @@ export default function Blog(): React.ReactNode {
   };
 
   return (
-    <div className="pt-24 sm:pt-28 bg-[#fbfbf8] min-h-screen pb-20 animate-fade-in">
+    <div className="pt-24 sm:pt-28 bg-cream min-h-screen pb-20 animate-fade-in">
       {/* Header Section */}
       <section className="py-16 sm:py-20 border-b border-forest/5 text-center relative overflow-hidden">
         {/* Dot pattern background */}
@@ -47,7 +47,7 @@ export default function Blog(): React.ReactNode {
         {/* Load More Button */}
         <div className="flex justify-center mt-12">
           <button
-            className="px-6 py-2.5 rounded-full border border-charcoal/30 text-charcoal font-heading font-bold text-sm bg-white hover:bg-charcoal hover:text-cream transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest"
+            className="px-6 py-2.5 rounded-full border border-card-border text-charcoal font-heading font-bold text-sm bg-card-bg hover:bg-charcoal hover:text-cream transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest"
             aria-label="Load more articles"
           >
             Load More Articles
@@ -58,7 +58,7 @@ export default function Blog(): React.ReactNode {
       {/* Stay Inspired Newsletter Section */}
       <Container className="mt-20">
         <section
-          className="relative bg-[#F7DF7C] rounded-[32px] p-8 sm:p-12 overflow-hidden shadow-xs border border-charcoal/5"
+          className="relative bg-accent rounded-[32px] p-8 sm:p-12 overflow-hidden shadow-xs border border-charcoal/5"
           aria-labelledby="newsletter-title"
         >
           {/* Reusable Doodle Pattern */}
@@ -67,10 +67,10 @@ export default function Blog(): React.ReactNode {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Newsletter Text */}
             <div className="lg:col-span-7 flex flex-col items-start text-left">
-              <h2 id="newsletter-title" className="text-3xl font-extrabold text-charcoal font-heading mb-3">
+              <h2 id="newsletter-title" className="text-3xl font-extrabold text-charcoal-static font-heading mb-3">
                 Stay Inspired
               </h2>
-              <p className="text-sm sm:text-base text-charcoal/80 leading-relaxed font-body">
+              <p className="text-sm sm:text-base text-charcoal-static/80 leading-relaxed font-body">
                 Subscribe to our newsletter for the latest stories of joyful wisdom and updates on our community initiatives.
               </p>
             </div>

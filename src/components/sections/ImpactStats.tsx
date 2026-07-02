@@ -21,10 +21,10 @@ export const ImpactStats: React.FC<ImpactStatsProps> = ({
     <SectionWrapper id="our-impact" bgColor="bg-mint/30" glowPosition="center">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <span className="inline-block px-4 py-1 rounded-full bg-accent text-[#111827] font-heading text-xs font-bold uppercase tracking-wider mb-4">
+          <span className="inline-block px-4 py-1 rounded-full bg-accent text-charcoal-static font-heading text-xs font-bold uppercase tracking-wider mb-4">
             Our Impact
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111827] font-heading leading-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-charcoal font-heading leading-tight mb-4">
             {title}
           </h2>
           <p className="text-base text-charcoal/70 leading-relaxed font-body max-w-2xl mx-auto">

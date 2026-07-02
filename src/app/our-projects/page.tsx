@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default function OurProjects(): React.ReactNode {
   return (
-    <div className="relative pt-24 sm:pt-28 bg-[#fbfbf8] min-h-screen pb-20 overflow-hidden">
+    <div className="relative pt-24 sm:pt-28 bg-cream min-h-screen pb-20 overflow-hidden">
       {/* Full-page colorful project grid background pattern */}
       <BackgroundPattern variant="project-grid" opacity={0.6} className="z-0" />
 
@@ -77,7 +77,7 @@ export default function OurProjects(): React.ReactNode {
                 </Link>
                 <Link
                   href={PageRoutes.CONTACT}
-                  className="w-full sm:w-44 bg-white/70 border border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-cream text-center px-6 py-3.5 rounded-full font-bold text-sm transition-all duration-300 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-forest"
+                  className="w-full sm:w-44 bg-card-bg/70 border border-card-border text-charcoal hover:bg-charcoal hover:text-cream text-center px-6 py-3.5 rounded-full font-bold text-sm transition-all duration-300 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-forest"
                   aria-label="Volunteer for our initiatives"
                 >
                   Volunteer

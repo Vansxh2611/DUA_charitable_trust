@@ -193,7 +193,7 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Left Content Card */}
             <div className="lg:col-span-5 relative bg-sage border border-forest/10 rounded-[32px] p-6 flex flex-col justify-center overflow-hidden shadow-xs">
               <BackgroundPattern variant="leaf" opacity={0.5} className="text-forest/15 animate-pulse" />
-              <div className="relative bg-white rounded-3xl p-8 sm:p-10 z-10 flex flex-col items-center text-center shadow-xs h-full justify-between">
+              <div className="relative bg-card-bg border border-card-border rounded-3xl p-8 sm:p-10 z-10 flex flex-col items-center text-center shadow-xs h-full justify-between">
                 <div>
                   <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-charcoal font-heading leading-tight mb-6">
                     <TextReveal mode="words">{heading}</TextReveal>

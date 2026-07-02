@@ -7,6 +7,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@/hooks/useGSAP";
 import { STORY_STEPS } from "@/constants/storyData";
 import { Container } from "@/components/ui/Container";
+import { useTheme } from "@/components/providers/ThemeProvider";
 
 import { StoryBackground } from "./StoryBackground";
 import { StoryImage } from "./StoryImage";
@@ -19,6 +20,8 @@ import { ArrowRight } from "lucide-react";
 export const StoryScroller: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
+
+  const { theme } = useTheme();
 
   // States
   const [activeStory, setActiveStory] = useState(0);
@@ -55,10 +58,18 @@ export const StoryScroller: React.FC = () => {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // Initial state setup for heading words of step 0
+    const darkBgColors = ["#141A16", "#121915", "#0E161C", "#191411", "#151515"];
+    const getStepBgColor = (idx: number) => {
+      return theme === "dark" ? darkBgColors[idx] : STORY_STEPS[idx].bgColor;
+    };
+
+    // Initial state setup for heading words of step 0 and background layer
     gsap.set(".story-heading-container-0 .story-heading-word", {
       y: "0%",
       opacity: 1,
+    });
+    gsap.set(".story-bg-layer", {
+      backgroundColor: getStepBgColor(0),
     });
 
     const tl = gsap.timeline({
@@ -114,7 +125,7 @@ export const StoryScroller: React.FC = () => {
       // ── ENTER NEXT SLIDE (i+1) ──
       // Transition background color tint
       tl.to(".story-bg-layer", {
-        backgroundColor: STORY_STEPS[i + 1].bgColor,
+        backgroundColor: getStepBgColor(i + 1),
         duration: transitionDuration,
         ease: "power1.inOut",
       }, startTransitionTime);
@@ -185,7 +196,7 @@ export const StoryScroller: React.FC = () => {
       }
       tl.kill();
     };
-  }, [isMobile, prefersReducedMotion]);
+  }, [theme, isMobile, prefersReducedMotion]);
 
   // Handle sidebar navigation clicks
   const scrollToStep = (index: number) => {
@@ -217,7 +228,7 @@ export const StoryScroller: React.FC = () => {
       {/* ─── DESKTOP VIEW: GSAP SCROLL STORYTELLING ────────────────────── */}
       <section
         ref={containerRef}
-        className="hidden lg:block relative w-full h-screen overflow-hidden bg-[#FAF9F5]"
+        className="hidden lg:block relative w-full h-screen overflow-hidden bg-cream"
       >
         <StoryBackground />
 
@@ -243,7 +254,7 @@ export const StoryScroller: React.FC = () => {
       </section>
 
       {/* ─── MOBILE VIEW: STACKED CARD SEQUENCE ───────────────────────── */}
-      <section className="lg:hidden w-full py-16 bg-[#FAF9F5] flex flex-col gap-10 px-4 md:px-8">
+      <section className="lg:hidden w-full py-16 bg-cream flex flex-col gap-10 px-4 md:px-8">
         <div className="text-center max-w-xl mx-auto mb-4">
           <span className="badge-gold mb-3">Our Work</span>
           <h2 className="text-3xl font-extrabold text-charcoal font-heading leading-tight">

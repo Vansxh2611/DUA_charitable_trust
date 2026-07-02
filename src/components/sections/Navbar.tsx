@@ -10,6 +10,7 @@ import { navItems, siteConfig } from "@/constants/navigation";
 import { NavLink } from "./NavLink";
 import { MobileNavDrawer } from "./MobileNavDrawer";
 import { Button } from "@/components/ui/Button";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
@@ -90,28 +91,32 @@ export const Navbar: React.FC = () => {
               ))}
             </nav>
 
-            {/* Action Button (Desktop Only) */}
-            <div className="hidden md:block">
-              <Button
-                label="Get Involved"
-                variant="outline"
-                size={isScrolled ? "sm" : "md"}
-                href={siteConfig.donateLink}
-                className="bg-transparent border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-cream rounded-full transition-all duration-300 shadow-none font-bold"
-                aria-label="Get Involved - Make a donation"
-              />
-            </div>
+            {/* Desktop Action Buttons & Theme Toggle */}
+            <div className="flex items-center gap-3">
+              <ThemeToggle />
+              
+              <div className="hidden md:block">
+                <Button
+                  label="Get Involved"
+                  variant="outline"
+                  size={isScrolled ? "sm" : "md"}
+                  href={siteConfig.donateLink}
+                  className="bg-transparent border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-cream rounded-full transition-all duration-300 shadow-none font-bold"
+                  aria-label="Get Involved - Make a donation"
+                />
+              </div>
 
-            {/* Mobile Menu Toggle */}
-            <button
-              onClick={() => setMobileMenuOpen(true)}
-              className="md:hidden p-2 text-charcoal hover:text-forest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-full cursor-pointer"
-              aria-expanded={mobileMenuOpen}
-              aria-controls="mobile-nav-drawer"
-              aria-label="Open navigation menu"
-            >
-              <Menu size={24} />
-            </button>
+              {/* Mobile Menu Toggle */}
+              <button
+                onClick={() => setMobileMenuOpen(true)}
+                className="md:hidden p-2 text-charcoal hover:text-forest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-full cursor-pointer flex items-center justify-center"
+                aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-nav-drawer"
+                aria-label="Open navigation menu"
+              >
+                <Menu size={24} />
+              </button>
+            </div>
           </div>
         </header>
       </div>

@@ -6,7 +6,7 @@ import { FAQData } from "@/constants/data";
 
 export default function Contact(): React.ReactNode {
   return (
-    <div className="pt-24 sm:pt-28">
+    <div className="pt-24 sm:pt-28 bg-cream min-h-screen pb-20">
       <section className="py-16 sm:py-20 gradient-bg border-b border-forest/10 text-center">
         <Container>
           <div className="max-w-3xl mx-auto flex flex-col items-center">

@@ -19,10 +19,10 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({
       <Container>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="max-w-2xl text-left">
-            <span className="inline-block px-4 py-1 rounded-full bg-accent text-[#111827] font-heading text-xs font-bold uppercase tracking-wider mb-4">
+            <span className="inline-block px-4 py-1 rounded-full bg-accent text-charcoal-static font-heading text-xs font-bold uppercase tracking-wider mb-4">
               Our Work
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111827] font-heading leading-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-charcoal font-heading leading-tight mb-4">
               {title}
             </h2>
             <p className="text-base text-charcoal/70 leading-relaxed font-body">

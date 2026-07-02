@@ -111,7 +111,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className }) 
   return (
     <div
       className={cn(
-        "flex flex-col h-full bg-white rounded-3xl overflow-hidden border border-forest/10 shadow-xs card-interactive",
+        "flex flex-col h-full bg-card-bg rounded-3xl overflow-hidden border border-card-border shadow-xs card-interactive",
         className
       )}
     >

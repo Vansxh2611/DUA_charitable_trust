@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
   if (!mounted) {
     return (
       <footer
-        className="bg-navy text-cream pt-16 pb-12 relative overflow-hidden border-t border-white/5"
+        className="bg-navy text-cream-static pt-16 pb-12 relative overflow-hidden border-t border-white/5"
         aria-label="Site Footer"
       >
         <Container>
@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
 
   return (
     <footer
-      className="bg-navy text-cream pt-20 pb-12 relative overflow-hidden border-t border-white/5"
+      className="bg-navy text-cream-static pt-20 pb-12 relative overflow-hidden border-t border-white/5"
       aria-label="Site Footer"
     >
       {/* Ambient background glow for premium three-dimensional depth */}
@@ -73,35 +73,35 @@ export const Footer: React.FC = () => {
                 <circle cx="16" cy="16" r="14" />
                 <path d="M16 24V14 M16 16c0-3 3-5 6-5 M16 18c0-3-3-5-6-5" strokeLinecap="round" />
               </svg>
-              <span className="font-heading font-bold text-lg sm:text-xl text-cream tracking-tight">
+              <span className="font-heading font-bold text-lg sm:text-xl text-cream-static tracking-tight">
                 {siteConfig.name}
               </span>
             </Link>
-            <p className="text-sm text-cream/70 leading-relaxed font-body max-w-sm">
+            <p className="text-sm text-cream-static/70 leading-relaxed font-body max-w-sm">
               {siteConfig.description}
             </p>
             <SocialIcons
               className="mt-2"
-              iconClassName="bg-white/5 text-cream/80 hover:bg-forest hover:text-cream border border-white/5 transition-all duration-300"
+              iconClassName="bg-white/5 text-cream-static/80 hover:bg-forest hover:text-cream-static border border-white/5 transition-all duration-300"
             />
           </div>
 
           {/* Column 2: Explore */}
           <div className="lg:col-span-2 flex flex-col gap-5">
-            <h3 className="text-xs font-bold text-cream/40 uppercase tracking-wider font-body">
+            <h3 className="text-xs font-bold text-cream-static/40 uppercase tracking-wider font-body">
               Explore
             </h3>
             <nav className="flex flex-col gap-3.5 text-sm font-semibold font-body" aria-label="Explore Links">
-              <Link href={PageRoutes.HOME} className="text-cream/75 hover:text-forest transition-colors duration-200">
+              <Link href={PageRoutes.HOME} className="text-cream-static/75 hover:text-forest transition-colors duration-200">
                 Home
               </Link>
-              <Link href={PageRoutes.ABOUT_US} className="text-cream/75 hover:text-forest transition-colors duration-200">
+              <Link href={PageRoutes.ABOUT_US} className="text-cream-static/75 hover:text-forest transition-colors duration-200">
                 About Us
               </Link>
-              <Link href={PageRoutes.OUR_PROJECTS} className="text-cream/75 hover:text-forest transition-colors duration-200">
+              <Link href={PageRoutes.OUR_PROJECTS} className="text-cream-static/75 hover:text-forest transition-colors duration-200">
                 Our Projects
               </Link>
-              <Link href={PageRoutes.BLOG} className="text-cream/75 hover:text-forest transition-colors duration-200">
+              <Link href={PageRoutes.BLOG} className="text-cream-static/75 hover:text-forest transition-colors duration-200">
                 Community Blog
               </Link>
             </nav>
@@ -109,17 +109,17 @@ export const Footer: React.FC = () => {
 
           {/* Column 3: Get Involved */}
           <div className="lg:col-span-2 flex flex-col gap-5">
-            <h3 className="text-xs font-bold text-cream/40 uppercase tracking-wider font-body">
+            <h3 className="text-xs font-bold text-cream-static/40 uppercase tracking-wider font-body">
               Get Involved
             </h3>
             <nav className="flex flex-col gap-3.5 text-sm font-semibold font-body" aria-label="Get Involved Links">
-              <Link href={PageRoutes.CONTACT} className="text-cream/75 hover:text-forest transition-colors duration-200">
+              <Link href={PageRoutes.CONTACT} className="text-cream-static/75 hover:text-forest transition-colors duration-200">
                 Volunteer
               </Link>
-              <Link href={PageRoutes.DONATE} className="text-cream/75 hover:text-forest transition-colors duration-200">
+              <Link href={PageRoutes.DONATE} className="text-cream-static/75 hover:text-forest transition-colors duration-200">
                 Donate Now
               </Link>
-              <Link href={PageRoutes.CONTACT} className="text-cream/75 hover:text-forest transition-colors duration-200">
+              <Link href={PageRoutes.CONTACT} className="text-cream-static/75 hover:text-forest transition-colors duration-200">
                 Partner with Us
               </Link>
             </nav>
@@ -127,21 +127,21 @@ export const Footer: React.FC = () => {
 
           {/* Column 4: Contact Info */}
           <div className="lg:col-span-4 flex flex-col gap-5">
-            <h3 className="text-xs font-bold text-cream/40 uppercase tracking-wider font-body">
+            <h3 className="text-xs font-bold text-cream-static/40 uppercase tracking-wider font-body">
               Contact Us
             </h3>
-            <div className="flex flex-col gap-4 text-sm font-body text-cream/70">
+            <div className="flex flex-col gap-4 text-sm font-body text-cream-static/70">
               <p className="leading-relaxed">{siteConfig.address}</p>
               <div className="flex flex-col gap-1.5 font-semibold">
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-cream/80 hover:text-forest transition-colors duration-200"
+                  className="text-cream-static/80 hover:text-forest transition-colors duration-200"
                 >
                   {siteConfig.email}
                 </a>
                 <a
                   href={`tel:${siteConfig.phone}`}
-                  className="text-cream/80 hover:text-forest transition-colors duration-200"
+                  className="text-cream-static/80 hover:text-forest transition-colors duration-200"
                 >
                   {siteConfig.phone}
                 </a>
@@ -151,13 +151,13 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Footer Bottom copyright and legal */}
-        <div className="pt-8 border-t border-white/10 text-xs text-cream/40 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="pt-8 border-t border-white/10 text-xs text-cream-static/40 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p>© {new Date().getFullYear()} {siteConfig.name}. Nurturing Joyful Wisdom.</p>
           <div className="flex gap-6 font-semibold" aria-label="Privacy & Terms">
-            <Link href="#" className="hover:text-cream transition-colors duration-200">
+            <Link href="#" className="hover:text-cream-static transition-colors duration-200">
               Privacy Policy
             </Link>
-            <Link href="#" className="hover:text-cream transition-colors duration-200">
+            <Link href="#" className="hover:text-cream-static transition-colors duration-200">
               Terms of Service
             </Link>
           </div>

@@ -19,14 +19,14 @@ export const FAQ: React.FC<FAQProps> = ({
   };
 
   return (
-    <SectionWrapper id="faq" bgColor="bg-[#FAF9F5]" glowPosition="bottom-right">
+    <SectionWrapper id="faq" bgColor="bg-cream" glowPosition="bottom-right">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16">
           <div className="lg:col-span-5 flex flex-col items-start">
-            <span className="inline-block px-4 py-1 rounded-full bg-accent text-[#111827] font-heading text-xs font-bold uppercase tracking-wider mb-4">
+            <span className="inline-block px-4 py-1 rounded-full bg-accent text-charcoal-static font-heading text-xs font-bold uppercase tracking-wider mb-4">
               FAQ
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#111827] font-heading leading-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-charcoal font-heading leading-tight mb-4">
               {title}
             </h2>
             <p className="text-base text-charcoal/70 leading-relaxed font-body">

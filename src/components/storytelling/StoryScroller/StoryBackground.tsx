@@ -5,7 +5,7 @@ import React from "react";
 export const StoryBackground: React.FC = () => {
   return (
     <div 
-      className="story-bg-layer absolute inset-0 z-0 overflow-hidden pointer-events-none transition-colors duration-1000 bg-[#FAF9F5]"
+      className="story-bg-layer absolute inset-0 z-0 overflow-hidden pointer-events-none transition-colors duration-1000 bg-cream"
     >
       {/* 1) Subtle Grain/Noise Overlay */}
       <div 
