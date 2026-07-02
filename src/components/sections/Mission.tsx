@@ -46,10 +46,10 @@ export const Mission: React.FC<MissionProps> = ({
     ];
 
     return (
-      <section className="py-20 bg-cream" aria-labelledby="story-heading">
+      <section className="py-5 bg-cream" aria-labelledby="story-heading">
         <Container size="xl">
           <div className="text-center mb-12">
-            <h2 id="story-heading" className="text-3xl sm:text-4xl font-extrabold text-charcoal font-heading">
+            <h2 id="story-heading" className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight">
               Our Story
             </h2>
           </div>
@@ -127,117 +127,34 @@ export const Mission: React.FC<MissionProps> = ({
 
   return (
     <SectionWrapper id="our-focus" bgColor="bg-sage" glowPosition="center">
-      {/* 1) Subtle Parallax Background SVGs */}
-      <div className="absolute top-1/12 -right-24 w-96 h-96 pointer-events-none select-none z-0">
-        <ParallaxImage speed={0.5} className="w-full h-full">
-          <svg
-            className="w-full h-full text-forest/10 fill-none stroke-current"
-            viewBox="0 0 24 24"
-            strokeWidth="0.5"
-            aria-hidden="true"
-          >
-            <path d="M12 2C6.5 2 2 6.5 2 12c0 4.5 3 8 7 9.5V22h6v-.5c4-1.5 7-5 7-9.5 0-5.5-4.5-10-10-10z M12 22V12c0-3 3-5 6-5 M12 16c0-3-3-5-6-5" />
-          </svg>
-        </ParallaxImage>
-      </div>
-
-      <div className="absolute bottom-1/12 -left-24 w-96 h-96 pointer-events-none select-none z-0">
-        <ParallaxImage speed={0.5} className="w-full h-full">
-          <svg
-            className="w-full h-full text-forest/10 fill-none stroke-current"
-            viewBox="0 0 24 24"
-            strokeWidth="0.5"
-            aria-hidden="true"
-          >
-            <path d="M12 2C6.5 2 2 6.5 2 12c0 4.5 3 8 7 9.5V22h6v-.5c4-1.5 7-5 7-9.5 0-5.5-4.5-10-10-10z M12 22V12c0-3 3-5 6-5 M12 16c0-3-3-5-6-5" />
-          </svg>
-        </ParallaxImage>
-      </div>
-
       <Container size="xl" className="relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-4 py-1 rounded-full bg-accent text-charcoal font-heading text-xs font-bold uppercase tracking-wider mb-4">
-            Our Focus
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-charcoal font-heading leading-tight mb-4">
+        <div className="text-center max-w-4xl mx-auto py-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-charcoal font-heading leading-tight mb-6">
             {title}
           </h2>
-          <p className="text-base text-charcoal/75 font-body leading-relaxed max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed font-body max-w-2xl mx-auto mb-16">
             {description}
           </p>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {focusCards.map((card, idx) => (
-              <TiltCard
-                key={idx}
-                intensity={8}
-                glare={true}
-                scale={1.03}
-                className="w-full h-full"
-              >
-                <div
-                  className={cn(
-                    "relative rounded-[32px] p-8 overflow-hidden flex flex-col justify-between h-full min-h-[300px] text-left cursor-default transition-all duration-300 group",
-                    idx === 1
-                      ? "bg-navy text-white shadow-md border border-accent/25"
-                      : "bg-white/60 backdrop-blur-md text-charcoal border border-forest/10 shadow-xs hover:border-forest/20"
-                  )}
-                >
-                  {/* Pattern overlays */}
-                  {card.pattern && (
-                    <BackgroundPattern
-                      variant={card.pattern}
-                      opacity={card.pattern === "circuit" ? 0.08 : 0.25}
-                    />
-                  )}
-
-                  {/* Brush stroke overlay for Card 1 */}
-                  {card.hasBrush && (
-                    <svg
-                      className="absolute inset-0 w-full h-full text-forest/5 pointer-events-none"
-                      fill="currentColor"
-                      viewBox="0 0 100 100"
-                      preserveAspectRatio="none"
-                      aria-hidden="true"
-                    >
-                      <path d="M10 30 Q 30 20, 50 30 T 90 20 Q 80 50, 50 60 T 10 50 Z" />
-                    </svg>
-                  )}
-
-                  <div className="relative z-10 flex flex-col h-full justify-between">
-                    <div>
-                      {/* Floating Icon with gentle lift */}
-                      <div className={cn(
-                        "w-12 h-12 rounded-full flex items-center justify-center mb-6 shadow-xs transition-transform duration-350 group-hover:scale-110",
-                        card.iconBg
-                      )}>
-                        {card.icon}
-                      </div>
-
-                      <h3 className="text-xl font-bold font-heading mb-3 tracking-tight">
-                        {card.title}
-                      </h3>
-
-                      <p className="text-sm sm:text-base leading-relaxed font-body mb-8 opacity-80">
-                        {card.description}
-                      </p>
-                    </div>
-
-                    <Link
-                      href={PageRoutes.OUR_PROJECTS}
-                      className={cn(
-                        "inline-flex items-center gap-1.5 text-sm font-bold font-heading hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-forest w-fit",
-                        card.linkColor
-                      )}
-                    >
-                      Learn more <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
+          {bullets && bullets.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 text-left max-w-4xl mx-auto border-t border-card-border/60 pt-12">
+              {bullets.map((bullet, idx) => {
+                const [domainTitle, domainDesc] = bullet.split(": ");
+                return (
+                  <div key={idx} className="flex flex-col gap-2">
+                    <h3 className="text-xl font-bold font-heading text-charcoal flex items-center gap-3">
+                      <span className="text-sm font-mono text-accent font-extrabold">0{idx + 1}.</span>
+                      {domainTitle}
+                    </h3>
+                    <p className="text-sm sm:text-base text-charcoal/70 leading-relaxed font-body pl-7">
+                      {domainDesc}
+                    </p>
                   </div>
-                </div>
-              </TiltCard>
-            ))}
-          </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
       </Container>
     </SectionWrapper>
   );

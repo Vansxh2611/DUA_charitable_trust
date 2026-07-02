@@ -11,7 +11,7 @@ interface ParallaxBannerProps {
 export const ParallaxBanner: React.FC<ParallaxBannerProps> = ({
   imageSrc,
   label = "Parallax section",
-  height = "45vh",
+  height = "90vh",
 }) => (
   <div
     role="img"

@@ -19,14 +19,12 @@ export const FAQ: React.FC<FAQProps> = ({
   };
 
   return (
-    <SectionWrapper id="faq" bgColor="bg-cream" glowPosition="bottom-right">
+    <SectionWrapper id="faq" bgColor="bg-cream" glowPosition="bottom-right" className="py-16">
       <Container size="xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16">
+          {/* Left: heading — no tag label */}
           <div className="lg:col-span-5 flex flex-col items-start">
-            <span className="inline-block px-4 py-1 rounded-full bg-accent text-charcoal-static font-heading text-xs font-bold uppercase tracking-wider mb-4">
-              FAQ
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-charcoal font-heading leading-tight mb-4">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
               {title}
             </h2>
             <p className="text-base text-charcoal/70 leading-relaxed font-body">
@@ -42,7 +40,7 @@ export const FAQ: React.FC<FAQProps> = ({
                   <div
                     key={index}
                     className={cn(
-                      "border border-forest/15 rounded-2xl overflow-hidden bg-cream transition-all duration-300",
+                      "border border-forest/15 rounded-lg overflow-hidden bg-cream transition-all duration-300",
                       isOpen ? "border-forest bg-mint/20" : ""
                     )}
                   >
@@ -54,7 +52,7 @@ export const FAQ: React.FC<FAQProps> = ({
                       <span className="text-base sm:text-lg font-bold text-charcoal font-heading leading-snug">
                         {faq.question}
                       </span>
-                      <span className="p-1 rounded-full bg-forest/5 text-forest shrink-0">
+                      <span className="p-1 rounded-md bg-forest/5 text-forest shrink-0">
                         {isOpen ? <Minus size={18} /> : <Plus size={18} />}
                       </span>
                     </button>

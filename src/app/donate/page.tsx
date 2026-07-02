@@ -47,12 +47,11 @@ export default function Donate(): React.ReactNode {
       <section className="py-16 sm:py-20 gradient-bg border-b border-forest/10 text-center">
         <Container>
           <div className="max-w-3xl mx-auto flex flex-col items-center">
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-charcoal font-heading leading-tight mb-4">
-              Empower Ecological Healing
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
+              Empower Joyful Wisdom
             </h1>
             <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed font-body">
-              Your donations directly fund native canopy tree seedlings, regional composting systems, and school
-              gardening kits.
+              Your donations directly fund STEM robotics kits, creative art materials, organic gardening beds, and student well-being hygiene resources.
             </p>
           </div>
         </Container>

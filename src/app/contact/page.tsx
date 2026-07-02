@@ -10,7 +10,7 @@ export default function Contact(): React.ReactNode {
       <section className="py-16 sm:py-20 gradient-bg border-b border-forest/10 text-center">
         <Container>
           <div className="max-w-3xl mx-auto flex flex-col items-center">
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-charcoal font-heading leading-tight mb-4">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
               Get In Touch
             </h1>
             <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed font-body">

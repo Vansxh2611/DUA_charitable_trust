@@ -41,13 +41,13 @@ export const TeamGrid: React.FC<TeamGridProps> = ({
     ];
 
     return (
-      <section className="relative py-20 bg-mint overflow-hidden" aria-labelledby="values-heading">
+      <section className="relative py-5 bg-mint overflow-hidden" aria-labelledby="values-heading">
         {/* Leaf Background Pattern */}
         <BackgroundPattern variant="leaf" opacity={0.4} className="text-forest/15" />
 
         <Container className="relative z-10">
           <div className="text-center mb-16">
-            <h2 id="values-heading" className="text-3xl sm:text-4xl font-extrabold text-charcoal font-heading">
+            <h2 id="values-heading" className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight">
               {title || "Core Values"}
             </h2>
           </div>
@@ -56,10 +56,10 @@ export const TeamGrid: React.FC<TeamGridProps> = ({
             {coreValues.map((value, idx) => (
               <div
                 key={idx}
-                className="bg-card-bg border border-card-border rounded-3xl p-8 flex flex-col items-center text-center shadow-xs card-interactive"
+                className="bg-card-bg border border-card-border rounded-lg p-8 flex flex-col items-center text-center shadow-xs card-interactive"
               >
-                {/* Rounded Icon Wrapper */}
-                <div className="w-12 h-12 rounded-full bg-forest/5 flex items-center justify-center text-forest mb-6">
+                {/* Icon Wrapper */}
+                <div className="w-12 h-12 rounded-md bg-forest/5 flex items-center justify-center text-forest mb-6">
                   {value.icon}
                 </div>
                 <h3 className="text-lg font-bold font-heading text-charcoal mb-2">
@@ -78,10 +78,10 @@ export const TeamGrid: React.FC<TeamGridProps> = ({
 
   // Fallback / Original Team Grid Layout (used elsewhere if any)
   return (
-    <section className="py-20 bg-cream" aria-labelledby="team-heading">
+    <section className="py-5 bg-cream" aria-labelledby="team-heading">
       <Container>
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 id="team-heading" className="text-3xl sm:text-4xl font-extrabold text-charcoal font-heading">
+          <h2 id="team-heading" className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight">
             {title}
           </h2>
           {subtitle && (
@@ -94,15 +94,15 @@ export const TeamGrid: React.FC<TeamGridProps> = ({
           {members.map((member, index) => (
             <div
               key={index}
-              className="flex flex-col bg-cream border border-forest/15 rounded-3xl p-6 shadow-sm group hover:-translate-y-1 transition-all duration-300"
+              className="flex flex-col bg-cream border border-forest/15 rounded-lg p-6 shadow-sm group hover:-translate-y-1 transition-all duration-300"
             >
-              <div className="relative h-44 w-44 mx-auto rounded-full overflow-hidden border border-forest/10 mb-6 shrink-0">
+              <div className="relative h-44 w-44 mx-auto rounded-lg overflow-hidden border border-forest/10 mb-6 shrink-0">
                 <Image
                   src={member.image}
                   alt={member.name}
                   fill
                   sizes="176px"
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
                 />
               </div>
               <div className="text-center flex flex-col flex-grow">

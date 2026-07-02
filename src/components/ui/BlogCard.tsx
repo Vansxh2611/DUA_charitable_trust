@@ -12,11 +12,11 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, className }) => {
   const badgeColorClass = isEducation
     ? "bg-[#F7DF7C] text-charcoal"
     : isCommunity
-    ? "bg-mint text-forest"
-    : "bg-[#F7DF7C] text-charcoal"; // IMPACT uses yellow/accent
+      ? "bg-mint text-forest"
+      : "bg-[#F7DF7C] text-charcoal"; // IMPACT uses yellow/accent
 
   return (
-    <article className={cn("flex flex-col h-full bg-beige rounded-[32px] overflow-hidden border border-forest/10 shadow-xs hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group", className)}>
+    <article className={cn("flex flex-col h-full bg-beige rounded-lg overflow-hidden border border-forest/10 shadow-xs hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group", className)}>
       {/* Card Image */}
       <div className="relative h-56 w-full overflow-hidden">
         <Image
@@ -26,16 +26,6 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, className }) => {
           className="object-cover group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="absolute top-4 left-4">
-          <span
-            className={cn(
-              "px-3.5 py-1 rounded-full text-xs font-heading font-extrabold uppercase tracking-wider shadow-xs",
-              badgeColorClass
-            )}
-          >
-            {post.category}
-          </span>
-        </div>
       </div>
 
       {/* Card Body */}

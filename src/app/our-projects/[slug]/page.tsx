@@ -61,7 +61,7 @@ export default function ProjectDetail({ params }: ProjectDetailProps): React.Rea
               <div className="flex flex-wrap items-center gap-3 mb-4">
                 <Badge label={project.badge} variant={badgeVariants[project.status]} />
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-charcoal font-heading leading-tight mb-6">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-6">
                 {project.title}
               </h1>
               <div className="prose max-w-none text-charcoal/80 font-body leading-relaxed text-base sm:text-lg mb-8">

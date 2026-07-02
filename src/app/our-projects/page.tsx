@@ -19,7 +19,7 @@ export default function OurProjects(): React.ReactNode {
         <section className="py-16 sm:py-20 text-center max-w-4xl mx-auto">
           <Container>
             <div className="flex flex-col items-center">
-              <h1 className="text-4xl sm:text-5xl font-extrabold text-charcoal font-heading leading-tight mb-4">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
                 Our Projects - Dua Charitable Trust
               </h1>
               <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed font-body">

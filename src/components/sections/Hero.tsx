@@ -2,12 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import { HeroProps } from "@/types";
-import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
 import { BackgroundPattern } from "../ui/BackgroundPattern";
-import { cn } from "@/utils/cn";
 import { TextReveal, Magnetic } from "../ui";
 import Image from "next/image";
+import { Container } from "../ui/Container";
+import { cn } from "@/utils/cn";
 
 export const Hero: React.FC<HeroProps> = ({
   heading,
@@ -17,63 +17,85 @@ export const Hero: React.FC<HeroProps> = ({
 }) => {
   const isAboutPage = !primaryCtaText;
 
+  // ── Home slides — 5 images, slide transition (no zoom) ───────────
   const homeSlides = [
     {
       id: "slide1",
       src: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1400&auto=format&fit=crop",
       alt: "Children and educator learning outdoors with tablet",
-      driftClass: "ken-burns-right",
     },
     {
       id: "slide2",
       src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400&auto=format&fit=crop",
       alt: "Children reading books in a group",
-      driftClass: "ken-burns-left",
+    },
+    {
+      id: "slide3",
+      src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1400&auto=format&fit=crop",
+      alt: "Students collaborating on robotics kits",
+    },
+    {
+      id: "slide4",
+      src: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1400&auto=format&fit=crop",
+      alt: "Children learning in an outdoor garden",
+    },
+    {
+      id: "slide5",
+      src: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1400&auto=format&fit=crop",
+      alt: "Volunteers working with children in a community center",
     },
   ];
 
   const [activeSlide, setActiveSlide] = useState(0);
+  const [prevSlide, setPrevSlide] = useState<number | null>(null);
+  const [sliding, setSliding] = useState(false);
   const [progress, setProgress] = useState(0);
   const INTERVAL = 5000;
 
   useEffect(() => {
     if (isAboutPage) return;
-
-    // Asynchronously reset progress to avoid React state-in-effect lint warnings
     Promise.resolve().then(() => setProgress(0));
     const step = 100 / (INTERVAL / 50);
     const progressTimer = setInterval(() => {
       setProgress((p) => Math.min(p + step, 100));
     }, 50);
-
     const slideTimer = setTimeout(() => {
-      setActiveSlide((prev) => (prev + 1) % homeSlides.length);
+      goToSlide((activeSlide + 1) % homeSlides.length);
     }, INTERVAL);
-
     return () => {
       clearInterval(progressTimer);
       clearTimeout(slideTimer);
     };
   }, [activeSlide, isAboutPage, homeSlides.length]);
 
+  const goToSlide = (next: number) => {
+    if (next === activeSlide || sliding) return;
+    setPrevSlide(activeSlide);
+    setSliding(true);
+    setProgress(0);
+    setTimeout(() => {
+      setActiveSlide(next);
+      setPrevSlide(null);
+      setSliding(false);
+    }, 600);
+  };
+
+  // ── About page slides ────────────────────────────────────────────
   const aboutSlides = [
     {
       id: "about1",
       src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400&auto=format&fit=crop",
       alt: "Children reading books in a classroom",
-      driftClass: "ken-burns-right",
     },
     {
       id: "about2",
       src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1400&auto=format&fit=crop",
       alt: "Students collaborating on robotics kits",
-      driftClass: "ken-burns-left",
     },
     {
       id: "about3",
       src: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1400&auto=format&fit=crop",
       alt: "Children learning in an outdoor garden",
-      driftClass: "ken-burns-right",
     },
   ];
 
@@ -83,7 +105,6 @@ export const Hero: React.FC<HeroProps> = ({
 
   useEffect(() => {
     if (!isAboutPage) return;
-    // Asynchronously reset progress to avoid React state-in-effect lint warnings
     Promise.resolve().then(() => setAboutProgress(0));
     const step = 100 / (ABOUT_INTERVAL / 50);
     const progressTimer = setInterval(() => {
@@ -110,7 +131,7 @@ export const Hero: React.FC<HeroProps> = ({
                 {subheading}
               </p>
             </div>
-            <div className="lg:col-span-6 w-full relative aspect-[1.4] rounded-[32px] overflow-hidden border border-forest/10 shadow-sm">
+            <div className="lg:col-span-6 w-full relative aspect-[1.4] rounded-lg overflow-hidden border border-forest/10 shadow-sm">
               {aboutSlides.map((slide, idx) => (
                 <div
                   key={slide.id}
@@ -122,27 +143,18 @@ export const Hero: React.FC<HeroProps> = ({
                   }}
                   aria-hidden={aboutActiveSlide !== idx}
                 >
-                  <div
-                    key={`${slide.id}-${aboutActiveSlide}`}
-                    className={cn(
-                      "absolute inset-0 will-change-transform",
-                      aboutActiveSlide === idx ? slide.driftClass : ""
-                    )}
-                  >
-                    <Image
-                      src={slide.src}
-                      alt={slide.alt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      priority={idx === 0}
-                    />
-                  </div>
+                  <Image
+                    src={slide.src}
+                    alt={slide.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority={idx === 0}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none z-10" />
                 </div>
               ))}
-
-              {/* Progress-fill navigation dots */}
+              {/* Progress dots */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
                 {aboutSlides.map((_, idx) => (
                   <button
@@ -171,116 +183,109 @@ export const Hero: React.FC<HeroProps> = ({
     );
   }
 
-  // ── Home page hero ───────────────────────────────────────────────
+  // ── Home page hero ──────────────────────────────────────────────
   return (
     <>
-      {/* Ken Burns keyframes */}
+      {/* Slide transition keyframes */}
       <style>{`
-        @keyframes kenBurnsRight {
-          0%   { transform: scale(1)    translateX(0)     translateY(0); }
-          100% { transform: scale(1.09) translateX(1.5%)  translateY(-1%); }
+        @keyframes slideInRight {
+          from { transform: translateX(100%); }
+          to   { transform: translateX(0); }
         }
-        @keyframes kenBurnsLeft {
-          0%   { transform: scale(1)    translateX(0)      translateY(0); }
-          100% { transform: scale(1.09) translateX(-1.5%)  translateY(1%); }
+        @keyframes slideOutLeft {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-100%); }
         }
-        .ken-burns-right { animation: kenBurnsRight 6s ease-in-out forwards; }
-        .ken-burns-left  { animation: kenBurnsLeft  6s ease-in-out forwards; }
+        .slide-in  { animation: slideInRight 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+        .slide-out { animation: slideOutLeft 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
       `}</style>
 
-      <section className="relative pt-24 pb-16 md:pt-32 md:pb-20 bg-cream">
-        <Container size="xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      <section className="relative bg-cream" style={{ paddingTop: "100px", paddingLeft: "20px", paddingRight: "20px", paddingBottom: "20px" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
 
-            {/* Left Content Card */}
-            <div className="lg:col-span-5 relative bg-sage border border-forest/10 rounded-[32px] p-6 flex flex-col justify-center overflow-hidden shadow-xs">
-              <BackgroundPattern variant="leaf" opacity={0.5} className="text-forest/15 animate-pulse" />
-              <div className="relative bg-card-bg border border-card-border rounded-3xl p-8 sm:p-10 z-10 flex flex-col items-center text-center shadow-xs h-full justify-between">
-                <div>
-                  <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-charcoal font-heading leading-tight mb-6">
-                    <TextReveal mode="words">{heading}</TextReveal>
-                  </h1>
-                  <p className="text-sm sm:text-base text-charcoal/70 leading-relaxed font-body mb-8">
-                    {subheading}
-                  </p>
-                </div>
-                <Magnetic strength={0.15}>
-                  <Button
-                    label={primaryCtaText}
-                    variant="primary"
-                    href={primaryCtaLink}
-                    className="bg-navy text-white hover:bg-forest hover:text-white rounded-full px-8 py-3 font-bold transition-all duration-300 shadow-sm"
-                  />
-                </Magnetic>
-              </div>
+          {/* Left Content Card — 50% */}
+          <div
+            className="relative bg-sage border border-card-border rounded-lg overflow-hidden shadow-xs"
+            style={{ height: "calc(100vh - 120px)", minHeight: "650px" }}
+          >
+            <BackgroundPattern variant="leaf" opacity={0.3} className="text-forest/10 animate-pulse" />
+            {/* Inner overlay card — 68% width × 80% height, perfectly centered. Static light background. */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[68%] h-[80%] bg-white border border-[#DDD5C8] rounded-lg z-10 flex flex-col justify-center items-center text-center p-8 lg:p-12 shadow-md overflow-hidden">
+              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight text-[#0a142f]! font-heading leading-tight mb-4">
+                {heading}
+              </h1>
+              <p className="text-sm sm:text-base text-[#0a142f]/70! leading-relaxed font-body mb-8 max-w-md mx-auto">
+                {subheading}
+              </p>
+              <Button
+                label={primaryCtaText}
+                variant="primary"
+                href={primaryCtaLink}
+                className="bg-[#0a142f] text-white hover:bg-forest hover:text-white rounded-full px-6 py-3 font-bold transition-all duration-300 shadow-sm text-xs sm:text-sm"
+              />
             </div>
+          </div>
 
-            {/* Right Cinematic Carousel */}
-            <div className="lg:col-span-7 relative w-full aspect-[4/3] lg:aspect-auto rounded-[32px] overflow-hidden border border-forest/10 shadow-sm">
-
-              {/* All slides always in DOM — crossfade via opacity */}
-              {homeSlides.map((slide, idx) => (
+          {/* Right Carousel — 50%, same height, slide transitions */}
+          <div
+            className="relative w-full rounded-lg overflow-hidden border border-card-border shadow-sm"
+            style={{ height: "calc(100vh - 120px)", minHeight: "650px" }}
+          >
+            {homeSlides.map((slide, idx) => {
+              const isActive = activeSlide === idx;
+              const isPrev = prevSlide === idx;
+              return (
                 <div
                   key={slide.id}
-                  className="absolute inset-0 overflow-hidden"
+                  className={cn(
+                    "absolute inset-0 overflow-hidden",
+                    isActive && sliding ? "slide-in" : "",
+                    isPrev && sliding ? "slide-out" : "",
+                  )}
                   style={{
-                    opacity: activeSlide === idx ? 1 : 0,
-                    transition: "opacity 1200ms cubic-bezier(0.4, 0, 0.2, 1)",
-                    zIndex: activeSlide === idx ? 10 : 0,
+                    zIndex: isActive ? 10 : isPrev ? 9 : 0,
+                    display: isActive || isPrev ? "block" : "none",
                   }}
-                  aria-hidden={activeSlide !== idx}
+                  aria-hidden={!isActive}
                 >
-                  {/* Inner wrapper — unique key restarts Ken Burns on activation */}
-                  <div
-                    key={`${slide.id}-${activeSlide}`}
-                    className={cn(
-                      "absolute inset-0 will-change-transform",
-                      activeSlide === idx ? slide.driftClass : ""
-                    )}
-                  >
-                    <Image
-                      src={slide.src}
-                      alt={slide.alt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 58vw"
-                      priority={idx === 0}
-                    />
-                  </div>
-
-                  {/* Vignette */}
+                  <Image
+                    src={slide.src}
+                    alt={slide.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority={idx === 0}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none z-10" />
                 </div>
+              );
+            })}
+
+            {/* Progress-fill navigation dots */}
+            <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+              {homeSlides.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => goToSlide(idx)}
+                  className="relative flex items-center justify-center focus:outline-none"
+                  aria-label={`Go to slide ${idx + 1}`}
+                >
+                  {activeSlide === idx ? (
+                    <span className="relative block w-8 h-[3px] rounded-full bg-white/30 overflow-hidden">
+                      <span
+                        className="absolute inset-y-0 left-0 rounded-full bg-white"
+                        style={{ width: `${progress}%`, transition: "width 50ms linear" }}
+                      />
+                    </span>
+                  ) : (
+                    <span className="block w-2 h-[3px] rounded-full bg-white/50 hover:bg-white/80 transition-colors duration-200" />
+                  )}
+                </button>
               ))}
-
-              {/* Progress-fill navigation dots */}
-              <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
-                {homeSlides.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => { setActiveSlide(idx); setProgress(0); }}
-                    className="relative flex items-center justify-center focus:outline-none"
-                    aria-label={`Go to slide ${idx + 1}`}
-                  >
-                    {activeSlide === idx ? (
-                      <span className="relative block w-8 h-[3px] rounded-full bg-white/30 overflow-hidden">
-                        <span
-                          className="absolute inset-y-0 left-0 rounded-full bg-white"
-                          style={{ width: `${progress}%`, transition: "width 50ms linear" }}
-                        />
-                      </span>
-                    ) : (
-                      <span className="block w-2 h-[3px] rounded-full bg-white/50 hover:bg-white/80 transition-colors duration-200" />
-                    )}
-                  </button>
-                ))}
-              </div>
-
-
             </div>
-
           </div>
-        </Container>
+
+        </div>
       </section>
     </>
   );

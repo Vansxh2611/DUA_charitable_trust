@@ -1,29 +1,9 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import MainLayout from "@/layouts/MainLayout";
 import AppProviders from "@/components/providers/AppProviders";
 import { siteName, siteTagline, siteDescription, siteUrl } from "@/constants/site";
 import Script from "next/script";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-const dmSerif = DM_Serif_Display({
-  subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["400"],
-  style: ["normal", "italic"],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -51,9 +31,17 @@ export default function RootLayout({
   return (
     <html 
       lang="en" 
-      className={`${playfair.variable} ${inter.variable} ${dmSerif.variable} antialiased`}
+      className="antialiased"
       suppressHydrationWarning
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap" 
+          rel="stylesheet" 
+        />
+      </head>
       <body className="bg-cream text-charcoal font-body antialiased selection:bg-forest selection:text-cream">
         <Script
           id="theme-init"

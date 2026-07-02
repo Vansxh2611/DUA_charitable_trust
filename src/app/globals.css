@@ -15,87 +15,104 @@
   --color-card-bg: var(--card-bg);
   --color-card-border: var(--card-border);
   --color-footer-bg: var(--footer-bg);
+  --color-footer-text: var(--footer-text);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-error: var(--error);
   --color-info: var(--info);
+  --color-secondary: var(--secondary);
+  --color-campaign-accent: var(--campaign-accent);
+  --color-emergency-accent: var(--emergency-accent);
+  --color-muted-text: var(--muted-text);
 
-  --color-cream-static: #FAF9F5;
-  --color-charcoal-static: #1B221E;
-  --color-pistachio: #b1cf87;
-  --color-pistachio-hover: #a0c172;
+  --color-cream-static: #FAF8F3;
+  --color-charcoal-static: #2B2B2B;
+  --color-pistachio: #C89B52; /* Mapped to warm ochre secondary */
+  --color-pistachio-hover: #A97B34;
 
   /* Fonts */
-  --font-heading: var(--font-playfair), serif;
-  --font-body: var(--font-inter), sans-serif;
-  --font-display: var(--font-display), serif;
+  --font-heading: "Bricolage Grotesque", sans-serif;
+  --font-body: "Albert Sans", sans-serif;
+  --font-display: "Bricolage Grotesque", sans-serif;
 }
 
 :root {
-  /* Light Theme Variables */
-  --cream: #F9F8F3;
-  --sage: #F3EFE6;
-  --mint: #F3EFE6;
-  --charcoal: #4F4F4F;
-  --navy: #253326;
-  --accent: #E88A3D;
-  --accent-dark: #D76A3D;
-  --beige: #F3EFE6;
-  --forest: #456A48;
-  --forest-dark: #2F4A35;
-  --footer-bg: #253326;
-
+  /* Light Theme Variables - Updated to User specifications */
+  --cream: #FAF8F3; /* Main Background (Warm Ivory) */
+  --sage: #F5F0E8;  /* Alternate Background (Soft Beige) */
+  --mint: #F5F0E8;  /* Alternate Background (Soft Beige) */
+  --beige: #ECE3D3; /* Section Background (Light Sand) */
+  --card-bg: #FFFFFF; /* Cards (Pure White) */
+  --card-border: #DDD5C8; /* Border (Soft Stone) */
+  
+  --forest: #566246; /* Primary Brand (Olive Green) */
+  --forest-dark: #3F4B33; /* Primary Hover (Dark Olive) */
+  --navy: rgb(10, 20, 47); /* Dark Brand (rgb(10, 20, 47)) */
+  --secondary: #C89B52; /* Secondary (Warm Ochre) */
+  
+  --charcoal: rgb(10, 20, 47); /* Primary Heading */
+  --foreground: rgb(10, 20, 47); /* Body Text */
+  --muted-text: #8F8780; /* Muted Text */
+  
+  --accent: #C89B52; /* Primary CTA (Warm Ochre) */
+  --accent-dark: #A97B34; /* CTA Hover (Rich Gold) */
+  --campaign-accent: #C89B52; /* Campaign Accent */
+  --emergency-accent: #D9534F; /* Emergency Accent */
+  
   --background: var(--cream);
-  --foreground: var(--charcoal);
-
-  --card-bg: #FFFFFF;
-  --card-border: #E6E1D5;
-  --muted-text: #7A7A7A;
+  --footer-bg: #3E4A36; /* Footer Background (Deep Olive) */
+  --footer-text: #F8F6F1; /* Footer Text (Warm White) */
 
   /* Status Colors */
-  --success: #5D8A61;
-  --warning: #D9A441;
-  --error: #C95A4A;
-  --info: #5E8AA8;
+  --success: #566246; /* Success (Olive Green) */
+  --warning: #C89B52; /* Warning (Warm Ochre) */
+  --error: #D9534F; /* Error (Red) */
+  --info: #566246; /* Info (Olive Green) */
 
   /* Used in JS for theme transition ripple colors */
-  --light-bg: #F9F8F3;
-  --dark-bg: #141E15;
+  --light-bg: #FAF8F3;
+  --dark-bg: #1A2016;
 }
 
 [data-theme="dark"] {
-  /* Dark Theme Variables */
-  --cream: #141E15;
-  --sage: #222E23;
-  --mint: #222E23;
-  --charcoal: #E2ECE3;
-  --navy: #D0E0D2;
-  --accent: #E88A3D;
-  --accent-dark: #B55026;
-  --beige: #222E23;
-  --forest: #AFC3A9;
-  --forest-dark: #223626;
-  --footer-bg: #0D140E;
+  /* Dark Theme Variables adapted for dark readability while maintaining brand tone */
+  --cream: #1A2016; /* Dark Olive Black */
+  --sage: #232C1E;  /* Dark Olive Card */
+  --mint: #232C1E;
+  --beige: #2E3A28; /* Feature Sections */
+  --card-bg: #232C1E;
+  --card-border: rgba(221, 213, 200, 0.12);
+
+  --forest: #8FA67C; /* Soft light olive */
+  --forest-dark: #A4B993;
+  --navy: #12170E;
+  --secondary: #D9B372; /* Soft ochre */
+
+  --charcoal: #FAF8F3;
+  --foreground: #D3CDC5;
+  --muted-text: #8E8882;
+
+  --accent: #D9B372;
+  --accent-dark: #F0CC8F;
+  --campaign-accent: #D9B372;
+  --emergency-accent: #E57373;
 
   --background: var(--cream);
-  --foreground: var(--charcoal);
-
-  --card-bg: #1C291E;
-  --card-border: rgba(230, 225, 213, 0.12);
-  --muted-text: #96A898;
+  --footer-bg: #12170E;
+  --footer-text: #F8F6F1;
 
   /* Gold/Accent stops for dark mode - softer, less neon */
-  --gold-text-from: #E88A3D;
-  --gold-text-via:  #D8B15A;
-  --gold-text-to:   #D76A3D;
-  --gold-from:      #A6571E;
-  --gold-via:       #B8933E;
-  --gold-to:        #963E19;
+  --gold-text-from: #D9B372;
+  --gold-text-via:  #E4C38E;
+  --gold-text-to:   #C89B52;
+  --gold-from:      #866734;
+  --gold-via:       #A1804B;
+  --gold-to:        #735626;
 
   --shadow-soft:    0 6px 20px rgba(0,0,0,0.3);
   --shadow-card:    0 12px 35px rgba(0,0,0,0.4);
   --shadow-premium: 0 24px 60px rgba(0,0,0,0.5);
-  --shadow-gold:    0 12px 35px rgba(232,138,61,0.06);
+  --shadow-gold:    0 12px 35px rgba(200,155,82,0.08);
 }
 
 body {
@@ -108,7 +125,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  color: var(--navy);
+  color: var(--charcoal);
 }
 
 /* Custom interaction utilities */
@@ -131,17 +148,17 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── Gold/Accent gradient stops ───────────────────────────────────────────── */
 :root {
-  --gold-text-from: #E88A3D;
-  --gold-text-via:  #D8B15A;
-  --gold-text-to:   #D76A3D;
-  --gold-from:      #E88A3D;
-  --gold-via:       #D8B15A;
-  --gold-to:        #D76A3D;
+  --gold-text-from: var(--accent);
+  --gold-text-via:  #F89A1C;
+  --gold-text-to:   var(--accent-dark);
+  --gold-from:      var(--accent);
+  --gold-via:       #F89A1C;
+  --gold-to:        var(--accent-dark);
 
   --shadow-soft:    0 6px 20px rgba(0,0,0,0.05);
   --shadow-card:    0 12px 35px rgba(0,0,0,0.08);
   --shadow-premium: 0 24px 60px rgba(0,0,0,0.12);
-  --shadow-gold:    0 12px 35px rgba(232,138,61,0.12);
+  --shadow-gold:    0 12px 35px rgba(246,178,29,0.12);
 }
 
 /* ── Gold gradient text ──────────────────────────────────────────────────── */
@@ -160,13 +177,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── Theme Gradients ─────────────────────────────────────────────────────── */
 .bg-hero-gradient {
-  background: linear-gradient(135deg, #F9F8F3 0%, #F3EFE6 100%);
+  background: linear-gradient(135deg, var(--cream) 0%, var(--sage) 100%);
 }
 .bg-primary-gradient {
-  background: linear-gradient(135deg, #456A48 0%, #2F4A35 100%);
+  background: linear-gradient(135deg, var(--forest) 0%, var(--navy) 100%);
 }
 .bg-accent-gradient {
-  background: linear-gradient(135deg, #E88A3D 0%, #D76A3D 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
 }
 
 /* ── Shadow utilities ────────────────────────────────────────────────────── */
@@ -175,11 +192,10 @@ h1, h2, h3, h4, h5, h6 {
 .shadow-premium { box-shadow: var(--shadow-premium); }
 .shadow-gold    { box-shadow: var(--shadow-gold); }
 
-/* ── Card system ─────────────────────────────────────────────────────────── */
 .card-base {
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 1.5rem;
+  border-radius: 8px;
   box-shadow: var(--shadow-card);
   transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }

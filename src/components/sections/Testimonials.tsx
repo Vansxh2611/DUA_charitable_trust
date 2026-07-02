@@ -4,6 +4,7 @@ import { TestimonialsProps } from "@/types";
 import { Container } from "../ui/Container";
 import { Quote } from "lucide-react";
 import { SectionWrapper } from "../storytelling/SectionWrapper";
+import { cn } from "@/utils/cn";
 
 export const Testimonials: React.FC<TestimonialsProps> = ({
   title,
@@ -13,11 +14,9 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
   return (
     <SectionWrapper id="testimonials" bgColor="bg-cream" glowPosition="top-left">
       <Container size="xl">
+        {/* Section heading — no tag label */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <span className="inline-block px-4 py-1 rounded-full bg-accent text-charcoal-static font-heading text-xs font-bold uppercase tracking-wider mb-4">
-            Community Voices
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-charcoal font-heading leading-tight mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
             {title}
           </h2>
           <p className="text-base text-charcoal/70 leading-relaxed font-body max-w-2xl mx-auto">
@@ -25,37 +24,56 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="flex flex-col bg-cream border border-forest/15 rounded-3xl p-6 sm:p-8 shadow-xs hover:shadow-md hover:border-forest/30 transition-all duration-300 relative group"
-            >
-              <div className="absolute top-6 right-6 text-forest/10 group-hover:text-forest/20 transition-colors duration-200">
-                <Quote size={36} strokeWidth={2.5} />
-              </div>
-              <p className="text-sm sm:text-base text-charcoal/75 leading-relaxed font-body mb-8 italic relative z-10 flex-grow text-left">
-                &ldquo;{testimonial.quote}&rdquo;
-              </p>
-              <div className="flex items-center gap-3 pt-4 border-t border-forest/10 mt-auto">
-                <div className="relative h-10 w-10 rounded-full overflow-hidden shrink-0 border border-forest/10">
+        <div className="flex flex-col divide-y divide-card-border/60">
+          {testimonials.map((testimonial, index) => {
+            const isEven = index % 2 === 0;
+
+            return (
+              <div
+                key={index}
+                className="flex flex-col md:flex-row gap-8 lg:gap-12 items-center py-12 first:pt-0 last:pb-0 w-full max-w-4xl mx-auto"
+              >
+                {/* Photo Side */}
+                <div
+                  className={cn(
+                    "relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 shrink-0 border border-card-border overflow-hidden rounded-lg",
+                    isEven ? "md:order-1" : "md:order-2"
+                  )}
+                >
                   <Image
                     src={testimonial.avatar}
                     alt={testimonial.name}
                     fill
-                    className="object-cover"
-                    sizes="40px"
+                    className="object-cover transition-transform duration-500 hover:scale-105"
+                    sizes="256px"
                   />
                 </div>
-                <div className="flex flex-col min-w-0 text-left">
-                  <span className="text-sm font-bold text-charcoal truncate">{testimonial.name}</span>
-                  <span className="text-[11px] text-charcoal/50 truncate font-heading font-medium">
-                    {testimonial.role} {testimonial.location ? `• ${testimonial.location}` : ""}
-                  </span>
+
+                {/* Content Side */}
+                <div
+                  className={cn(
+                    "flex flex-col text-left flex-grow max-w-2xl",
+                    isEven ? "md:order-2" : "md:order-1"
+                  )}
+                >
+                  <Quote size={32} className="text-forest/15 mb-4 shrink-0" strokeWidth={2} />
+
+                  <p className="text-base sm:text-lg md:text-xl text-charcoal/80 leading-relaxed font-body italic mb-5">
+                    &ldquo;{testimonial.quote}&rdquo;
+                  </p>
+
+                  <div>
+                    <span className="block text-base font-extrabold text-charcoal font-heading">
+                      {testimonial.name}
+                    </span>
+                    <span className="block text-xs text-muted-text font-bold uppercase tracking-widest mt-1">
+                      {testimonial.role} {testimonial.location ? `• ${testimonial.location}` : ""}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </Container>
     </SectionWrapper>

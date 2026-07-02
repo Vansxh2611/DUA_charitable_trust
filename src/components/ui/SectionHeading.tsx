@@ -19,7 +19,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
       )}
     >
       {badge && <Badge label={badge} variant="info" className="w-fit" />}
-      <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-charcoal font-heading leading-tight">
+      <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-charcoal font-heading leading-tight">
         {title}
       </h2>
       {subtitle && (

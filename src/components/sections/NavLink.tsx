@@ -36,7 +36,7 @@ export const NavLink: React.FC<NavLinkProps> = ({ href, label }) => {
       {isActive && (
         <m.span
           layoutId="activeIndicator"
-          className="absolute bottom-0 left-2 right-2 h-0.5 bg-gold-gradient rounded-full"
+          className="absolute bottom-0 left-2 right-2 h-0.5 bg-forest rounded-full"
           transition={
             shouldReduceMotion
               ? { type: "tween", duration: 0 }

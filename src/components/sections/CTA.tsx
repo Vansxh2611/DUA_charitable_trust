@@ -1,8 +1,5 @@
 import React from "react";
 import { CTAProps } from "@/types";
-import { Container } from "../ui/Container";
-import { Heart, Users } from "lucide-react";
-import { SectionWrapper } from "../storytelling/SectionWrapper";
 import { BackgroundPattern } from "../ui/BackgroundPattern";
 import Link from "next/link";
 
@@ -15,49 +12,45 @@ export const CTA: React.FC<CTAProps> = ({
   secondaryCtaLink,
 }) => {
   return (
-    <SectionWrapper id="cta-footer" bgColor="bg-cream" glowPosition="top-left">
-      <Container size="xl">
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="bg-gradient-to-br from-forest-dark via-forest-dark to-pistachio text-cream-static rounded-[40px] px-6 py-16 sm:p-20 text-center flex flex-col items-center shadow-premium relative overflow-hidden border border-white/5">
-            {/* Ambient decorative glowing circles for premium aesthetic */}
-            <div className="absolute -top-32 -left-32 w-80 h-80 bg-accent/15 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-pistachio/15 rounded-full blur-3xl pointer-events-none" />
+    <section id="cta-footer" className="relative bg-cream py-5">
+      <div className="w-full px-5">
+        <div className="relative bg-footer-bg text-white py-16 px-8 sm:px-12 md:px-16 rounded-lg overflow-hidden border border-card-border shadow-md">
+          {/* Ambient decorative glowing circles */}
+          <div className="absolute -top-32 -left-32 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
 
-            {/* Doodle background pattern for educational context */}
-            <BackgroundPattern variant="doodle" opacity={0.08} className="text-cream-static" />
+          <BackgroundPattern variant="doodle" opacity={0.04} className="text-white" />
 
-            {/* Dots texture overlay */}
-            <div className="absolute inset-0 bg-[radial-gradient(#F7DF7C_1px,transparent_1px)] [background-size:32px_32px] opacity-10 pointer-events-none" />
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 relative z-10 w-full">
+            <div className="max-w-3xl text-left">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight font-heading leading-tight mb-4 text-white!">
+                {title}
+              </h2>
+              <p className="text-sm sm:text-base text-white/85 leading-relaxed font-body">
+                {description}
+              </p>
+            </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight font-heading leading-tight mb-6 text-cream-static max-w-2xl relative z-10">
-              {title}
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-cream-static/80 leading-relaxed font-body mb-10 max-w-xl relative z-10">
-              {description}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full sm:w-auto relative z-10">
-              {/* Primary Donation Button - Redesigned to stand out in gold gradient */}
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-start lg:justify-end w-full lg:w-auto shrink-0">
+              {/* Primary — text only, no icon */}
               <Link
                 href={primaryCtaLink}
-                className="w-full sm:w-56 inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-gold-gradient text-charcoal rounded-full font-heading font-extrabold text-sm shadow-gold hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="w-full sm:w-52 inline-flex items-center justify-center px-6 py-4 bg-accent text-[#0a142f] hover:bg-accent-dark transition-all duration-300 font-heading font-extrabold text-sm rounded-lg shadow-sm"
               >
-                <Heart size={16} className="fill-charcoal stroke-charcoal" />
-                <span>{primaryCtaText}</span>
+                {primaryCtaText}
               </Link>
 
-              {/* Secondary Volunteer Button - Transparent outline with smooth solid white hover */}
+              {/* Secondary — text only, no icon */}
               <Link
                 href={secondaryCtaLink}
-                className="w-full sm:w-56 inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-white/10 hover:bg-white text-cream-static hover:text-forest-dark border border-cream-static/30 rounded-full font-heading font-bold text-sm shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cream-static/40"
+                className="w-full sm:w-52 inline-flex items-center justify-center px-6 py-4 bg-white/10 hover:bg-white text-white hover:text-[#0a142f] border border-white/20 transition-all duration-300 font-heading font-bold text-sm rounded-lg"
               >
-                <Users size={16} />
-                <span>{secondaryCtaText}</span>
+                {secondaryCtaText}
               </Link>
             </div>
           </div>
         </div>
-      </Container>
-    </SectionWrapper>
+      </div>
+    </section>
   );
 };

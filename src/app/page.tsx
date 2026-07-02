@@ -45,13 +45,13 @@ export default function Home(): React.ReactNode {
         stats={impactStatsData.stats}
       />
       <FeaturedProjects
-        title="Featured Ecosystem Restorations"
-        subtitle="Explore some of our active and recently completed initiatives making a tangible ecological impact."
+        title="Featured Learning Projects"
+        subtitle="Explore some of our active community initiatives and programs designed to inspire joyful wisdom."
         projects={projectsData}
       />
       <Testimonials
         title="Loved by Communities & Volunteers"
-        subtitle="Hear directly from local residents, agricultural landowners, and active hands helping us grow."
+        subtitle="Hear directly from local children, community members, and volunteers helping us grow."
         testimonials={testimonialsData}
       />
       <ParallaxBanner

@@ -21,10 +21,7 @@ export const ImpactStats: React.FC<ImpactStatsProps> = ({
     <SectionWrapper id="our-impact" bgColor="bg-mint/30" glowPosition="center">
       <Container size="xl">
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <span className="inline-block px-4 py-1 rounded-full bg-accent text-charcoal-static font-heading text-xs font-bold uppercase tracking-wider mb-4">
-            Our Impact
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-charcoal font-heading leading-tight mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
             {title}
           </h2>
           <p className="text-base text-charcoal/70 leading-relaxed font-body max-w-2xl mx-auto">
@@ -32,7 +29,7 @@ export const ImpactStats: React.FC<ImpactStatsProps> = ({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-card-border border-y border-card-border py-8">
           {stats.map((stat, index) => (
             <StatItem
               key={index}

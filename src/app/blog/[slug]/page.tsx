@@ -62,7 +62,7 @@ export default function BlogPostDetail({ params }: BlogPostDetailProps): React.R
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-charcoal font-heading leading-tight mb-8">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-8">
               {post.title}
             </h1>
 

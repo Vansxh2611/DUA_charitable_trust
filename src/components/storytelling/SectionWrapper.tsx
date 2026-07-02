@@ -61,7 +61,7 @@ export const SectionWrapper: React.FC<SectionWrapperProps> = ({
       ref={sectionRef}
       id={id}
       className={cn(
-        "relative py-20 lg:py-32 flex flex-col justify-center items-center overflow-hidden w-full select-none",
+        "relative py-5 flex flex-col justify-center items-center overflow-hidden w-full select-none",
         bgColor,
         className
       )}

@@ -17,27 +17,13 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({
   return (
     <SectionWrapper id="featured-projects" bgColor="bg-cream" glowPosition="bottom-right">
       <Container size="xl">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-          <div className="max-w-2xl text-left">
-            <span className="inline-block px-4 py-1 rounded-full bg-accent text-charcoal-static font-heading text-xs font-bold uppercase tracking-wider mb-4">
-              Our Work
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-charcoal font-heading leading-tight mb-4">
-              {title}
-            </h2>
-            <p className="text-base text-charcoal/70 leading-relaxed font-body">
-              {subtitle}
-            </p>
-          </div>
-
-          <Button
-            label="View All Projects"
-            variant="outline"
-            href={PageRoutes.OUR_PROJECTS}
-            icon={<ArrowRight size={16} />}
-            iconPosition="right"
-            className="hidden md:inline-flex bg-white hover:bg-forest hover:text-white"
-          />
+        <div className="text-center max-w-3xl mx-auto mb-12 flex flex-col items-center">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
+            {title}
+          </h2>
+          <p className="text-base text-charcoal/70 leading-relaxed font-body">
+            {subtitle}
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -46,14 +32,14 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({
           ))}
         </div>
 
-        <div className="mt-10 text-center md:hidden">
+        <div className="mt-12 text-center">
           <Button
             label="View All Projects"
             variant="outline"
             href={PageRoutes.OUR_PROJECTS}
             icon={<ArrowRight size={16} />}
             iconPosition="right"
-            className="w-full"
+            className="bg-white hover:bg-forest hover:text-white rounded-lg border-[#DDD5C8] text-[#0a142f]!"
           />
         </div>
       </Container>

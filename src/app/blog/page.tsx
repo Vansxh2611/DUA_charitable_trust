@@ -26,7 +26,7 @@ export default function Blog(): React.ReactNode {
         
         <Container className="relative z-10">
           <div className="max-w-3xl mx-auto flex flex-col items-center">
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-charcoal font-heading leading-tight mb-4">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
               Our Community Blog
             </h1>
             <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed font-body">

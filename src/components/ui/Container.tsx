@@ -18,7 +18,7 @@ export const Container: React.FC<ContainerProps> = ({
     <div
       className={cn(
         "w-full",
-        !clean ? cn("mx-auto px-4 sm:px-6 lg:px-8", sizeClasses[size]) : "",
+        !clean ? cn("mx-auto px-5", sizeClasses[size as keyof typeof sizeClasses]) : "",
         className
       )}
     >
