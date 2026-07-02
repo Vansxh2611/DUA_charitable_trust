@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu } from "lucide-react";
@@ -56,33 +57,27 @@ export const Navbar: React.FC = () => {
           <Link
             href="/"
             className={cn(
-              "flex items-baseline gap-1 text-charcoal focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-md transition-transform duration-300 origin-left",
+              "flex items-center gap-2 text-charcoal focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-md transition-transform duration-300 origin-left",
               isScrolled ? "scale-95" : "scale-100"
             )}
             aria-label={`${siteConfig.name} Home`}
           >
-            {/* 8-Spoke Wheel Flower Logo SVG */}
-            <svg
-              className="w-6 h-6 sm:w-7 sm:h-7 text-charcoal fill-none stroke-current self-center mr-1.5"
-              viewBox="0 0 32 32"
-              strokeWidth="2.5"
-              aria-hidden="true"
-            >
-              <circle cx="16" cy="16" r="13" stroke="currentColor" strokeWidth="2.5" />
-              <circle cx="16" cy="16" r="3" fill="currentColor" />
-              <path
-                d="M16 3v26 M3 16h26 M6.8 6.8l18.4 18.4 M6.8 25.2L25.2 6.8"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-              />
-            </svg>
-            <span className="font-heading font-extrabold text-lg sm:text-xl tracking-tight text-charcoal">
-              Dua
-            </span>
-            <span className="hidden sm:inline font-body font-normal text-xs sm:text-sm text-muted-text ml-1">
-              Charitable Trust
-            </span>
+            <Image
+              src="/logo-icon.png"
+              alt={`${siteConfig.name} Logo`}
+              width={28}
+              height={28}
+              className="w-6 h-6 sm:w-7 sm:h-7 object-contain"
+              priority
+            />
+            <div className="flex items-baseline gap-1.5">
+              <span className="font-heading font-extrabold text-lg sm:text-xl tracking-tight text-charcoal leading-none">
+                Dua
+              </span>
+              <span className="hidden sm:inline font-heading font-extrabold text-lg sm:text-xl tracking-tight text-charcoal leading-none">
+                Charitable Trust
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation Links */}
@@ -101,7 +96,7 @@ export const Navbar: React.FC = () => {
           {/* Desktop Action Buttons & Theme Toggle */}
           <div className="flex items-center gap-3">
             <ThemeToggle />
-            
+
             <div className="hidden md:block">
               <Button
                 label="Get Involved"

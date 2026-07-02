@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { m, useReducedMotion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
@@ -118,18 +119,13 @@ export const MobileNavDrawer: React.FC<MobileNavDrawerProps> = ({
                   className="flex items-center gap-2 text-forest focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-md"
                   aria-label={`${siteConfig.name} Home`}
                 >
-                  <svg
-                    className="w-6 h-6 text-charcoal fill-none stroke-current"
-                    viewBox="0 0 32 32"
-                    strokeWidth="2.5"
-                    aria-hidden="true"
-                  >
-                    <circle cx="16" cy="16" r="14" />
-                    <path
-                      d="M16 24V14 M16 16c0-3 3-5 6-5 M16 18c0-3-3-5-6-5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
+                  <Image
+                    src="/logo-icon.png"
+                    alt={`${siteConfig.name} Logo`}
+                    width={24}
+                    height={24}
+                    className="w-6 h-6 object-contain"
+                  />
                   <span className="font-heading font-bold text-base tracking-tight text-charcoal">
                     {siteConfig.name}
                   </span>

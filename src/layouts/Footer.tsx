@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { PageRoutes } from "@/types";
 import { siteConfig } from "@/constants/data";
@@ -63,16 +64,13 @@ export const Footer: React.FC = () => {
               className="flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-md"
               aria-label={`${siteConfig.name} Home`}
             >
-              {/* Sprout Circle Icon */}
-              <svg
-                className="w-7 h-7 text-secondary fill-none stroke-current"
-                viewBox="0 0 32 32"
-                strokeWidth="2.5"
-                aria-hidden="true"
-              >
-                <circle cx="16" cy="16" r="14" />
-                <path d="M16 24V14 M16 16c0-3 3-5 6-5 M16 18c0-3-3-5-6-5" strokeLinecap="round" />
-              </svg>
+              <Image
+                src="/logo-icon.png"
+                alt={`${siteConfig.name} Logo`}
+                width={28}
+                height={28}
+                className="w-7 h-7 object-contain"
+              />
               <span className="font-heading font-bold text-lg sm:text-xl text-footer-text tracking-tight">
                 {siteConfig.name}
               </span>
