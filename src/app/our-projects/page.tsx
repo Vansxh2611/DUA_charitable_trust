@@ -20,7 +20,7 @@ export default function OurProjects(): React.ReactNode {
           <Container>
             <div className="flex flex-col items-center">
               <h1 className="text-4xl sm:text-5xl font-extrabold text-charcoal font-heading leading-tight mb-4">
-                Our Projects - CogniBloom Collective Patterned
+                Our Projects - Dua Charitable Trust
               </h1>
               <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed font-body">
                 Explore the various projects and community programs we&apos;ve developed to nurture joyful wisdom and empower learners across the globe. Each initiative is a step towards a brighter, more inclusive future.

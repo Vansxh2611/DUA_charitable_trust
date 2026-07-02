@@ -30,7 +30,7 @@ export default function Blog(): React.ReactNode {
               Our Community Blog
             </h1>
             <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed font-body">
-              Stories of impact, educational insights, and updates from the CogniBloom Collective. Join us in making education a joyful adventure for all.
+              Stories of impact, educational insights, and updates from the Dua Charitable Trust. Join us in making education a joyful adventure for all.
             </p>
           </div>
         </Container>

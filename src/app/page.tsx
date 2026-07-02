@@ -7,6 +7,7 @@ import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTA } from "@/components/sections/CTA";
+import { SeedsOfChange } from "@/components/sections/SeedsOfChange";
 import {
   heroData,
   missionData,
@@ -35,6 +36,8 @@ export default function Home(): React.ReactNode {
         image={missionData.image}
       />
       <ImageExpansionStory />
+
+      <SeedsOfChange />
 
       <ImpactStats
         title={impactStatsData.title}

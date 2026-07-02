@@ -37,7 +37,7 @@ export const Mission: React.FC<MissionProps> = ({
     const storyCards = [
       {
         title: "The Beginning",
-        description: "Founded on the belief that education should not be a rigid institution but a blooming collective effort, CogniBloom started as a small community initiative. We saw a gap between traditional learning and the natural curiosity of individuals."
+        description: "Founded on the belief that education should not be a rigid institution but a blooming collective effort, Dua started as a small community initiative. We saw a gap between traditional learning and the natural curiosity of individuals."
       },
       {
         title: "Our Vision",

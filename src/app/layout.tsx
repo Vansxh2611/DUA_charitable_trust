@@ -3,6 +3,7 @@ import { Playfair_Display, Inter, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import MainLayout from "@/layouts/MainLayout";
 import AppProviders from "@/components/providers/AppProviders";
+import { siteName, siteTagline, siteDescription, siteUrl } from "@/constants/site";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -24,9 +25,21 @@ const dmSerif = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
-  title: "CogniBloom Collective - Nurturing Joyful Wisdom",
-  description: "An educational NGO dedicated to transforming community learning into an inspiring, inclusive, and deeply joyful adventure.",
-  metadataBase: new URL("http://localhost:3000"),
+  title: {
+    default: `${siteName} - ${siteTagline}`,
+    template: `%s | ${siteName}`,
+  },
+  description: siteDescription,
+  metadataBase: new URL(siteUrl),
+  openGraph: {
+    title: `${siteName} - ${siteTagline}`,
+    description: siteDescription,
+    siteName: siteName,
+  },
+  twitter: {
+    title: `${siteName} - ${siteTagline}`,
+    description: siteDescription,
+  },
 };
 
 export default function RootLayout({

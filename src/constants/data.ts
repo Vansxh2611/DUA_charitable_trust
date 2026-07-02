@@ -1,8 +1,9 @@
 import { NavItem, PageRoutes, Project, BlogPost, TeamMember, FAQItem, Testimonial } from "@/types";
+import { siteName, siteDescription } from "./site";
 
 export const siteConfig = {
-  name: "CogniBloom Collective",
-  description: "An educational NGO dedicated to transforming community learning into an inspiring, inclusive, and deeply joyful adventure.",
+  name: siteName,
+  description: siteDescription,
   email: "hello@cognibloom.org",
   phone: "+1 (555) 309-8422",
   address: "108 Bloomingdale Rd, Suite 400, Seattle, WA 98101",
@@ -71,7 +72,7 @@ export const focusCardsData = [
 
 export const aboutHeroData = {
   heading: "Nurturing Joyful Wisdom.",
-  subheading: "We are CogniBloom Collective, an educational NGO dedicated to transforming community learning into an inspiring, inclusive, and deeply joyful adventure.",
+  subheading: "We are Dua Charitable Trust, an educational NGO dedicated to transforming community learning into an inspiring, inclusive, and deeply joyful adventure.",
   image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1000&auto=format&fit=crop",
 };
 
@@ -80,7 +81,7 @@ export const aboutStoryData = {
   cards: [
     {
       title: "The Beginning",
-      description: "Founded on the belief that education should not be a rigid institution but a blooming collective effort, CogniBloom started as a small community initiative. We saw a gap between traditional learning and the natural curiosity of individuals."
+      description: "Founded on the belief that education should not be a rigid institution but a blooming collective effort, Dua started as a small community initiative. We saw a gap between traditional learning and the natural curiosity of individuals."
     },
     {
       title: "Our Vision",
@@ -236,7 +237,7 @@ export const blogData: BlogPost[] = [
     title: "Sparking Universal Curiosity in the Classroom",
     category: "Education",
     excerpt: "Discover how our new curriculum initiatives are transforming traditional learning environments into spaces of active exploration and joyful...",
-    content: "True education is not about filling a bucket; it is about lighting a fire. Traditional classroom settings often rely on passive listening and rote memorization, which can dim a child's natural curiosity. At CogniBloom, we've developed student-led project modules. Instead of listening to a lecture about plant cell biology, students germinate seeds in custom transparent viewports, document daily mitosis visually, and teach their peers. By changing kids from receivers to active explorers, we notice engagement scores surge, and a lifetime interest in learning is sparked.",
+    content: "True education is not about filling a bucket; it is about lighting a fire. Traditional classroom settings often rely on passive listening and rote memorization, which can dim a child's natural curiosity. At Dua, we've developed student-led project modules. Instead of listening to a lecture about plant cell biology, students germinate seeds in custom transparent viewports, document daily mitosis visually, and teach their peers. By changing kids from receivers to active explorers, we notice engagement scores surge, and a lifetime interest in learning is sparked.",
     image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1000&auto=format&fit=crop",
     date: "Oct 15, 2024",
     readTime: "4 min read",
@@ -254,7 +255,7 @@ export const blogData: BlogPost[] = [
     title: "Building Stronger Communities Through Shared Learning",
     category: "Community",
     excerpt: "A look into our recent community workshops and how collaborative educational experiences are fostering stronger neighborhood bonds and...",
-    content: "When neighborhoods learn together, they grow together. Over the past six months, CogniBloom Collective has organized over forty weekend learning festivals. These range from basic solar grid wiring to community oral history compilation. When a grandparent and a teenager sit side-by-side soldering a solar controller or editing audio, barriers break. Learning becomes a shared experience, building mutual respect and deep local bonds that strengthen the social fabric of the entire area.",
+    content: "When neighborhoods learn together, they grow together. Over the past six months, Dua Charitable Trust has organized over forty weekend learning festivals. These range from basic solar grid wiring to community oral history compilation. When a grandparent and a teenager sit side-by-side soldering a solar controller or editing audio, barriers break. Learning becomes a shared experience, building mutual respect and deep local bonds that strengthen the social fabric of the entire area.",
     image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000&auto=format&fit=crop",
     date: "Oct 02, 2024",
     readTime: "5 min read",
@@ -290,7 +291,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Sonia Patel",
     role: "Director of Education",
-    bio: "Sonia spent ten years teaching in classrooms before joining CogniBloom to pioneer hands-on, interdisciplinary curriculum styles.",
+    bio: "Sonia spent ten years teaching in classrooms before joining Dua to pioneer hands-on, interdisciplinary curriculum styles.",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=300&auto=format&fit=crop"
   },
   {
@@ -307,7 +308,7 @@ export const FAQData: FAQItem[] = [
     answer: "Exactly 85% of every dollar goes directly into field operations, including workshop materials, computers, art supplies, and community hub setups. The remaining 15% covers administrative and regulatory fees."
   },
   {
-    question: "How can I volunteer with CogniBloom?",
+    question: "How can I volunteer with Dua?",
     answer: "We have teaching, mentoring, and administrative volunteer opportunities. Just register on our Contact page or visit any local community hub."
   },
   {
@@ -321,7 +322,7 @@ export const testimonialsData: Testimonial[] = [
     name: "Clara Henderson",
     role: "Parent of Student",
     avatar: "https://images.unsplash.com/photo-1444065381814-865dc9da92c0?q=80&w=200&auto=format&fit=crop",
-    quote: "CogniBloom's Curiosity Labs changed my daughter's view of school. She went from dreading science to wanting to build circuits at home."
+    quote: "Dua's Curiosity Labs changed my daughter's view of school. She went from dreading science to wanting to build circuits at home."
   },
   {
     name: "Principal Arthur Glass",

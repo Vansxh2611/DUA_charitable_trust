@@ -1,48 +1,55 @@
-export interface SeedProject {
+export interface SeedItem {
   id: string;
   title: string;
   description: string;
+  href: string;
   imageSrc: string;
   imageAlt: string;
-  link: string;
-  bgColorClass: string; // Tailored hex color classes to match screenshot exactly
+  wash: "mint" | "sage" | "beige" | "cream";
 }
 
-export const SEED_PROJECTS: SeedProject[] = [
+export const seedsIntro = {
+  title: "Seeds of Change in Action",
+  description: "From mobile libraries to pop-up science fairs, our projects are designed to meet communities where they are, sparking a lifelong love for discovery.",
+  buttonLabel: "Explore All Projects",
+  buttonHref: "/our-projects",
+};
+
+export const seedsItems: SeedItem[] = [
   {
-    id: "digital-literacy",
+    id: "seeds-1",
     title: "Digital Literacy for All",
     description: "Bridging the technological divide by providing digital tools and training to students in underserved urban centers.",
-    imageSrc: "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1000&auto=format&fit=crop", // Smiling child with tablet
-    imageAlt: "Child using a digital tablet in a classroom setting",
-    link: "/our-projects/code-bloom",
-    bgColorClass: "bg-[#EAEEDB]",
+    href: "/our-projects/code-bloom",
+    imageSrc: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop",
+    imageAlt: "Child in classroom using a digital tablet and smiling",
+    wash: "sage",
   },
   {
-    id: "steam-workshops",
+    id: "seeds-2",
     title: "STEAM Workshops in Rural Peru",
     description: "Empowering students through hands-on science and technology projects that solve local community challenges.",
-    imageSrc: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1000&auto=format&fit=crop", // Child with wooden puzzle
-    imageAlt: "Child in a rural setting examining a physical learning tool",
-    link: "/our-projects/curiosity-labs",
-    bgColorClass: "bg-[#D8E2DC]",
+    href: "/our-projects/curiosity-labs",
+    imageSrc: "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800&auto=format&fit=crop",
+    imageAlt: "Student in rural Peru Andes holding and assembling a wooden science project",
+    wash: "mint",
   },
   {
-    id: "mobile-library",
+    id: "seeds-3",
     title: "The Mobile Library Initiative",
     description: "Bringing curated book collections and reading workshops to remote areas where access to libraries is limited.",
-    imageSrc: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop", // Library outreach window
-    imageAlt: "Children looking through the service window of a mobile library vehicle",
-    link: "/our-projects",
-    bgColorClass: "bg-[#EAEEDB]",
+    href: "/our-projects/the-wisdom-collective",
+    imageSrc: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop",
+    imageAlt: "Mobile library yellow trailer with books and students reading outside",
+    wash: "beige",
   },
   {
-    id: "art-gardening",
+    id: "seeds-4",
     title: "Art & Gardening for Empowerment",
     description: "Using creative expression as a tool for building confidence and community identity among young learners.",
-    imageSrc: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1000&auto=format&fit=crop", // Children planting saplings
-    imageAlt: "Children planting saplings in a community garden",
-    link: "/our-projects/green-roots",
-    bgColorClass: "bg-[#D8E2DC]",
+    href: "/our-projects/canvas-of-hope",
+    imageSrc: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=800&auto=format&fit=crop",
+    imageAlt: "Group of children planting and watering green saplings in a community garden",
+    wash: "mint",
   },
 ];

@@ -58,7 +58,7 @@ export default function ShowcasePage() {
   // Mock data for showcase previews
   const mockFaqs = [
     {
-      question: "What is the mission of CogniBloom Collective?",
+      question: "What is the mission of Dua Charitable Trust?",
       answer: "We aim to make education a joyful community adventure by organizing STEM labs, art therapies, and environmental gardens.",
       category: "General",
     },
@@ -145,7 +145,7 @@ export default function ShowcasePage() {
       name: "Clara Henderson",
       role: "Parent of Student",
       avatar: "https://images.unsplash.com/photo-1444065381814-865dc9da92c0?q=80&w=200&auto=format&fit=crop",
-      quote: "CogniBloom's Curiosity Labs changed my daughter's view of school. She went from dreading science to wanting to build circuits at home.",
+      quote: "Dua's Curiosity Labs changed my daughter's view of school. She went from dreading science to wanting to build circuits at home.",
       rating: 5,
     },
     {
@@ -220,7 +220,7 @@ export default function ShowcasePage() {
 
   // Code snippets database
   const codeSnippets: Record<string, string> = {
-    AnimatedCard: `<AnimatedCard\n  variant="${cCardVariant}"\n  hover={${cCardHover}}\n  glow={${cCardGlow}}\n  animationDirection="up"\n>\n  <div className="p-6">\n    <h3 className="text-lg font-bold font-heading mb-2">CogniBloom Collective</h3>\n    <p className="text-sm opacity-80">Premium modular reveal cards.</p>\n  </div>\n</AnimatedCard>`,
+    AnimatedCard: `<AnimatedCard\n  variant="${cCardVariant}"\n  hover={${cCardHover}}\n  glow={${cCardGlow}}\n  animationDirection="up"\n>\n  <div className="p-6">\n    <h3 className="text-lg font-bold font-heading mb-2">Dua Charitable Trust</h3>\n    <p className="text-sm opacity-80">Premium modular reveal cards.</p>\n  </div>\n</AnimatedCard>`,
     GlassCard: `<GlassCard\n  opacity={${cGlassOpacity}}\n  blur={${cGlassBlur}}\n  glow={${cGlassGlow}}\n  gradientBorder={true}\n>\n  <div className="p-8">\n    <h3 className="text-xl font-bold font-heading mb-2">Glassmorphism</h3>\n    <p className="text-sm text-charcoal/70">Radial cursor-following glow spotlight.</p>\n  </div>\n</GlassCard>`,
     TiltCard: `<TiltCard\n  intensity={${cTiltIntensity}}\n  glare={${cTiltGlare}}\n  scale={1.04}\n>\n  <div className="p-8">\n    <h3 className="text-lg font-bold font-heading">3D Tilt Effect</h3>\n    <p className="text-xs opacity-70 mt-1">Parallax mouse coordinate transitions.</p>\n  </div>\n</TiltCard>`,
     GradientHeading: `<GradientHeading\n  variant="section"\n  level={2}\n  underline={${cHeadingUnderline}}\n  highlightWords={["Curiosity", "Wisdom"]}\n>\n  Sparking Universal Curiosity & Wisdom\n</GradientHeading>`,
@@ -249,7 +249,7 @@ export default function ShowcasePage() {
       <section className="border-b border-forest/10 py-10 bg-forest/5 mb-8">
         <div className="max-w-7xl mx-auto px-6">
           <span className="text-xs font-bold text-forest tracking-wider uppercase font-body">
-            CogniBloom Collective
+            Dua Charitable Trust
           </span>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-charcoal font-heading leading-tight mt-1">
             Premium Component Playground

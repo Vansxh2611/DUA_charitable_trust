@@ -84,7 +84,7 @@ export const Navbar: React.FC = () => {
             href={PageRoutes.HOME}
             className="flex items-center gap-2 text-forest focus:outline-none"
             onClick={closeMobileMenu}
-            aria-label="CogniBloom Collective Home"
+            aria-label={`${siteConfig.name} Home`}
           >
             {/* Sprout Circle Icon */}
             <svg

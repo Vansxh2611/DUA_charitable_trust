@@ -2,110 +2,150 @@
 
 import React from "react";
 import Link from "next/link";
-import { Container } from "../ui/Container";
+import Image from "next/image";
+import { m, useReducedMotion } from "framer-motion";
 import { cn } from "@/utils/cn";
-import { SEED_PROJECTS } from "@/constants/seedsOfChange";
-import { SectionWrapper } from "../storytelling/SectionWrapper";
-import { AnimatedHeading } from "../storytelling/AnimatedHeading";
-import { RevealText } from "../storytelling/RevealText";
-import { RevealImage } from "../storytelling/RevealImage";
+import { seedsIntro, seedsItems } from "@/constants/seedsOfChange";
+import { Container } from "../ui/Container";
 
 export const SeedsOfChange: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
+
+  // Animation variants for card fades/slides
+  const cardVariants = {
+    hidden: shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 16 },
+    visible: shouldReduceMotion
+      ? { opacity: 1 }
+      : { opacity: 1, y: 0 },
+  };
+
+  // Wash variants to theme color classes mapping (made more saturated/darker as requested)
+  const washClasses = {
+    sage: "bg-gradient-to-br from-sage/30 via-sage/65 to-sage/45",
+    mint: "bg-gradient-to-br from-mint/30 via-mint/65 to-mint/45",
+    beige: "bg-gradient-to-br from-beige/35 via-beige/75 to-beige/50",
+    cream: "bg-gradient-to-br from-cream via-sage/30 to-cream",
+  };
+
   return (
-    <SectionWrapper id="seeds-of-change" bgColor="bg-[#FAF9F5]" glowPosition="top-left">
-      <Container className="relative z-10 max-w-[1200px] mx-auto flex flex-col gap-6">
-        
-        {/* 1) Top Intro Card */}
-        <div className="w-full bg-[#EAEEDB] border border-[#111827]/5 rounded-[32px] p-8 sm:p-10 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.02)] flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative overflow-hidden">
-          {/* Soft Watercolor Wash Overlay for header */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(168,198,162,0.25),transparent_60%)] pointer-events-none" />
-          
-          <RevealText className="max-w-2xl text-left relative z-10">
-            <AnimatedHeading text="Seeds of Change in Action" className="text-3xl sm:text-4xl font-extrabold text-[#111827] font-heading tracking-tight mb-3" />
-            <p className="text-sm sm:text-base text-charcoal/70 leading-relaxed font-body">
-              From mobile libraries to pop-up science fairs, our projects are designed to meet communities where they are, sparking a lifelong love for discovery.
-            </p>
-          </RevealText>
-          
-          <Link
-            href="/our-projects"
-            className="shrink-0 inline-flex items-center justify-center px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-[#111827] bg-[#FDF6B7] hover:bg-[#FCEEA7] border border-[#111827]/10 shadow-xs transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest cursor-pointer relative z-10"
+    <section className="py-20 bg-[#FAF9F5] relative overflow-hidden" aria-labelledby="seeds-section-title">
+      <Container>
+        <div className="flex flex-col gap-10 sm:gap-12 md:gap-16 max-w-6xl mx-auto">
+          {/* Top Intro Card */}
+          <m.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={cardVariants}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className={cn(
+              "relative bg-gradient-to-br from-cream via-sage/10 to-cream p-8 sm:p-12 md:p-14 rounded-[2rem] border border-charcoal/10 shadow-soft overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-6",
+              "hover:shadow-card hover:-translate-y-0.5 transition-all duration-300"
+            )}
           >
-            Explore All Projects
-          </Link>
-        </div>
+            {/* Watercolor paper wash overlay */}
+            <div
+              className="absolute inset-0 pointer-events-none opacity-30 mix-blend-overlay bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.7)_0%,transparent_75%)]"
+              aria-hidden="true"
+            />
 
-        {/* 2) Alternating Project Tiles Grid */}
-        <div className="flex flex-col gap-6">
-          {SEED_PROJECTS.map((project, idx) => {
-            const isEven = idx % 2 === 0;
-
-            return (
-              <div 
-                key={project.id}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch w-full"
+            <div className="max-w-2xl relative z-10">
+              <h2
+                id="seeds-section-title"
+                className="text-3xl sm:text-4xl font-extrabold tracking-tight text-charcoal font-heading leading-tight mb-3"
               >
-                {/* Image Tile */}
-                <div 
-                  className={cn(
-                    "relative w-full rounded-[32px] overflow-hidden border border-[#111827]/5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.02)]",
-                    isEven ? "lg:order-first" : "lg:order-last"
-                  )}
-                >
-                  <RevealImage
-                    src={project.imageSrc}
-                    alt={project.imageAlt}
-                    aspectRatio="aspect-video lg:aspect-auto lg:h-full"
-                    priority={idx === 0}
-                  />
+                {seedsIntro.title}
+              </h2>
+              <p className="text-sm sm:text-base text-charcoal/70 leading-relaxed font-body">
+                {seedsIntro.description}
+              </p>
+            </div>
+
+            <div className="relative z-10 shrink-0">
+              <Link
+                href={seedsIntro.buttonHref}
+                className="inline-flex items-center justify-center px-6 py-3 bg-accent/20 border border-accent/30 text-charcoal hover:bg-accent/30 rounded-full font-heading font-extrabold text-sm shadow-xs hover:shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40"
+              >
+                {seedsIntro.buttonLabel}
+              </Link>
+            </div>
+          </m.div>
+
+          {/* alternating row items */}
+          <div className="flex flex-col gap-8 sm:gap-10">
+            {seedsItems.map((item, index) => {
+              const isEven = index % 2 === 0;
+
+              return (
+                <div key={item.id} className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                  {/* Image Tile - Always first in DOM so it stacks first on mobile */}
+                  <m.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    variants={cardVariants}
+                    transition={{ duration: 0.5, ease: "easeOut", delay: shouldReduceMotion ? 0 : 0.1 }}
+                    className={cn(
+                      "relative h-[260px] sm:h-[300px] lg:h-[320px] rounded-[2rem] overflow-hidden border border-charcoal/10 shadow-soft",
+                      isEven ? "lg:order-1" : "lg:order-2",
+                      "hover:shadow-card hover:-translate-y-0.5 transition-all duration-300"
+                    )}
+                  >
+                    <Image
+                      src={item.imageSrc}
+                      alt={item.imageAlt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover"
+                      priority={index === 0}
+                    />
+                    {/* Barely visible gradient overlay for depth */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/15 via-transparent to-transparent pointer-events-none z-10" />
+                  </m.div>
+
+                  {/* Text Tile */}
+                  <m.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    variants={cardVariants}
+                    transition={{ duration: 0.5, ease: "easeOut", delay: shouldReduceMotion ? 0 : 0.2 }}
+                    className={cn(
+                      "relative p-8 sm:p-12 md:p-14 rounded-[2rem] overflow-hidden border border-charcoal/10 shadow-soft flex flex-col justify-center items-start",
+                      isEven ? "lg:order-2" : "lg:order-1",
+                      washClasses[item.wash],
+                      "hover:shadow-card hover:-translate-y-0.5 transition-all duration-300"
+                    )}
+                  >
+                    {/* Watercolor paper wash overlay */}
+                    <div
+                      className="absolute inset-0 pointer-events-none opacity-30 mix-blend-overlay bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.7)_0%,transparent_75%)]"
+                      aria-hidden="true"
+                    />
+
+                    <div className="relative z-10 w-full">
+                      <h3 className="text-2xl sm:text-3xl font-extrabold text-charcoal font-heading leading-tight mb-4">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm sm:text-base text-charcoal/70 leading-relaxed font-body mb-6">
+                        {item.description}
+                      </p>
+                      <Link
+                        href={item.href}
+                        className="inline-flex items-center text-sm font-bold font-body text-forest hover:text-charcoal transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded px-1 -ml-1"
+                      >
+                        Learn More
+                      </Link>
+                    </div>
+                  </m.div>
                 </div>
-
-                {/* Text Tile with custom Watercolor gradients */}
-                <div 
-                  className={cn(
-                    "p-8 sm:p-12 md:p-16 flex flex-col justify-center text-left rounded-[32px] border border-[#111827]/5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.02)] transition-all duration-300 relative overflow-hidden",
-                    isEven 
-                      ? "bg-gradient-to-br from-[#F4F7F0] via-[#EAEEDB] to-[#DEE6D5] lg:order-last" 
-                      : "bg-gradient-to-br from-[#EAF2F4] via-[#DBE6E8] to-[#CDDFE2] lg:order-first"
-                  )}
-                >
-                  {/* Absolute Watercolor washes matching screenshots */}
-                  {isEven ? (
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(163,192,160,0.35),transparent_60%)] pointer-events-none" />
-                  ) : (
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(144,180,191,0.4),transparent_60%)] pointer-events-none" />
-                  )}
-
-                  {/* Noise Texture layer for paper feel */}
-                  <div 
-                    className="absolute inset-0 opacity-[0.015] pointer-events-none"
-                    style={{
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E")`,
-                    }}
-                  />
-
-                  <RevealText className="relative z-10">
-                    <AnimatedHeading text={project.title} className="text-[32px] sm:text-[36px] font-extrabold text-[#111827] font-heading leading-[1.1] mb-5 tracking-tight max-w-[340px]" />
-                    
-                    <p className="text-sm sm:text-[15px] text-charcoal/80 leading-relaxed font-body mb-8 max-w-[360px]">
-                      {project.description}
-                    </p>
-
-                    <Link
-                      href={project.link}
-                      className="inline-flex items-center text-sm font-semibold text-[#111827] underline decoration-[#111827] underline-offset-4 hover:opacity-85 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest rounded-sm w-fit"
-                    >
-                      Learn More
-                    </Link>
-                  </RevealText>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-
       </Container>
-    </SectionWrapper>
+    </section>
   );
 };
+
 export default SeedsOfChange;
