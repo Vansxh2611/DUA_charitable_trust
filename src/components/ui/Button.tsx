@@ -21,10 +21,11 @@ export const Button: React.FC<ButtonProps> = ({
     "inline-flex items-center justify-center font-heading font-medium rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-forest/40 active:scale-[0.98] disabled:opacity-55 disabled:pointer-events-none cursor-pointer";
 
   const variants = {
-    primary: "bg-charcoal text-cream hover:bg-forest hover:text-cream shadow-xs",
-    secondary: "bg-forest text-cream hover:bg-forest/95 shadow-xs",
-    outline: "border border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-cream bg-transparent",
-    text: "text-forest hover:text-forest/80 bg-transparent px-0 py-0 active:scale-100",
+    primary: "bg-forest text-white hover:bg-forest-dark hover:text-white shadow-xs",
+    secondary: "bg-white border border-forest text-forest hover:bg-forest hover:text-white shadow-xs",
+    outline: "border border-forest text-forest hover:bg-forest hover:text-white bg-transparent",
+    accent: "bg-accent text-white hover:bg-accent-dark hover:text-white shadow-xs",
+    text: "text-forest hover:text-forest-dark bg-transparent px-0 py-0 active:scale-100",
   };
 
   const sizes = {

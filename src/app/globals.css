@@ -8,13 +8,22 @@
   --color-charcoal: var(--charcoal);
   --color-navy: var(--navy);
   --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
   --color-beige: var(--beige);
   --color-forest: var(--forest);
+  --color-forest-dark: var(--forest-dark);
   --color-card-bg: var(--card-bg);
   --color-card-border: var(--card-border);
+  --color-footer-bg: var(--footer-bg);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-info: var(--info);
 
   --color-cream-static: #FAF9F5;
   --color-charcoal-static: #1B221E;
+  --color-pistachio: #b1cf87;
+  --color-pistachio-hover: #a0c172;
 
   /* Fonts */
   --font-heading: var(--font-playfair), serif;
@@ -24,57 +33,69 @@
 
 :root {
   /* Light Theme Variables */
-  --cream: #FAF9F5;
-  --sage: #E6EEDC;
-  --mint: #D5E0D5;
-  --charcoal: #1B221E;
-  --navy: #0F2A37;
-  --accent: #F7DF7C;
-  --beige: #EFE7D6;
-  --forest: #2D5B45;
+  --cream: #F9F8F3;
+  --sage: #F3EFE6;
+  --mint: #F3EFE6;
+  --charcoal: #4F4F4F;
+  --navy: #253326;
+  --accent: #E88A3D;
+  --accent-dark: #D76A3D;
+  --beige: #F3EFE6;
+  --forest: #456A48;
+  --forest-dark: #2F4A35;
+  --footer-bg: #253326;
 
   --background: var(--cream);
   --foreground: var(--charcoal);
 
   --card-bg: #FFFFFF;
-  --card-border: rgba(27, 34, 30, 0.1);
-  --muted-text: rgba(27, 34, 30, 0.7);
+  --card-border: #E6E1D5;
+  --muted-text: #7A7A7A;
+
+  /* Status Colors */
+  --success: #5D8A61;
+  --warning: #D9A441;
+  --error: #C95A4A;
+  --info: #5E8AA8;
 
   /* Used in JS for theme transition ripple colors */
-  --light-bg: #FAF9F5;
-  --dark-bg: #141A16;
+  --light-bg: #F9F8F3;
+  --dark-bg: #141E15;
 }
 
 [data-theme="dark"] {
   /* Dark Theme Variables */
-  --cream: #141A16;
-  --sage: #A3B59D;
-  --mint: #8E9E8B;
-  --charcoal: #ECF2ED;
-  --navy: #0B171D;
-  --accent: #E8CA4E;
-  --beige: #202923;
-  --forest: #548E71;
+  --cream: #141E15;
+  --sage: #222E23;
+  --mint: #222E23;
+  --charcoal: #E2ECE3;
+  --navy: #D0E0D2;
+  --accent: #E88A3D;
+  --accent-dark: #B55026;
+  --beige: #222E23;
+  --forest: #AFC3A9;
+  --forest-dark: #223626;
+  --footer-bg: #0D140E;
 
   --background: var(--cream);
   --foreground: var(--charcoal);
 
-  --card-bg: #1B221E;
-  --card-border: rgba(236, 242, 237, 0.15);
-  --muted-text: rgba(236, 242, 237, 0.7);
+  --card-bg: #1C291E;
+  --card-border: rgba(230, 225, 213, 0.12);
+  --muted-text: #96A898;
 
-  /* Gold stops for dark mode - softer, less neon */
-  --gold-text-from: #D4A847;
-  --gold-text-via:  #F7DF7C;
-  --gold-text-to:   #BF953F;
-  --gold-from:      #A6812E;
-  --gold-via:       #FCF6BA;
-  --gold-to:        #8C6314;
+  /* Gold/Accent stops for dark mode - softer, less neon */
+  --gold-text-from: #E88A3D;
+  --gold-text-via:  #D8B15A;
+  --gold-text-to:   #D76A3D;
+  --gold-from:      #A6571E;
+  --gold-via:       #B8933E;
+  --gold-to:        #963E19;
 
-  --shadow-soft:    0 2px 8px 0 rgba(0,0,0,0.35), 0 1px 2px 0 rgba(0,0,0,0.25);
-  --shadow-card:    0 4px 16px 0 rgba(0,0,0,0.4), 0 1px 4px 0 rgba(0,0,0,0.3);
-  --shadow-premium: 0 8px 32px 0 rgba(0,0,0,0.5), 0 2px 8px 0 rgba(0,0,0,0.4);
-  --shadow-gold:    0 4px 24px 0 rgba(232,202,78,0.06);
+  --shadow-soft:    0 6px 20px rgba(0,0,0,0.3);
+  --shadow-card:    0 12px 35px rgba(0,0,0,0.4);
+  --shadow-premium: 0 24px 60px rgba(0,0,0,0.5);
+  --shadow-gold:    0 12px 35px rgba(232,138,61,0.06);
 }
 
 body {
@@ -87,6 +108,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+  color: var(--navy);
 }
 
 /* Custom interaction utilities */
@@ -107,19 +129,19 @@ h1, h2, h3, h4, h5, h6 {
   outline-offset: 2px;
 }
 
-/* ── Gold gradient stops ─────────────────────────────────────────────────── */
+/* ── Gold/Accent gradient stops ───────────────────────────────────────────── */
 :root {
-  --gold-text-from: #B38728;
-  --gold-text-via:  #D4A847;
-  --gold-text-to:   #BF953F;
-  --gold-from:      #BF953F;
-  --gold-via:       #FCF6BA;
-  --gold-to:        #AA771C;
+  --gold-text-from: #E88A3D;
+  --gold-text-via:  #D8B15A;
+  --gold-text-to:   #D76A3D;
+  --gold-from:      #E88A3D;
+  --gold-via:       #D8B15A;
+  --gold-to:        #D76A3D;
 
-  --shadow-soft:    0 2px 8px 0 rgba(27,34,30,0.06), 0 1px 2px 0 rgba(27,34,30,0.04);
-  --shadow-card:    0 4px 16px 0 rgba(27,34,30,0.08), 0 1px 4px 0 rgba(27,34,30,0.05);
-  --shadow-premium: 0 8px 32px 0 rgba(27,34,30,0.10), 0 2px 8px 0 rgba(27,34,30,0.06);
-  --shadow-gold:    0 4px 24px 0 rgba(212,168,71,0.18);
+  --shadow-soft:    0 6px 20px rgba(0,0,0,0.05);
+  --shadow-card:    0 12px 35px rgba(0,0,0,0.08);
+  --shadow-premium: 0 24px 60px rgba(0,0,0,0.12);
+  --shadow-gold:    0 12px 35px rgba(232,138,61,0.12);
 }
 
 /* ── Gold gradient text ──────────────────────────────────────────────────── */
@@ -134,6 +156,17 @@ h1, h2, h3, h4, h5, h6 {
 /* ── Gold gradient background ────────────────────────────────────────────── */
 .bg-gold-gradient {
   background: linear-gradient(135deg, var(--gold-from) 0%, var(--gold-via) 50%, var(--gold-to) 100%);
+}
+
+/* ── Theme Gradients ─────────────────────────────────────────────────────── */
+.bg-hero-gradient {
+  background: linear-gradient(135deg, #F9F8F3 0%, #F3EFE6 100%);
+}
+.bg-primary-gradient {
+  background: linear-gradient(135deg, #456A48 0%, #2F4A35 100%);
+}
+.bg-accent-gradient {
+  background: linear-gradient(135deg, #E88A3D 0%, #D76A3D 100%);
 }
 
 /* ── Shadow utilities ────────────────────────────────────────────────────── */

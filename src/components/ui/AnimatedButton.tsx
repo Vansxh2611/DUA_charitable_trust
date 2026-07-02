@@ -8,7 +8,7 @@ import { styles } from "./styles";
 import { Loader } from "./Loader";
 
 export interface AnimatedButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> {
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "gold";
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "gold" | "accent";
   size?: "sm" | "md" | "lg";
   loading?: boolean;
   icon?: React.ReactNode;
@@ -52,11 +52,12 @@ export const AnimatedButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, 
       "relative inline-flex items-center justify-center font-heading font-medium rounded-full cursor-pointer focus:outline-hidden active:scale-[0.98] disabled:opacity-55 disabled:pointer-events-none overflow-hidden select-none";
 
     const variantStyles = {
-      primary: "bg-forest text-cream hover:bg-forest/95 shadow-xs",
-      secondary: "bg-charcoal text-cream hover:bg-charcoal/90 shadow-xs",
-      outline: "border border-charcoal/20 text-charcoal hover:bg-charcoal/5 bg-transparent",
-      ghost: "text-charcoal hover:bg-charcoal/5 bg-transparent",
-      gold: "bg-linear-to-r from-[#BF953F] via-[#F7DF7C] to-[#B38728] text-charcoal hover:brightness-105 shadow-xs font-semibold",
+      primary: "bg-forest text-white hover:bg-forest-dark hover:text-white shadow-xs",
+      secondary: "bg-white border border-forest text-forest hover:bg-forest hover:text-white shadow-xs",
+      outline: "border border-forest text-forest hover:bg-forest hover:text-white bg-transparent",
+      ghost: "text-forest hover:bg-forest/10 bg-transparent",
+      accent: "bg-accent text-white hover:bg-accent-dark hover:text-white shadow-xs",
+      gold: "bg-accent-gradient text-white hover:brightness-105 shadow-xs font-semibold",
     };
 
     const sizeStyles = {

@@ -55,8 +55,8 @@ export default function Home(): React.ReactNode {
         testimonials={testimonialsData}
       />
       <ParallaxBanner
-        imageSrc="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1800&auto=format&fit=crop"
-        label="Community garden and environmental stewardship"
+        imageSrc="/children-gardening.jpg"
+        label="Children planting sprouts in a community garden"
       />
       <FAQ
         title="Frequently Asked Questions"

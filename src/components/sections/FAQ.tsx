@@ -20,7 +20,7 @@ export const FAQ: React.FC<FAQProps> = ({
 
   return (
     <SectionWrapper id="faq" bgColor="bg-cream" glowPosition="bottom-right">
-      <Container>
+      <Container size="xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16">
           <div className="lg:col-span-5 flex flex-col items-start">
             <span className="inline-block px-4 py-1 rounded-full bg-accent text-charcoal-static font-heading text-xs font-bold uppercase tracking-wider mb-4">

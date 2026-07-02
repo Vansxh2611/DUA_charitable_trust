@@ -47,14 +47,14 @@ export const Mission: React.FC<MissionProps> = ({
 
     return (
       <section className="py-20 bg-cream" aria-labelledby="story-heading">
-        <Container>
+        <Container size="xl">
           <div className="text-center mb-12">
             <h2 id="story-heading" className="text-3xl sm:text-4xl font-extrabold text-charcoal font-heading">
               Our Story
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
             {storyCards.map((card, idx) => (
               <div
                 key={idx}
@@ -154,7 +154,7 @@ export const Mission: React.FC<MissionProps> = ({
         </ParallaxImage>
       </div>
 
-      <Container className="relative z-10">
+      <Container size="xl" className="relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block px-4 py-1 rounded-full bg-accent text-charcoal font-heading text-xs font-bold uppercase tracking-wider mb-4">
             Our Focus

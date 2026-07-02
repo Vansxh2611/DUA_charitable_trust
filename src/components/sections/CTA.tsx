@@ -16,15 +16,15 @@ export const CTA: React.FC<CTAProps> = ({
 }) => {
   return (
     <SectionWrapper id="cta-footer" bgColor="bg-cream" glowPosition="top-left">
-      <Container>
-        <div className="w-full max-w-5xl mx-auto">
-          <div className="bg-forest text-cream-static rounded-[40px] px-6 py-16 sm:p-20 text-center flex flex-col items-center shadow-premium relative overflow-hidden border border-white/5">
+      <Container size="xl">
+        <div className="w-full max-w-7xl mx-auto">
+          <div className="bg-gradient-to-br from-forest-dark via-forest-dark to-pistachio text-cream-static rounded-[40px] px-6 py-16 sm:p-20 text-center flex flex-col items-center shadow-premium relative overflow-hidden border border-white/5">
             {/* Ambient decorative glowing circles for premium aesthetic */}
-            <div className="absolute -top-32 -left-32 w-80 h-80 bg-accent/20 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-sage/25 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -top-32 -left-32 w-80 h-80 bg-accent/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-pistachio/15 rounded-full blur-3xl pointer-events-none" />
 
             {/* Doodle background pattern for educational context */}
-            <BackgroundPattern variant="doodle" opacity={0.12} className="text-cream-static" />
+            <BackgroundPattern variant="doodle" opacity={0.08} className="text-cream-static" />
 
             {/* Dots texture overlay */}
             <div className="absolute inset-0 bg-[radial-gradient(#F7DF7C_1px,transparent_1px)] [background-size:32px_32px] opacity-10 pointer-events-none" />
@@ -49,7 +49,7 @@ export const CTA: React.FC<CTAProps> = ({
               {/* Secondary Volunteer Button - Transparent outline with smooth solid white hover */}
               <Link
                 href={secondaryCtaLink}
-                className="w-full sm:w-56 inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-white/10 hover:bg-white text-cream-static hover:text-forest border border-cream-static/30 rounded-full font-heading font-bold text-sm shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cream-static/40"
+                className="w-full sm:w-56 inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-white/10 hover:bg-white text-cream-static hover:text-forest-dark border border-cream-static/30 rounded-full font-heading font-bold text-sm shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cream-static/40"
               >
                 <Users size={16} />
                 <span>{secondaryCtaText}</span>

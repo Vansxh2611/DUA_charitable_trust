@@ -24,7 +24,7 @@ export const STORY_STEPS: StoryStep[] = [
     imageAlt: "Children smiling and learning together in a community environment",
     buttonText: "Support Childhood Projects",
     buttonLink: "/our-projects",
-    bgColor: "#FAF9F5",     // Clean soft cream
+    bgColor: "#F9F8F3",     // Clean soft cream
     accentColor: "#D4A847", // Gold
     duration: 1,
   },

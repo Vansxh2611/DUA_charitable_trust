@@ -16,7 +16,7 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({
 
   return (
     <SectionWrapper id="featured-projects" bgColor="bg-cream" glowPosition="bottom-right">
-      <Container>
+      <Container size="xl">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="max-w-2xl text-left">
             <span className="inline-block px-4 py-1 rounded-full bg-accent text-charcoal-static font-heading text-xs font-bold uppercase tracking-wider mb-4">

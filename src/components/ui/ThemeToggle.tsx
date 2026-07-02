@@ -9,7 +9,7 @@ import { flushSync } from "react-dom";
 export const ThemeToggle: React.FC = () => {
   const { theme, setTheme } = useTheme();
   const shouldReduceMotion = useReducedMotion();
-  
+
   // Track pointer coordinates from onPointerDown
   const pointerCoords = useRef<{ x: number; y: number } | null>(null);
 
@@ -20,8 +20,8 @@ export const ThemeToggle: React.FC = () => {
   const runCanvasRipple = (nextTheme: "light" | "dark", x: number, y: number, maxRadius: number) => {
     // Resolve old theme wash background color from CSS theme variables
     const docStyle = getComputedStyle(document.documentElement);
-    const lightBg = docStyle.getPropertyValue("--light-bg").trim() || "#FAF9F5";
-    const darkBg = docStyle.getPropertyValue("--dark-bg").trim() || "#141A16";
+    const lightBg = docStyle.getPropertyValue("--light-bg").trim() || "#F9F8F3";
+    const darkBg = docStyle.getPropertyValue("--dark-bg").trim() || "#141E15";
     const oldColor = theme === "light" ? lightBg : darkBg;
 
     // Create and scale fixed fullscreen canvas overlay
@@ -121,7 +121,10 @@ export const ThemeToggle: React.FC = () => {
     );
 
     // 3. Check if browser supports View Transitions API
-    if (!(document as any).startViewTransition) {
+    const docWithTransition = document as unknown as {
+      startViewTransition?: (callback: () => void) => void;
+    };
+    if (!docWithTransition.startViewTransition) {
       runCanvasRipple(nextTheme, x, y, maxRadius);
       return;
     }
@@ -131,7 +134,7 @@ export const ThemeToggle: React.FC = () => {
     document.documentElement.style.setProperty("--ripple-y", `${y}px`);
     document.documentElement.style.setProperty("--ripple-r", `${maxRadius}px`);
 
-    (document as any).startViewTransition(() => {
+    docWithTransition.startViewTransition(() => {
       flushSync(() => {
         setTheme(nextTheme);
       });

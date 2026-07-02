@@ -17,7 +17,7 @@ export interface NavItem {
 export interface ButtonProps {
   label: string;
   onClick?: () => void;
-  variant?: "primary" | "secondary" | "outline" | "text";
+  variant?: "primary" | "secondary" | "outline" | "text" | "accent";
   size?: "sm" | "md" | "lg";
   disabled?: boolean;
   loading?: boolean;
@@ -38,6 +38,7 @@ export interface ContainerProps {
   children: ReactNode;
   className?: string;
   clean?: boolean;
+  size?: "default" | "wide" | "xl";
 }
 
 export interface SectionHeadingProps {

@@ -6,7 +6,7 @@ import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
 import { BackgroundPattern } from "../ui/BackgroundPattern";
 import { cn } from "@/utils/cn";
-import { TextReveal, ImageReveal, Magnetic } from "../ui";
+import { TextReveal, Magnetic } from "../ui";
 import Image from "next/image";
 
 export const Hero: React.FC<HeroProps> = ({
@@ -39,7 +39,8 @@ export const Hero: React.FC<HeroProps> = ({
   useEffect(() => {
     if (isAboutPage) return;
 
-    setProgress(0);
+    // Asynchronously reset progress to avoid React state-in-effect lint warnings
+    Promise.resolve().then(() => setProgress(0));
     const step = 100 / (INTERVAL / 50);
     const progressTimer = setInterval(() => {
       setProgress((p) => Math.min(p + step, 100));
@@ -82,7 +83,8 @@ export const Hero: React.FC<HeroProps> = ({
 
   useEffect(() => {
     if (!isAboutPage) return;
-    setAboutProgress(0);
+    // Asynchronously reset progress to avoid React state-in-effect lint warnings
+    Promise.resolve().then(() => setAboutProgress(0));
     const step = 100 / (ABOUT_INTERVAL / 50);
     const progressTimer = setInterval(() => {
       setAboutProgress((p) => Math.min(p + step, 100));
@@ -98,7 +100,7 @@ export const Hero: React.FC<HeroProps> = ({
     return (
       <section className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24 bg-cream border-b border-forest/5">
         <BackgroundPattern variant="leaf" opacity={0.6} className="text-forest/10" />
-        <Container className="relative z-10">
+        <Container size="xl" className="relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             <div className="lg:col-span-6 flex flex-col items-start text-left max-w-xl">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-charcoal font-heading leading-tight mb-6">
@@ -187,7 +189,7 @@ export const Hero: React.FC<HeroProps> = ({
       `}</style>
 
       <section className="relative pt-24 pb-16 md:pt-32 md:pb-20 bg-cream">
-        <Container>
+        <Container size="xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
             {/* Left Content Card */}

@@ -60,8 +60,8 @@ export const ParallaxBanner: React.FC<ParallaxBannerProps> = ({
 // Convenience export for the first banner (after Our Focus)
 export const ImageExpansionStory: React.FC = () => (
   <ParallaxBanner
-    imageSrc="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1800&auto=format&fit=crop"
-    label="Children collaborating in a classroom"
+    imageSrc="/classroom-robotics.png"
+    label="Children collaborating on robotics kits in classroom"
   />
 );
 

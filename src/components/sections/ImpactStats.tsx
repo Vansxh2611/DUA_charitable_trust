@@ -19,7 +19,7 @@ export const ImpactStats: React.FC<ImpactStatsProps> = ({
 
   return (
     <SectionWrapper id="our-impact" bgColor="bg-mint/30" glowPosition="center">
-      <Container>
+      <Container size="xl">
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <span className="inline-block px-4 py-1 rounded-full bg-accent text-charcoal-static font-heading text-xs font-bold uppercase tracking-wider mb-4">
             Our Impact

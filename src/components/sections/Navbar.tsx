@@ -44,7 +44,7 @@ export const Navbar: React.FC = () => {
       >
         <header
           className={cn(
-            "mx-auto w-full max-w-6xl pointer-events-auto transition-all duration-300 ease-in-out border rounded-2xl md:rounded-[1.5rem]",
+            "mx-auto w-full max-w-[90rem] pointer-events-auto transition-all duration-300 ease-in-out border rounded-2xl md:rounded-[1.5rem]",
             isScrolled ? "py-2.5 px-6" : "py-4 px-6 md:px-8",
             isScrolledOrNotHome
               ? "bg-sage/80 backdrop-blur-xl border-charcoal/10 shadow-premium"

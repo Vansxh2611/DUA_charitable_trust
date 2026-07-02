@@ -12,7 +12,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
 }) => {
   return (
     <SectionWrapper id="testimonials" bgColor="bg-cream" glowPosition="top-left">
-      <Container>
+      <Container size="xl">
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <span className="inline-block px-4 py-1 rounded-full bg-accent text-charcoal-static font-heading text-xs font-bold uppercase tracking-wider mb-4">
             Community Voices

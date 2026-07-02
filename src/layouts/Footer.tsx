@@ -19,10 +19,10 @@ export const Footer: React.FC = () => {
   if (!mounted) {
     return (
       <footer
-        className="bg-navy text-cream-static pt-16 pb-12 relative overflow-hidden border-t border-white/5"
+        className="bg-navy text-cream-static pt-16 pb-12 relative overflow-hidden border-t-4 border-pistachio"
         aria-label="Site Footer"
       >
-        <Container>
+        <Container size="xl">
           <div className="h-64" />
         </Container>
       </footer>
@@ -31,11 +31,11 @@ export const Footer: React.FC = () => {
 
   return (
     <footer
-      className="bg-navy text-cream-static pt-20 pb-12 relative overflow-hidden border-t border-white/5"
+      className="bg-navy text-cream-static pt-20 pb-12 relative overflow-hidden border-t-4 border-pistachio"
       aria-label="Site Footer"
     >
       {/* Ambient background glow for premium three-dimensional depth */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-forest/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-pistachio/30 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Subtle geometric grid line pattern overlay */}
@@ -54,7 +54,7 @@ export const Footer: React.FC = () => {
         <rect width="100%" height="100%" fill="url(#footer-grid)" />
       </svg>
 
-      <Container className="relative z-10">
+      <Container size="xl" className="relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-16 pb-16">
           {/* Column 1: Logo, description, and socials */}
           <div className="lg:col-span-4 flex flex-col items-start gap-5">
@@ -65,7 +65,7 @@ export const Footer: React.FC = () => {
             >
               {/* Sprout Circle Icon */}
               <svg
-                className="w-7 h-7 text-forest fill-none stroke-current"
+                className="w-7 h-7 text-pistachio fill-none stroke-current"
                 viewBox="0 0 32 32"
                 strokeWidth="2.5"
                 aria-hidden="true"
@@ -81,8 +81,8 @@ export const Footer: React.FC = () => {
               {siteConfig.description}
             </p>
             <SocialIcons
-              className="mt-2"
-              iconClassName="bg-white/5 text-cream-static/80 hover:bg-forest hover:text-cream-static border border-white/5 transition-all duration-300"
+              className="mt-2 gap-4"
+              iconClassName="w-11 h-11 flex items-center justify-center p-0 rounded-full bg-white/[0.03] text-cream-static/90 border border-white/15 transition-all duration-300 hover:bg-pistachio hover:text-charcoal-static hover:border-pistachio hover:scale-105"
             />
           </div>
 
@@ -92,16 +92,16 @@ export const Footer: React.FC = () => {
               Explore
             </h3>
             <nav className="flex flex-col gap-3.5 text-sm font-semibold font-body" aria-label="Explore Links">
-              <Link href={PageRoutes.HOME} className="text-cream-static/75 hover:text-forest transition-colors duration-200">
+              <Link href={PageRoutes.HOME} className="text-cream-static/75 hover:text-pistachio transition-colors duration-200">
                 Home
               </Link>
-              <Link href={PageRoutes.ABOUT_US} className="text-cream-static/75 hover:text-forest transition-colors duration-200">
+              <Link href={PageRoutes.ABOUT_US} className="text-cream-static/75 hover:text-pistachio transition-colors duration-200">
                 About Us
               </Link>
-              <Link href={PageRoutes.OUR_PROJECTS} className="text-cream-static/75 hover:text-forest transition-colors duration-200">
+              <Link href={PageRoutes.OUR_PROJECTS} className="text-cream-static/75 hover:text-pistachio transition-colors duration-200">
                 Our Projects
               </Link>
-              <Link href={PageRoutes.BLOG} className="text-cream-static/75 hover:text-forest transition-colors duration-200">
+              <Link href={PageRoutes.BLOG} className="text-cream-static/75 hover:text-pistachio transition-colors duration-200">
                 Community Blog
               </Link>
             </nav>
@@ -113,13 +113,13 @@ export const Footer: React.FC = () => {
               Get Involved
             </h3>
             <nav className="flex flex-col gap-3.5 text-sm font-semibold font-body" aria-label="Get Involved Links">
-              <Link href={PageRoutes.CONTACT} className="text-cream-static/75 hover:text-forest transition-colors duration-200">
+              <Link href={PageRoutes.CONTACT} className="text-cream-static/75 hover:text-pistachio transition-colors duration-200">
                 Volunteer
               </Link>
-              <Link href={PageRoutes.DONATE} className="text-cream-static/75 hover:text-forest transition-colors duration-200">
+              <Link href={PageRoutes.DONATE} className="text-cream-static/75 hover:text-pistachio transition-colors duration-200">
                 Donate Now
               </Link>
-              <Link href={PageRoutes.CONTACT} className="text-cream-static/75 hover:text-forest transition-colors duration-200">
+              <Link href={PageRoutes.CONTACT} className="text-cream-static/75 hover:text-pistachio transition-colors duration-200">
                 Partner with Us
               </Link>
             </nav>
@@ -135,13 +135,13 @@ export const Footer: React.FC = () => {
               <div className="flex flex-col gap-1.5 font-semibold">
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-cream-static/80 hover:text-forest transition-colors duration-200"
+                  className="text-cream-static/80 hover:text-pistachio transition-colors duration-200"
                 >
                   {siteConfig.email}
                 </a>
                 <a
                   href={`tel:${siteConfig.phone}`}
-                  className="text-cream-static/80 hover:text-forest transition-colors duration-200"
+                  className="text-cream-static/80 hover:text-pistachio transition-colors duration-200"
                 >
                   {siteConfig.phone}
                 </a>

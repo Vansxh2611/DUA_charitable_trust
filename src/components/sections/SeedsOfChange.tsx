@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { m, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion, Variants } from "framer-motion";
 import { cn } from "@/utils/cn";
 import { seedsIntro, seedsItems } from "@/constants/seedsOfChange";
 import { Container } from "../ui/Container";
@@ -12,8 +12,8 @@ const SeedsTextReveal: React.FC<{
   title: string;
   description: string;
   href: string;
-  textContainer: any;
-  textItem: any;
+  textContainer: Variants;
+  textItem: Variants;
 }> = ({ title, description, href, textContainer, textItem }) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = React.useState(false);
@@ -123,12 +123,12 @@ export const SeedsOfChange: React.FC = () => {
 
   return (
     <section className="pt-8 pb-20 bg-cream relative overflow-hidden" aria-labelledby="seeds-section-title">
-      <Container>
-        <div className="flex flex-col gap-10 sm:gap-12 md:gap-16 max-w-6xl mx-auto">
+      <Container size="xl">
+        <div className="flex flex-col gap-10 sm:gap-12 md:gap-16 w-full">
           {/* Top Intro Card - Static */}
           <div
             className={cn(
-              "relative bg-gradient-to-br from-cream via-sage/10 to-cream p-8 sm:p-12 md:p-14 rounded-[2rem] border border-charcoal/10 shadow-soft overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-6",
+              "relative bg-gradient-to-br from-cream via-sage/10 to-cream p-8 sm:p-12 md:p-14 rounded-2xl border border-charcoal/10 shadow-soft overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-6",
               "hover:shadow-card hover:-translate-y-0.5 transition-all duration-300"
             )}
           >
@@ -170,7 +170,7 @@ export const SeedsOfChange: React.FC = () => {
                   {/* Image Tile - Static */}
                   <div
                     className={cn(
-                      "relative h-[260px] sm:h-[300px] lg:h-[320px] rounded-[2rem] overflow-hidden border border-charcoal/10 shadow-soft",
+                      "relative min-h-[320px] sm:min-h-[360px] lg:min-h-[400px] rounded-2xl overflow-hidden border border-charcoal/10 shadow-soft w-full",
                       isEven ? "lg:order-1" : "lg:order-2",
                       "hover:shadow-card hover:-translate-y-0.5 transition-all duration-300"
                     )}
@@ -190,7 +190,7 @@ export const SeedsOfChange: React.FC = () => {
                   {/* Text Tile - Static Container */}
                   <div
                     className={cn(
-                      "relative p-8 sm:p-12 md:p-14 rounded-[2rem] overflow-hidden border border-charcoal/10 shadow-soft flex flex-col justify-center items-start",
+                      "relative p-8 sm:p-12 md:p-14 min-h-[320px] sm:min-h-[360px] lg:min-h-[400px] rounded-2xl overflow-hidden border border-charcoal/10 shadow-soft flex flex-col justify-center items-start w-full",
                       isEven ? "lg:order-2" : "lg:order-1",
                       washClasses[item.wash],
                       "hover:shadow-card hover:-translate-y-0.5 transition-all duration-300"
