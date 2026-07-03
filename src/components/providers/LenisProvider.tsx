@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -8,6 +9,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 const LenisContext = createContext<Lenis | null>(null);
 
 export const LenisProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const pathname = usePathname();
   const [lenisInstance, setLenisInstance] = useState<Lenis | null>(null);
 
   useEffect(() => {
@@ -63,6 +65,14 @@ export const LenisProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       setLenisInstance(null);
     };
   }, []);
+
+  useEffect(() => {
+    if (lenisInstance) {
+      lenisInstance.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, lenisInstance]);
 
   return (
     <LenisContext.Provider value={lenisInstance}>

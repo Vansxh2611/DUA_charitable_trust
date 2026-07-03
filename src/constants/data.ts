@@ -4,14 +4,14 @@ import { siteName, siteDescription } from "./site";
 export const siteConfig = {
   name: siteName,
   description: siteDescription,
-  email: "hello@cognibloom.org",
+  email: "hello@duatrust.org",
   phone: "+1 (555) 309-8422",
   address: "108 Bloomingdale Rd, Suite 400, Seattle, WA 98101",
   socials: [
-    { platform: "facebook", href: "https://facebook.com/cognibloom" },
-    { platform: "twitter", href: "https://twitter.com/cognibloom" },
-    { platform: "instagram", href: "https://instagram.com/cognibloom" },
-    { platform: "linkedin", href: "https://linkedin.com/company/cognibloom" },
+    { platform: "facebook", href: "https://facebook.com/duatrust" },
+    { platform: "twitter", href: "https://twitter.com/duatrust" },
+    { platform: "instagram", href: "https://instagram.com/duatrust" },
+    { platform: "linkedin", href: "https://linkedin.com/company/duatrust" },
   ] as const,
 };
 
@@ -20,12 +20,13 @@ export const navItems: NavItem[] = [
   { label: "About", href: PageRoutes.ABOUT_US },
   { label: "Projects", href: PageRoutes.OUR_PROJECTS },
   { label: "Blog", href: PageRoutes.BLOG },
+  { label: "Contact", href: PageRoutes.CONTACT },
 ];
 
 export const heroData = {
-  heading: "Sparking Universal Curiosity",
-  subheading: "We believe every child deserves a chance to learn, grow, and dream. Join us in making education a joyful adventure for all.",
-  primaryCtaText: "See Our Impact",
+  heading: "Empowering Resilient Communities",
+  subheading: "We are a multi-domain trust dedicated to fostering child development, environmental restoration, creative arts expression, and holistic well-being. Join us in building a healthier, wiser future.",
+  primaryCtaText: "Explore Our Work",
   primaryCtaLink: PageRoutes.OUR_PROJECTS,
   secondaryCtaText: "Get Involved",
   secondaryCtaLink: PageRoutes.DONATE,
@@ -72,7 +73,7 @@ export const focusCardsData = [
 
 export const aboutHeroData = {
   heading: "Nurturing Joyful Wisdom.",
-  subheading: "We are Dua Charitable Trust, an educational NGO dedicated to transforming community learning into an inspiring, inclusive, and deeply joyful adventure.",
+  subheading: "We are Dua Charitable Trust, a multi-domain NGO dedicated to transforming community development through STEM exploration, sustainable agriculture, art therapy, and holistic well-being.",
   image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1000&auto=format&fit=crop",
 };
 
@@ -81,11 +82,11 @@ export const aboutStoryData = {
   cards: [
     {
       title: "The Beginning",
-      description: "Founded on the belief that education should not be a rigid institution but a blooming collective effort, Dua started as a small community initiative. We saw a gap between traditional learning and the natural curiosity of individuals."
+      description: "Dua began as a small community initiative. As we worked with local families, we realized that supporting youth requires a multi-faceted approach. We expanded our focus from basic tutoring to a holistic framework integrating technology access, environmental conservation, creative arts therapy, and mental wellness camps."
     },
     {
       title: "Our Vision",
-      description: "A world where joyful learning is accessible to all, empowering communities to grow together."
+      description: "A world where resilient, self-sustaining communities thrive together through shared wisdom, sustainable ecosystems, and inclusive development."
     }
   ]
 };
@@ -94,23 +95,23 @@ export const coreValuesData = {
   title: "Core Values",
   values: [
     {
-      title: "Joyful Learning",
-      description: "Education should be a delightful journey, not a chore.",
+      title: "Joyful Wisdom",
+      description: "Fostering curiosity and critical thinking in every environment.",
       icon: "smiley"
     },
     {
       title: "Community First",
-      description: "Empowering local voices and collective growth.",
+      description: "Empowering local voices, collaborative spaces, and collective growth.",
       icon: "community"
     },
     {
-      title: "Inquisitive Minds",
-      description: "Fostering curiosity and critical thinking in every environment.",
+      title: "Multi-Domain Focus",
+      description: "Integrating education, art, health, and ecology for complete support.",
       icon: "brain"
     },
     {
       title: "Inclusive Access",
-      description: "Breaking down barriers to ensure education is for everyone.",
+      description: "Breaking down barriers to ensure resources and health belong to everyone.",
       icon: "globe"
     }
   ]
@@ -118,12 +119,12 @@ export const coreValuesData = {
 
 export const impactStatsData = {
   title: "Our Impact In Numbers",
-  subtitle: "Every action counts. Together with volunteers, donors, and families, we are creating measurable ripples of educational impact.",
+  subtitle: "Every action counts. Together with volunteers, contributors, and families, we are creating measurable ripples of multi-domain impact.",
   stats: [
-    { value: "5,000+", label: "Students Reached", description: "Sparking curiosity through interactive workshops." },
-    { value: "50+", label: "Active Hubs", description: "Connecting retired educators with local rural learners." },
-    { value: "1,200+", label: "Laptops Donated", description: "Providing access to digital learning tools for youth." },
-    { value: "10,000+", label: "Mentorship Hours", description: "Fostering intergenerational bonds and wisdom transfer." }
+    { value: "5,000+", label: "People Supported", description: "Providing technology, art therapy, and wellness programs." },
+    { value: "50+", label: "Active Hubs", description: "Connecting educators and volunteers with rural neighborhoods." },
+    { value: "1,200+", label: "Resource Kits Shared", description: "Providing laptops, compost bins, seed bags, and art supplies." },
+    { value: "10,000+", label: "Mentorship Hours", description: "Fostering intergenerational wisdom transfer and local bonds." }
   ]
 };
 
@@ -135,7 +136,7 @@ export const projectsData: Project[] = [
     category: "STEM & Innovation",
     description: "Interactive workshops designed to spark interest in science and technology among primary school students through hands-on experiments.",
     longDescription: "Curiosity Labs is our dedicated hands-on science and technology program. We set up mobile labs in community schools, guiding children through experiments in chemistry, physics, and programming, proving that science is a playground of questions rather than a list of facts.",
-    image: "https://images.unsplash.com/photo-1530210120071-aa792f6b7d6b?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1564951434112-64d74cc2a2d7?q=80&w=1000&auto=format&fit=crop",
     badge: "STEM & Innovation",
     status: "active",
     impactMetric: "Impact: 5,000+ Students",
@@ -155,7 +156,7 @@ export const projectsData: Project[] = [
     category: "Environment & Nature",
     description: "A community-driven agricultural education program teaching sustainable farming practices and environmental stewardship to youth.",
     longDescription: "Green Roots bridges classrooms and ecology. Students learn compost chemistry, soil biology, seed preservation, and native reforestation. By cultivating school gardens, children understand the food cycle and build long-term environmental stewardship.",
-    image: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?q=80&w=1000&auto=format&fit=crop",
     badge: "Environment & Nature",
     status: "active",
     impactMetric: "Impact: 20 Communities",
@@ -175,7 +176,7 @@ export const projectsData: Project[] = [
     category: "STEM & Innovation",
     description: "Providing access to technology and coding education for underprivileged teenagers, bridging the digital divide one line of code at a time.",
     longDescription: "Code Bloom empowers teenagers in under-resourced areas with digital skills. We collect, refurbish, and distribute laptops, while hosting free programming Bootcamps in web development, python, and computational thinking.",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1000&auto=format&fit=crop",
     badge: "STEM & Innovation",
     status: "active",
     impactMetric: "Impact: 1,200 Laptops Donated",
@@ -195,7 +196,7 @@ export const projectsData: Project[] = [
     category: "Arts & Creativity",
     description: "Art therapy and creative expression workshops aimed at fostering emotional resilience and mental well-being in vulnerable populations.",
     longDescription: "Canvas of Hope creates a safe harbor for emotional expression. Guided by art therapists and volunteers, students express trauma and hope through clay, painting, music, and collaborative murals in shared neighborhood spaces.",
-    image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1000&auto=format&fit=crop",
     badge: "Arts & Creativity",
     status: "active",
     impactMetric: "Impact: 300+ Workshops",
@@ -215,7 +216,7 @@ export const projectsData: Project[] = [
     category: "Holistic Well-being",
     description: "Nurturing mental health, emotional resilience, clean hydration, and physical well-being support for students in regional schools.",
     longDescription: "The Wellness Circle delivers direct mental health counseling, physical health checkups, clean water workshops, and active mindfulness sessions. We partner with school systems to ensure physical and emotional health is built directly into classrooms.",
-    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000&auto=format&fit=crop",
     badge: "Holistic Well-being",
     status: "active",
     impactMetric: "Impact: 15 Core Centers",
@@ -235,7 +236,7 @@ export const projectsData: Project[] = [
     category: "Flagship Program",
     description: "Our comprehensive mentorship program connecting retired educators with young learners in rural areas, fostering intergenerational knowledge transfer and community bonding.",
     longDescription: "The Wisdom Collective is our flagship initiative. We coordinate local hubs where senior educators teach, read with, and guide young learners. This program keeps elder knowledge alive, provides vital tutoring to rural areas, and builds strong community bonds.",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop",
     badge: "Flagship Program",
     status: "active",
     impactMetric: "50 Active Hubs  •  10,000+ Mentorship Hours",

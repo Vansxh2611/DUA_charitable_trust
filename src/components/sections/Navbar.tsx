@@ -28,6 +28,13 @@ export const Navbar: React.FC = () => {
   // Background/glass transitions when scrolled OR when not on homepage
   const isScrolledOrNotHome = isScrolled || pathname !== "/";
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       {/* Premium hallmark: Keyboard-accessible Skip Link */}
@@ -56,28 +63,30 @@ export const Navbar: React.FC = () => {
           {/* Logo */}
           <Link
             href="/"
+            onClick={handleLogoClick}
             className={cn(
-              "flex items-center gap-2 text-charcoal focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-md transition-transform duration-300 origin-left",
+              "flex items-center gap-1.5 text-charcoal focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-md transition-transform duration-300 origin-left",
               isScrolled ? "scale-95" : "scale-100"
             )}
             aria-label={`${siteConfig.name} Home`}
           >
-            <Image
-              src="/logo-icon.png"
-              alt={`${siteConfig.name} Logo`}
-              width={28}
-              height={28}
-              className="w-6 h-6 sm:w-7 sm:h-7 object-contain"
-              priority
-            />
-            <div className="flex items-baseline gap-1.5">
-              <span className="font-heading font-extrabold text-lg sm:text-xl tracking-tight text-charcoal leading-none">
-                Dua
-              </span>
-              <span className="hidden sm:inline font-heading font-extrabold text-lg sm:text-xl tracking-tight text-charcoal leading-none">
-                Charitable Trust
-              </span>
+            {/* Rounded Brand Logo Image Icon */}
+            <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden shrink-0 border border-charcoal/10 self-center">
+              <Image
+                src="/Dua Charitable Trust_LOGO_2026.jpg (3).jpeg"
+                alt="Dua Logo Icon"
+                fill
+                className="object-cover"
+                sizes="48px"
+                priority
+              />
             </div>
+            <span className="font-heading font-extrabold text-lg sm:text-xl tracking-tight text-charcoal">
+              Dua
+            </span>
+            <span className="hidden sm:inline font-body font-normal text-xs sm:text-sm text-muted-text ml-1">
+              Charitable Trust
+            </span>
           </Link>
 
           {/* Desktop Navigation Links */}
