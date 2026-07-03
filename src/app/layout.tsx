@@ -12,6 +12,10 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: "/web-app-manifest-192x192.png",
+    apple: "/web-app-manifest-192x192.png",
+  },
   openGraph: {
     title: `${siteName} - ${siteTagline}`,
     description: siteDescription,
