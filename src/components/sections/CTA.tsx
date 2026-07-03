@@ -14,7 +14,12 @@ export const CTA: React.FC<CTAProps> = ({
   return (
     <section id="cta-footer" className="relative bg-cream py-5">
       <div className="w-full px-5">
-        <div className="relative bg-footer-bg text-white py-16 px-8 sm:px-12 md:px-16 rounded-lg overflow-hidden border border-card-border shadow-md">
+        <div
+          className="relative bg-footer-bg bg-cover bg-center text-white py-16 px-8 sm:px-12 md:px-16 rounded-lg overflow-hidden border border-card-border shadow-md"
+          style={{ backgroundImage: "url('/cta-bg.jpg')" }}
+        >
+          {/* Subtle dark overlay for readability on lighter watercolor background */}
+          <div className="absolute inset-0 bg-black/25 mix-blend-multiply pointer-events-none" />
           {/* Ambient decorative glowing circles */}
           <div className="absolute -top-32 -left-32 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-secondary/10 rounded-full blur-3xl pointer-events-none" />

@@ -10,6 +10,8 @@ import { ArrowLeft, Calendar, CheckSquare, BarChart, Heart } from "lucide-react"
 import { ctaData } from "@/constants/data";
 import { PageRoutes } from "@/types";
 
+import { Metadata } from "next";
+
 interface ProjectDetailProps {
   params: {
     slug: string;
@@ -20,6 +22,16 @@ export function generateStaticParams(): { slug: string }[] {
   return projectsData.map((project) => ({
     slug: project.slug,
   }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projectsData.find((p) => p.slug === slug);
+  if (!project) return {};
+  return {
+    title: `${project.title} | Our Focus Areas`,
+    description: project.description || "Read about this active campaign by Dua Charitable Trust.",
+  };
 }
 
 // Helper function to get donation progress parameters

@@ -29,7 +29,8 @@ export const Footer: React.FC = () => {
   if (!mounted) {
     return (
       <footer
-        className="bg-footer-bg text-footer-text pt-16 pb-12 relative overflow-hidden border-t-4 border-secondary"
+        className="bg-footer-bg bg-cover bg-center text-footer-text pt-16 pb-12 relative overflow-hidden border-t-4 border-secondary"
+        style={{ backgroundImage: "url('/footer-bg.png')" }}
         aria-label="Site Footer"
       >
         <Container size="xl">
@@ -41,7 +42,8 @@ export const Footer: React.FC = () => {
 
   return (
     <footer
-      className="bg-footer-bg text-footer-text pt-20 pb-12 relative overflow-hidden border-t-4 border-secondary"
+      className="bg-footer-bg bg-cover bg-center text-footer-text pt-20 pb-12 relative overflow-hidden border-t-4 border-secondary"
+      style={{ backgroundImage: "url('/footer-bg.png')" }}
       aria-label="Site Footer"
     >
       {/* Ambient background glow for premium three-dimensional depth */}
@@ -99,7 +101,7 @@ export const Footer: React.FC = () => {
 
           {/* Column 2: Explore */}
           <div className="lg:col-span-2 flex flex-col gap-5">
-            <h3 className="text-xs font-black text-secondary uppercase tracking-wider font-heading">
+            <h3 className="text-xs font-black text-white! uppercase tracking-wider font-heading">
               Explore
             </h3>
             <nav className="flex flex-col gap-3.5 text-sm font-semibold font-body" aria-label="Explore Links">
@@ -120,7 +122,7 @@ export const Footer: React.FC = () => {
 
           {/* Column 3: Get Involved */}
           <div className="lg:col-span-2 flex flex-col gap-5">
-            <h3 className="text-xs font-black text-secondary uppercase tracking-wider font-heading">
+            <h3 className="text-xs font-black text-white! uppercase tracking-wider font-heading">
               Get Involved
             </h3>
             <nav className="flex flex-col gap-3.5 text-sm font-semibold font-body" aria-label="Get Involved Links">
@@ -138,7 +140,7 @@ export const Footer: React.FC = () => {
 
           {/* Column 4: Contact Info */}
           <div className="lg:col-span-4 flex flex-col gap-5">
-            <h3 className="text-xs font-black text-secondary uppercase tracking-wider font-heading">
+            <h3 className="text-xs font-black text-white! uppercase tracking-wider font-heading">
               Contact Us
             </h3>
             <div className="flex flex-col gap-4 text-sm font-body text-footer-text/85">

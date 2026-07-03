@@ -21,28 +21,28 @@ export const Hero: React.FC<HeroProps> = ({
   const homeSlides = [
     {
       id: "slide1",
-      src: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1400&auto=format&fit=crop",
-      alt: "Children and educator learning outdoors with tablet",
+      src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1400&auto=format&fit=crop",
+      alt: "Educator teaching and helping primary students build electronics kits in a classroom environment",
     },
     {
       id: "slide2",
-      src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400&auto=format&fit=crop",
-      alt: "Children reading books in a group",
+      src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop",
+      alt: "Coding mentor explaining programming concepts on screen, helping young developers write code",
     },
     {
       id: "slide3",
-      src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1400&auto=format&fit=crop",
-      alt: "Students collaborating on robotics kits",
+      src: "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1400&auto=format&fit=crop",
+      alt: "Volunteers and children planting organic tree saplings in soil during an environmental reforestation campaign",
     },
     {
       id: "slide4",
-      src: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1400&auto=format&fit=crop",
-      alt: "Children learning in an outdoor garden",
+      src: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1400&auto=format&fit=crop",
+      alt: "Art teacher assisting students with watercolor painting during a creative art workshop",
     },
     {
       id: "slide5",
-      src: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1400&auto=format&fit=crop",
-      alt: "Volunteers working with children in a community center",
+      src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400&auto=format&fit=crop",
+      alt: "Retired senior volunteer helping children with reading books in a community mentorship center",
     },
   ];
 

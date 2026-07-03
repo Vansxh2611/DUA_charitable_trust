@@ -10,6 +10,8 @@ import { ctaData } from "@/constants/data";
 import { PageRoutes } from "@/types";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 
+import { Metadata } from "next";
+
 interface BlogPostDetailProps {
   params: {
     slug: string;
@@ -20,6 +22,16 @@ export function generateStaticParams(): { slug: string }[] {
   return blogData.map((post) => ({
     slug: post.slug,
   }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = blogData.find((p) => p.slug === slug);
+  if (!post) return {};
+  return {
+    title: `${post.title} | NGO Stories`,
+    description: post.excerpt || "Read this update from the Dua Charitable Trust community development programs.",
+  };
 }
 
 export default async function BlogPostDetail({ params }: { params: Promise<{ slug: string }> }): Promise<React.ReactNode> {

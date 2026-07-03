@@ -12,6 +12,10 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: "/web-app-manifest-192x192.png",
+    apple: "/web-app-manifest-192x192.png",
+  },
   openGraph: {
     title: `${siteName} - ${siteTagline}`,
     description: siteDescription,
@@ -40,6 +44,25 @@ export default function RootLayout({
         <link 
           href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap" 
           rel="stylesheet" 
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "NGO",
+              "name": "Dua Charitable Trust",
+              "url": "https://duacharitabletrust.org",
+              "logo": "https://duacharitabletrust.org/Dua Charitable Trust_LOGO_2026.jpg (3).jpeg",
+              "description": "Dua Charitable Trust is a multi-domain NGO dedicated to sustainable community development through interactive STEM education, sustainable agricultural farming, creative art therapy, and holistic well-being mentorship.",
+              "sameAs": [
+                "https://facebook.com/duatrust",
+                "https://twitter.com/duatrust",
+                "https://instagram.com/duatrust",
+                "https://linkedin.com/company/duatrust"
+              ]
+            })
+          }}
         />
       </head>
       <body className="bg-cream text-charcoal font-body antialiased selection:bg-forest selection:text-cream">
