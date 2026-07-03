@@ -1,5 +1,5 @@
 export const siteName = "Dua Charitable Trust";
 export const siteShortName = "Dua";
-export const siteTagline = "Nurturing Joyful Wisdom";
+export const siteTagline = "Multi-Domain Community Trust | STEM, Ecology, Arts & Wellness";
 export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://duacharitabletrust.org";
-export const siteDescription = "An educational NGO dedicated to transforming community learning into an inspiring, inclusive, and deeply joyful adventure.";
+export const siteDescription = "Dua Charitable Trust is a multi-domain NGO dedicated to sustainable community development through interactive STEM education, sustainable agricultural farming, creative art therapy, and holistic well-being mentorship.";

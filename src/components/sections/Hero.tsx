@@ -21,28 +21,28 @@ export const Hero: React.FC<HeroProps> = ({
   const homeSlides = [
     {
       id: "slide1",
-      src: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1400&auto=format&fit=crop",
-      alt: "Children and educator learning outdoors with tablet",
+      src: "https://images.unsplash.com/photo-1564951434112-64d74cc2a2d7?q=80&w=1400&auto=format&fit=crop",
+      alt: "Primary student assembling a hands-on wooden science and robotics STEM workshop kit at a community learning hub",
     },
     {
       id: "slide2",
-      src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400&auto=format&fit=crop",
-      alt: "Children reading books in a group",
+      src: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1400&auto=format&fit=crop",
+      alt: "Underprivileged teenager learning web programming on a laptop during an interactive coding bootcamp",
     },
     {
       id: "slide3",
-      src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1400&auto=format&fit=crop",
-      alt: "Students collaborating on robotics kits",
+      src: "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1400&auto=format&fit=crop",
+      alt: "Volunteers and children planting organic tree saplings in soil during an environmental reforestation campaign",
     },
     {
       id: "slide4",
-      src: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1400&auto=format&fit=crop",
-      alt: "Children learning in an outdoor garden",
+      src: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1400&auto=format&fit=crop",
+      alt: "Students dipping paintbrushes into colorful paint palettes during a creative art therapy workshop",
     },
     {
       id: "slide5",
       src: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1400&auto=format&fit=crop",
-      alt: "Volunteers working with children in a community center",
+      alt: "Retired senior educator tutoring and reading with young students during an intergenerational mentorship program",
     },
   ];
 
