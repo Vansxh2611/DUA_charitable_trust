@@ -136,7 +136,7 @@ export const projectsData: Project[] = [
     category: "STEM & Innovation",
     description: "Interactive workshops designed to spark interest in science and technology among primary school students through hands-on experiments.",
     longDescription: "Curiosity Labs is our dedicated hands-on science and technology program. We set up mobile labs in community schools, guiding children through experiments in chemistry, physics, and programming, proving that science is a playground of questions rather than a list of facts.",
-    image: "https://images.unsplash.com/photo-1564951434112-64d74cc2a2d7?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop",
     badge: "STEM & Innovation",
     status: "active",
     impactMetric: "Impact: 5,000+ Students",
@@ -156,7 +156,7 @@ export const projectsData: Project[] = [
     category: "Environment & Nature",
     description: "A community-driven agricultural education program teaching sustainable farming practices and environmental stewardship to youth.",
     longDescription: "Green Roots bridges classrooms and ecology. Students learn compost chemistry, soil biology, seed preservation, and native reforestation. By cultivating school gardens, children understand the food cycle and build long-term environmental stewardship.",
-    image: "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1000&auto=format&fit=crop",
     badge: "Environment & Nature",
     status: "active",
     impactMetric: "Impact: 20 Communities",
@@ -176,7 +176,7 @@ export const projectsData: Project[] = [
     category: "STEM & Innovation",
     description: "Providing access to technology and coding education for underprivileged teenagers, bridging the digital divide one line of code at a time.",
     longDescription: "Code Bloom empowers teenagers in under-resourced areas with digital skills. We collect, refurbish, and distribute laptops, while hosting free programming Bootcamps in web development, python, and computational thinking.",
-    image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000&auto=format&fit=crop",
     badge: "STEM & Innovation",
     status: "active",
     impactMetric: "Impact: 1,200 Laptops Donated",
@@ -196,7 +196,7 @@ export const projectsData: Project[] = [
     category: "Arts & Creativity",
     description: "Art therapy and creative expression workshops aimed at fostering emotional resilience and mental well-being in vulnerable populations.",
     longDescription: "Canvas of Hope creates a safe harbor for emotional expression. Guided by art therapists and volunteers, students express trauma and hope through clay, painting, music, and collaborative murals in shared neighborhood spaces.",
-    image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=1000&auto=format&fit=crop",
     badge: "Arts & Creativity",
     status: "active",
     impactMetric: "Impact: 300+ Workshops",
@@ -216,7 +216,7 @@ export const projectsData: Project[] = [
     category: "Holistic Well-being",
     description: "Nurturing mental health, emotional resilience, clean hydration, and physical well-being support for students in regional schools.",
     longDescription: "The Wellness Circle delivers direct mental health counseling, physical health checkups, clean water workshops, and active mindfulness sessions. We partner with school systems to ensure physical and emotional health is built directly into classrooms.",
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1000&auto=format&fit=crop",
     badge: "Holistic Well-being",
     status: "active",
     impactMetric: "Impact: 15 Core Centers",
@@ -236,7 +236,7 @@ export const projectsData: Project[] = [
     category: "Flagship Program",
     description: "Our comprehensive mentorship program connecting retired educators with young learners in rural areas, fostering intergenerational knowledge transfer and community bonding.",
     longDescription: "The Wisdom Collective is our flagship initiative. We coordinate local hubs where senior educators teach, read with, and guide young learners. This program keeps elder knowledge alive, provides vital tutoring to rural areas, and builds strong community bonds.",
-    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1000&auto=format&fit=crop",
     badge: "Flagship Program",
     status: "active",
     impactMetric: "50 Active Hubs  •  10,000+ Mentorship Hours",
@@ -248,7 +248,7 @@ export const projectsData: Project[] = [
       "Conduct intergenerational oral history storytelling cycles."
     ],
     timeline: "Ongoing"
-  }
+  },
 ];
 
 export const blogData: BlogPost[] = [

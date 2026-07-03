@@ -21,13 +21,13 @@ export const Hero: React.FC<HeroProps> = ({
   const homeSlides = [
     {
       id: "slide1",
-      src: "https://images.unsplash.com/photo-1564951434112-64d74cc2a2d7?q=80&w=1400&auto=format&fit=crop",
-      alt: "Primary student assembling a hands-on wooden science and robotics STEM workshop kit at a community learning hub",
+      src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1400&auto=format&fit=crop",
+      alt: "Educator teaching and helping primary students build electronics kits in a classroom environment",
     },
     {
       id: "slide2",
-      src: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1400&auto=format&fit=crop",
-      alt: "Underprivileged teenager learning web programming on a laptop during an interactive coding bootcamp",
+      src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop",
+      alt: "Coding mentor explaining programming concepts on screen, helping young developers write code",
     },
     {
       id: "slide3",
@@ -36,13 +36,13 @@ export const Hero: React.FC<HeroProps> = ({
     },
     {
       id: "slide4",
-      src: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1400&auto=format&fit=crop",
-      alt: "Students dipping paintbrushes into colorful paint palettes during a creative art therapy workshop",
+      src: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1400&auto=format&fit=crop",
+      alt: "Art teacher assisting students with watercolor painting during a creative art workshop",
     },
     {
       id: "slide5",
-      src: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1400&auto=format&fit=crop",
-      alt: "Retired senior educator tutoring and reading with young students during an intergenerational mentorship program",
+      src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400&auto=format&fit=crop",
+      alt: "Retired senior volunteer helping children with reading books in a community mentorship center",
     },
   ];
 
