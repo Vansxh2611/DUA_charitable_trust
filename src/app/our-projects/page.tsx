@@ -1,26 +1,130 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { BackgroundPattern } from "@/components/ui/BackgroundPattern";
 import { projectsData } from "@/constants/data";
 import { PageRoutes } from "@/types";
 import Link from "next/link";
+import Image from "next/image";
+import { Search } from "lucide-react";
+import { CTA } from "@/components/sections/CTA";
+
+// Project Supporters Data
+const supporters = [
+  {
+    name: "Sarah Jenkins",
+    role: "Donor (STEM Hub Sponsor)",
+    desc: "Sponsored 5 rural Curiosity Labs with equipment kits and learning materials.",
+    img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=300&auto=format&fit=crop"
+  },
+  {
+    name: "Aarav Sharma",
+    role: "Volunteer (Ecology Lead)",
+    desc: "Dedicated 150+ hours setting up Green Roots gardening programs in regional centers.",
+    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=300&auto=format&fit=crop"
+  },
+  {
+    name: "Chloe Dubois",
+    role: "Volunteer (Arts Mentor)",
+    desc: "Curated Canvas of Hope syllabus and trained 25 local school coordinators.",
+    img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop"
+  }
+];
+
+const ProjectGallery = ({ onCategorySelect }: { onCategorySelect: (cat: string) => void }) => {
+  const images = [
+    { src: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=600&auto=format&fit=crop", title: "STEM Workshop", category: "STEM & Innovation" },
+    { src: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=600&auto=format&fit=crop", title: "Eco Reforestation", category: "Environment & Nature" },
+    { src: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=600&auto=format&fit=crop", title: "Arts Expression", category: "Arts & Creativity" },
+    { src: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=600&auto=format&fit=crop", title: "Student Health Checkup", category: "Holistic Well-being" }
+  ];
+
+  const handleClick = (cat: string) => {
+    onCategorySelect(cat);
+    const el = document.getElementById("projects-header");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <section className="py-16 bg-cream">
+      <Container size="xl">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
+            Community & Action Gallery
+          </h2>
+          <p className="text-base text-charcoal/70 font-body">
+            Click on a category card below to filter our active programs by domain.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {images.map((img, idx) => (
+            <div
+              key={idx}
+              onClick={() => handleClick(img.category)}
+              className="relative aspect-square rounded-lg overflow-hidden border border-card-border shadow-xs group cursor-pointer"
+            >
+              <Image
+                src={img.src}
+                alt={img.title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-4">
+                <span className="text-white font-heading font-bold text-sm tracking-wide">
+                  {img.title} (View Projects)
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+};
 
 export default function OurProjects(): React.ReactNode {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState("all");
+
+  const categories = [
+    { label: "All Work", value: "all" },
+    { label: "STEM & Innovation", value: "STEM & Innovation" },
+    { label: "Environment & Nature", value: "Environment & Nature" },
+    { label: "Arts & Creativity", value: "Arts & Creativity" },
+    { label: "Holistic Well-being", value: "Holistic Well-being" },
+    { label: "Flagship Program", value: "Flagship Program" }
+  ];
+
+  // Filtering Logic
+  const filteredProjects = projectsData.filter((project) => {
+    const matchesSearch =
+      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.description.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    const matchesCategory =
+      activeCategory === "all" || project.category === activeCategory;
+
+    return matchesSearch && matchesCategory;
+  });
+
   return (
     <div className="relative pt-24 sm:pt-28 bg-cream min-h-screen pb-20 overflow-hidden">
       {/* Full-page colorful project grid background pattern */}
-      <BackgroundPattern variant="project-grid" opacity={0.6} className="z-0" />
+      <BackgroundPattern variant="project-grid" opacity={0.6} className="z-0 dark:hidden" />
 
       <div className="relative z-10">
         {/* Header Section */}
-        <section className="py-16 sm:py-20 text-center max-w-4xl mx-auto">
+        <section id="projects-header" className="py-16 sm:py-20 text-center max-w-4xl mx-auto">
           <Container>
             <div className="flex flex-col items-center">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
-                Our Projects - Dua Charitable Trust
+                Our Projects
               </h1>
               <p className="text-base sm:text-lg text-charcoal/70 leading-relaxed font-body">
                 Explore the various projects and community programs we&apos;ve developed to nurture joyful wisdom and empower learners across the globe. Each initiative is a step towards a brighter, more inclusive future.
@@ -29,63 +133,115 @@ export default function OurProjects(): React.ReactNode {
           </Container>
         </section>
 
-        {/* Project Grid */}
-        <Container className="mt-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projectsData.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
+        {/* Filter controls */}
+        <Container className="mb-12">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 max-w-6xl mx-auto border-b border-card-border pb-8">
+            {/* Category selection */}
+            <div className="flex flex-wrap gap-2.5">
+              {categories.map((cat) => (
+                <button
+                  key={cat.value}
+                  onClick={() => setActiveCategory(cat.value)}
+                  className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 cursor-pointer ${
+                    activeCategory === cat.value
+                      ? "bg-charcoal text-cream shadow-xs"
+                      : "bg-card-bg border border-card-border text-charcoal hover:bg-sage/40"
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Search Input */}
+            <div className="relative w-full md:w-80 shrink-0">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search projects..."
+                className="w-full bg-card-bg border border-card-border rounded-full py-3 pl-11 pr-5 text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-forest placeholder-charcoal/40"
+              />
+              <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-charcoal/40" />
+            </div>
           </div>
         </Container>
 
-        {/* Support Callout Section */}
-        <Container className="mt-20">
-          <section
-            className="relative bg-cream rounded-[32px] p-8 sm:p-12 text-center overflow-hidden shadow-xs border border-charcoal/5"
-            aria-labelledby="support-title"
-          >
-            {/* Doodle background pattern */}
-            <BackgroundPattern variant="doodle" opacity={0.12} className="text-forest" />
-
-            <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
-              {/* Hand/Heart/Star custom SVG graphic at top of support box */}
-              <div className="w-12 h-12 rounded-full bg-white/60 flex items-center justify-center text-forest mb-6">
-                <svg
-                  className="w-6 h-6 fill-none stroke-current"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                </svg>
-              </div>
-
-              <h2 id="support-title" className="text-2xl sm:text-3xl font-extrabold text-charcoal font-heading mb-4">
-                Want to support our initiatives?
-              </h2>
-              <p className="text-sm sm:text-base text-charcoal/70 leading-relaxed font-body mb-8">
-                Your contribution helps us expand these projects and reach more communities. Whether through volunteering or donations, every bit helps nurture joyful wisdom.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full sm:w-auto">
-                <Link
-                  href={PageRoutes.DONATE}
-                  className="w-full sm:w-44 bg-charcoal text-cream hover:bg-forest hover:text-cream text-center px-6 py-3.5 rounded-full font-bold text-sm transition-all duration-300 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-forest"
-                  aria-label="Donate Now to our initiatives"
-                >
-                  Donate Now
-                </Link>
-                <Link
-                  href={PageRoutes.CONTACT}
-                  className="w-full sm:w-44 bg-card-bg/70 border border-card-border text-charcoal hover:bg-charcoal hover:text-cream text-center px-6 py-3.5 rounded-full font-bold text-sm transition-all duration-300 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-forest"
-                  aria-label="Volunteer for our initiatives"
-                >
-                  Volunteer
-                </Link>
-              </div>
+        {/* Project Grid */}
+        <Container className="mt-8">
+          {filteredProjects.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProjects.map((project) => (
+                <ProjectCard key={project.slug} project={project} />
+              ))}
             </div>
-          </section>
+          ) : (
+            <div className="text-center py-20 bg-card-bg border border-card-border rounded-[32px] max-w-4xl mx-auto shadow-xs">
+              <p className="text-lg text-charcoal/50 font-bold font-heading">No projects match your current filters.</p>
+              <button
+                onClick={() => {
+                  setSearchQuery("");
+                  setActiveCategory("all");
+                }}
+                className="mt-4 px-6 py-2.5 bg-charcoal text-cream rounded-full font-bold text-xs hover:bg-forest transition-colors cursor-pointer"
+              >
+                Clear All Filters
+              </button>
+            </div>
+          )}
         </Container>
+
+        <div className="border-t border-card-border/50 mx-5 mt-16" />
+
+        {/* Project Gallery */}
+        <ProjectGallery onCategorySelect={setActiveCategory} />
+
+        <div className="border-t border-card-border/50 mx-5" />
+
+        {/* Project Supporters Section (Volunteers & Donors) */}
+        <section className="py-20 bg-cream">
+          <Container size="xl">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
+                Key Contributors & Supporters
+              </h2>
+              <p className="text-base text-charcoal/70 font-body">
+                Meet the active donors, domain experts, and volunteers making these project networks possible.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+              {supporters.map((sup, idx) => (
+                <div key={idx} className="flex flex-col items-center text-center group">
+                  <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden border border-card-border mb-6 shadow-xs bg-sage">
+                    <Image
+                      src={sup.img}
+                      alt={sup.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-103"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+                  <h4 className="text-xl font-bold text-charcoal font-heading">{sup.name}</h4>
+                  <span className="text-xs text-accent font-extrabold uppercase tracking-wider mt-1 font-body">{sup.role}</span>
+                  <p className="text-xs text-charcoal/60 mt-3 font-body max-w-xs">{sup.desc}</p>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        <div className="border-t border-card-border/50 mx-5" />
+
+        {/* Support Callout Section */}
+        <CTA
+          title="Want to support our initiatives?"
+          description="Your contribution helps us expand these projects and reach more communities. Whether through volunteering or donations, every bit helps nurture joyful wisdom."
+          primaryCtaText="Donate Now"
+          primaryCtaLink={PageRoutes.DONATE}
+          secondaryCtaText="Volunteer"
+          secondaryCtaLink={PageRoutes.CONTACT}
+        />
       </div>
     </div>
   );

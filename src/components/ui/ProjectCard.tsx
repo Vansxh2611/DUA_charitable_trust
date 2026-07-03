@@ -3,24 +3,59 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { ProjectCardProps } from "@/types";
 import { BackgroundPattern } from "./BackgroundPattern";
 import { Heart, Home, ArrowRight } from "lucide-react";
 import { cn } from "@/utils/cn";
 
+// Helper function to get donation progress parameters
+const getDonationProgress = (slug: string) => {
+  switch (slug) {
+    case "the-wisdom-collective":
+      return { goal: "$50,000", raised: "$38,500", pct: 77 };
+    case "curiosity-labs":
+      return { goal: "$30,000", raised: "$21,000", pct: 70 };
+    case "green-roots":
+      return { goal: "$20,000", raised: "$14,000", pct: 70 };
+    case "code-bloom":
+      return { goal: "$25,000", raised: "$15,000", pct: 60 };
+    case "canvas-of-hope":
+      return { goal: "$15,000", raised: "$12,000", pct: 80 };
+    case "wellness-circle":
+      return { goal: "$18,000", raised: "$10,800", pct: 60 };
+    default:
+      return { goal: "$20,000", raised: "$12,000", pct: 60 };
+  }
+};
+
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className }) => {
+  const router = useRouter();
   const isFlagship = project.featured === true || project.slug === "the-wisdom-collective";
+  const progress = getDonationProgress(project.slug);
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    // If user clicked directly on a link or button, let the browser handle it naturally
+    const target = e.target as HTMLElement;
+    if (target.closest("a") || target.closest("button")) {
+      return;
+    }
+    router.push(`/our-projects/${project.slug}`);
+  };
 
   // Category-specific pastel/wash backgrounds and border styling
   const getCategoryWash = (category: string) => {
     switch (category.toLowerCase()) {
+      case "stem & innovation":
       case "stem":
         return "bg-accent/[0.04] hover:bg-accent/[0.07] border-accent/15";
+      case "environment & nature":
       case "environment":
         return "bg-success/[0.04] hover:bg-success/[0.07] border-success/15";
       case "digital literacy":
       case "digital":
         return "bg-info/[0.04] hover:bg-info/[0.07] border-info/15";
+      case "arts & creativity":
       case "arts":
       case "art":
         return "bg-campaign-accent/[0.04] hover:bg-campaign-accent/[0.07] border-campaign-accent/15";
@@ -30,85 +65,108 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className }) 
   };
 
   if (isFlagship) {
-    // Flagship Card: Split layout with 8px rounded corners, no badges/tags
+    // Flagship Card: Split layout with 8px rounded corners
     return (
       <div
+        onClick={handleCardClick}
         className={cn(
-          "relative lg:col-span-2 bg-card-bg rounded-lg overflow-hidden shadow-sm border border-card-border card-interactive grid grid-cols-1 md:grid-cols-12 min-h-[420px] group",
+          "relative lg:col-span-3 bg-card-bg rounded-lg overflow-hidden shadow-sm border border-card-border card-interactive grid grid-cols-1 lg:grid-cols-12 min-h-[460px] group cursor-pointer",
           className
         )}
       >
         {/* Left Side: Real Image (Taller on desktop) */}
-        <div className="relative md:col-span-6 min-h-[300px] md:min-h-full overflow-hidden">
+        <div className="relative lg:col-span-7 min-h-[300px] lg:min-h-full overflow-hidden bg-sage">
           <Image
             src={project.image}
             alt={project.title}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 55vw"
             className="object-cover transition-transform duration-500 group-hover:scale-103"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/44 via-transparent to-transparent pointer-events-none z-10" />
         </div>
 
-        {/* Right Side: Content with dark brand styling */}
-        <div className="relative md:col-span-6 p-8 flex flex-col justify-between bg-navy text-white z-20">
-          <BackgroundPattern variant="wave" opacity={0.06} className="text-white" />
+        {/* Right Side: Content with standard theme styling */}
+        <div className="relative lg:col-span-5 p-8 flex flex-col justify-between bg-card-bg text-charcoal z-20">
+          <BackgroundPattern variant="wave" opacity={0.06} className="text-charcoal" />
 
           <div className="relative z-10">
-            <span className="block text-[10px] font-bold text-white/50 uppercase tracking-widest mb-2 font-body">
-              Featured Work
+            <span className="block text-[10px] font-bold text-muted-text uppercase tracking-widest mb-2 font-body">
+              Featured Program
             </span>
-            <h3 className="text-2xl font-extrabold font-heading text-white mb-4 leading-tight">
+            <h3 className="text-2xl sm:text-3xl font-extrabold font-heading text-charcoal mb-4 leading-tight">
               <Link
                 href={`/our-projects/${project.slug}`}
-                className="hover:text-secondary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary/40 rounded"
+                className="hover:text-forest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded"
               >
                 {project.title}
               </Link>
             </h3>
-            <p className="text-sm text-white/80 leading-relaxed font-body mb-8">
+            <p className="text-sm text-charcoal/70 leading-relaxed font-body mb-6">
               {project.description}
             </p>
+
+            {/* Donation progress bar */}
+            <div className="mb-6">
+              <div className="flex justify-between items-center text-xs font-semibold mb-2 text-charcoal/80">
+                <span>Raised: <strong className="text-forest">{progress.raised}</strong></span>
+                <span>Goal: {progress.goal}</span>
+              </div>
+              <div className="w-full h-2 bg-charcoal/10 rounded-full overflow-hidden">
+                <div className="h-full bg-forest rounded-full" style={{ width: `${progress.pct}%` }} />
+              </div>
+              <span className="block text-right text-[10px] text-muted-text mt-1 font-bold">{progress.pct}% Fund Raised</span>
+            </div>
           </div>
 
           {/* Flagship Metrics Row */}
-          <div className="relative z-10 pt-5 border-t border-white/10 flex flex-wrap gap-5 text-xs text-white/70 font-semibold font-heading">
-            <div className="flex items-center gap-2">
-              <Home size={14} className="text-secondary" />
-              <span>50 Active Hubs</span>
+          <div className="relative z-10 pt-5 border-t border-card-border flex items-center justify-between text-xs text-charcoal/75 font-semibold font-heading">
+            <div className="flex flex-wrap gap-5">
+              <div className="flex items-center gap-2">
+                <Home size={14} className="text-forest" />
+                <span>50 Active Hubs</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Heart size={14} className="text-red-400" />
+                <span>10,000+ Mentorship Hours</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <Heart size={14} className="text-red-400" />
-              <span>10,000+ Mentorship Hours</span>
-            </div>
+            <Link
+              href={`/our-projects/${project.slug}`}
+              className="inline-flex items-center gap-1 text-forest hover:text-forest-dark transition-colors font-body font-bold ml-auto"
+              aria-label={`Read more about ${project.title}`}
+            >
+              Learn More <ArrowRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5" />
+            </Link>
           </div>
         </div>
       </div>
     );
   }
 
-  // Small Project Card: Photo on top (taller), Text info with category wash on bottom (8px rounded corners, no tags)
+  // Small Project Card: Photo on top (taller), Text info with category wash on bottom
   return (
     <div
+      onClick={handleCardClick}
       className={cn(
-        "flex flex-col h-full bg-card-bg rounded-lg overflow-hidden border border-card-border shadow-xs card-interactive group",
+        "flex flex-col h-full bg-card-bg rounded-lg overflow-hidden border border-card-border shadow-xs card-interactive group cursor-pointer",
         className
       )}
     >
-      {/* Top half: Photo - Taller height (h-64 sm:h-72) */}
-      <div className="relative overflow-hidden shrink-0 h-64 sm:h-72 w-full">
+      {/* Top: Photo - Taller height */}
+      <div className="relative overflow-hidden shrink-0 h-64 sm:h-72 w-full bg-sage">
         <Image
           src={project.image}
           alt={project.title}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          sizes="(max-width: 768px) 100vw, 33vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none z-10" />
       </div>
 
-      {/* Bottom half: Text info with category wash background */}
+      {/* Bottom: Text info with category wash background */}
       <div className={cn(
         "flex flex-col flex-grow p-6 sm:p-7 transition-all duration-300 border-t",
         getCategoryWash(project.category)
@@ -125,7 +183,19 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, className }) 
           {project.description}
         </p>
 
-        <div className="mt-auto pt-4 border-t border-charcoal/5 flex items-center justify-between text-xs text-charcoal/65 font-bold font-heading">
+        {/* Donation progress bar */}
+        <div className="mb-6 mt-auto">
+          <div className="flex justify-between items-center text-xs font-semibold mb-1 text-charcoal/80">
+            <span>Raised: <strong className="text-forest">{progress.raised}</strong></span>
+            <span>Goal: {progress.goal}</span>
+          </div>
+          <div className="w-full h-1.5 bg-charcoal/10 rounded-full overflow-hidden">
+            <div className="h-full bg-forest rounded-full" style={{ width: `${progress.pct}%` }} />
+          </div>
+          <span className="block text-right text-[9px] text-muted-text mt-1 font-bold">{progress.pct}% Fund Raised</span>
+        </div>
+
+        <div className="pt-4 border-t border-charcoal/5 flex items-center justify-between text-xs text-charcoal/65 font-bold font-heading">
           <span className="flex items-center gap-1.5 text-muted-text">
             {project.slug === "curiosity-labs" && (
               <svg className="w-4 h-4 text-charcoal/40 fill-current" viewBox="0 0 24 24">

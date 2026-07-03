@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu } from "lucide-react";
@@ -26,6 +27,13 @@ export const Navbar: React.FC = () => {
 
   // Background/glass transitions when scrolled OR when not on homepage
   const isScrolledOrNotHome = isScrolled || pathname !== "/";
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <>
@@ -55,28 +63,24 @@ export const Navbar: React.FC = () => {
           {/* Logo */}
           <Link
             href="/"
+            onClick={handleLogoClick}
             className={cn(
-              "flex items-baseline gap-1 text-charcoal focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-md transition-transform duration-300 origin-left",
+              "flex items-center gap-1.5 text-charcoal focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-md transition-transform duration-300 origin-left",
               isScrolled ? "scale-95" : "scale-100"
             )}
             aria-label={`${siteConfig.name} Home`}
           >
-            {/* 8-Spoke Wheel Flower Logo SVG */}
-            <svg
-              className="w-6 h-6 sm:w-7 sm:h-7 text-charcoal fill-none stroke-current self-center mr-1.5"
-              viewBox="0 0 32 32"
-              strokeWidth="2.5"
-              aria-hidden="true"
-            >
-              <circle cx="16" cy="16" r="13" stroke="currentColor" strokeWidth="2.5" />
-              <circle cx="16" cy="16" r="3" fill="currentColor" />
-              <path
-                d="M16 3v26 M3 16h26 M6.8 6.8l18.4 18.4 M6.8 25.2L25.2 6.8"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
+            {/* Rounded Brand Logo Image Icon */}
+            <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden shrink-0 border border-charcoal/10 self-center">
+              <Image
+                src="/Dua Charitable Trust_LOGO_2026.jpg (3).jpeg"
+                alt="Dua Logo Icon"
+                fill
+                className="object-cover"
+                sizes="48px"
+                priority
               />
-            </svg>
+            </div>
             <span className="font-heading font-extrabold text-lg sm:text-xl tracking-tight text-charcoal">
               Dua
             </span>

@@ -2,18 +2,28 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { PageRoutes } from "@/types";
 import { siteConfig } from "@/constants/data";
 import { SocialIcons } from "@/components/ui/SocialIcons";
 
 export const Footer: React.FC = () => {
+  const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const frameId = requestAnimationFrame(() => setMounted(true));
     return () => cancelAnimationFrame(frameId);
   }, []);
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   // Render skeletal content during server render to prevent hydration mismatches
   if (!mounted) {
@@ -60,20 +70,21 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-4 flex flex-col items-start gap-5">
             <Link
               href={PageRoutes.HOME}
-              className="flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-md"
+              onClick={handleLogoClick}
+              className="flex items-center gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-md"
               aria-label={`${siteConfig.name} Home`}
             >
-              {/* Sprout Circle Icon */}
-              <svg
-                className="w-7 h-7 text-secondary fill-none stroke-current"
-                viewBox="0 0 32 32"
-                strokeWidth="2.5"
-                aria-hidden="true"
-              >
-                <circle cx="16" cy="16" r="14" />
-                <path d="M16 24V14 M16 16c0-3 3-5 6-5 M16 18c0-3-3-5-6-5" strokeLinecap="round" />
-              </svg>
-              <span className="font-heading font-bold text-lg sm:text-xl text-footer-text tracking-tight">
+              {/* Rounded Brand Logo Image Icon */}
+              <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden shrink-0 border border-white/10">
+                <Image
+                  src="/Dua Charitable Trust_LOGO_2026.jpg (3).jpeg"
+                  alt="Dua Logo Icon"
+                  fill
+                  className="object-cover"
+                  sizes="48px"
+                />
+              </div>
+              <span className="font-heading font-bold text-lg sm:text-xl text-footer-text tracking-tight animate-fade-in">
                 {siteConfig.name}
               </span>
             </Link>
@@ -88,7 +99,7 @@ export const Footer: React.FC = () => {
 
           {/* Column 2: Explore */}
           <div className="lg:col-span-2 flex flex-col gap-5">
-            <h3 className="text-xs font-bold text-footer-text/50 uppercase tracking-wider font-body">
+            <h3 className="text-xs font-black text-secondary uppercase tracking-wider font-heading">
               Explore
             </h3>
             <nav className="flex flex-col gap-3.5 text-sm font-semibold font-body" aria-label="Explore Links">
@@ -109,7 +120,7 @@ export const Footer: React.FC = () => {
 
           {/* Column 3: Get Involved */}
           <div className="lg:col-span-2 flex flex-col gap-5">
-            <h3 className="text-xs font-bold text-footer-text/50 uppercase tracking-wider font-body">
+            <h3 className="text-xs font-black text-secondary uppercase tracking-wider font-heading">
               Get Involved
             </h3>
             <nav className="flex flex-col gap-3.5 text-sm font-semibold font-body" aria-label="Get Involved Links">
@@ -127,7 +138,7 @@ export const Footer: React.FC = () => {
 
           {/* Column 4: Contact Info */}
           <div className="lg:col-span-4 flex flex-col gap-5">
-            <h3 className="text-xs font-bold text-footer-text/50 uppercase tracking-wider font-body">
+            <h3 className="text-xs font-black text-secondary uppercase tracking-wider font-heading">
               Contact Us
             </h3>
             <div className="flex flex-col gap-4 text-sm font-body text-footer-text/85">

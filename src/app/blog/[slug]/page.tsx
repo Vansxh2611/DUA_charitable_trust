@@ -5,7 +5,9 @@ import { notFound } from "next/navigation";
 import { blogData } from "@/constants/data";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
-import { Newsletter } from "@/components/sections/Newsletter";
+import { CTA } from "@/components/sections/CTA";
+import { ctaData } from "@/constants/data";
+import { PageRoutes } from "@/types";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 
 interface BlogPostDetailProps {
@@ -20,8 +22,9 @@ export function generateStaticParams(): { slug: string }[] {
   }));
 }
 
-export default function BlogPostDetail({ params }: BlogPostDetailProps): React.ReactNode {
-  const post = blogData.find((p) => p.slug === params.slug);
+export default async function BlogPostDetail({ params }: { params: Promise<{ slug: string }> }): Promise<React.ReactNode> {
+  const { slug } = await params;
+  const post = blogData.find((p) => p.slug === slug);
 
   if (!post) {
     notFound();
@@ -91,9 +94,13 @@ export default function BlogPostDetail({ params }: BlogPostDetailProps): React.R
         </Container>
       </section>
 
-      <Newsletter
-        title="Stay Nurtured with Eco-Digest"
-        subtitle="Subscribe to receive our monthly reviews, organic farming guides, and restoration volunteer callouts."
+      <CTA
+        title={ctaData.title}
+        description={ctaData.description}
+        primaryCtaText={ctaData.primaryCtaText}
+        primaryCtaLink={ctaData.primaryCtaLink}
+        secondaryCtaText={ctaData.secondaryCtaText}
+        secondaryCtaLink={ctaData.secondaryCtaLink}
       />
     </div>
   );
