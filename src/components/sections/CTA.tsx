@@ -1,3 +1,4 @@
+// CTA component for newsletter / involvement actions
 import React from "react";
 import { CTAProps } from "@/types";
 import { BackgroundPattern } from "../ui/BackgroundPattern";

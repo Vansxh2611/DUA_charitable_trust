@@ -9,9 +9,10 @@ import { cn } from "@/utils/cn";
 interface NavLinkProps {
   href: string;
   label: string;
+  isScrolled?: boolean;
 }
 
-export const NavLink: React.FC<NavLinkProps> = ({ href, label }) => {
+export const NavLink: React.FC<NavLinkProps> = ({ href, label, isScrolled = false }) => {
   const pathname = usePathname();
   const shouldReduceMotion = useReducedMotion();
 
@@ -28,15 +29,20 @@ export const NavLink: React.FC<NavLinkProps> = ({ href, label }) => {
       href={href}
       aria-current={isActive ? "page" : undefined}
       className={cn(
-        "relative py-2 text-sm font-semibold font-body hover:text-forest transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-md px-2",
-        isActive ? "text-forest" : "text-charcoal/70"
+        "relative py-2 text-sm font-semibold font-body transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-md px-2",
+        isScrolled
+          ? (isActive ? "text-accent" : "text-[#F8F6F1]/85 hover:text-white")
+          : (isActive ? "text-forest" : "text-[#0a142f]/80 hover:text-forest")
       )}
     >
       <span className="relative z-10">{label}</span>
       {isActive && (
         <m.span
           layoutId="activeIndicator"
-          className="absolute bottom-0 left-2 right-2 h-0.5 bg-forest rounded-full"
+          className={cn(
+            "absolute bottom-0 left-2 right-2 h-0.5 rounded-full",
+            isScrolled ? "bg-accent" : "bg-forest"
+          )}
           transition={
             shouldReduceMotion
               ? { type: "tween", duration: 0 }
