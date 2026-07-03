@@ -105,7 +105,7 @@ export const Navbar: React.FC = () => {
           {/* Desktop Action Buttons & Theme Toggle */}
           <div className="flex items-center gap-3">
             <ThemeToggle />
-            
+
             <div className="hidden md:block">
               <Button
                 label="Get Involved"
