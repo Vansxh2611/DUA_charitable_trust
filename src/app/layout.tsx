@@ -77,8 +77,6 @@ export default function RootLayout({
                   var theme = 'light';
                   if (stored === 'light' || stored === 'dark') {
                     theme = stored;
-                  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    theme = 'dark';
                   }
                   document.documentElement.setAttribute('data-theme', theme);
                   document.documentElement.style.colorScheme = theme;

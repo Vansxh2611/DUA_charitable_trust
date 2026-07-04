@@ -3,7 +3,7 @@ export type Theme = "light" | "dark";
 export const THEME_STORAGE_KEY = "dua-theme";
 
 /**
- * Resolves the initial theme state from localStorage or system preferences, SSR safe.
+ * Resolves the initial theme state from localStorage, defaulting to "light" mode.
  */
 export const getInitialTheme = (): Theme => {
   if (typeof window === "undefined") return "light";
@@ -13,11 +13,8 @@ export const getInitialTheme = (): Theme => {
     if (stored === "light" || stored === "dark") {
       return stored as Theme;
     }
-    
-    // Fallback to system preference
-    const media = window.matchMedia("(prefers-color-scheme: dark)");
-    return media.matches ? "dark" : "light";
   } catch {
-    return "light";
+    // Ignore errors
   }
+  return "light";
 };
