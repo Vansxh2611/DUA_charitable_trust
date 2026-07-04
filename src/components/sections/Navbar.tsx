@@ -86,13 +86,7 @@ export const Navbar: React.FC = () => {
               "font-heading font-extrabold text-lg sm:text-xl tracking-tight transition-colors duration-300",
               isScrolled ? "text-nav-scrolled-text" : "text-charcoal"
             )}>
-              Dua
-            </span>
-            <span className={cn(
-              "hidden sm:inline font-body font-normal text-xs sm:text-sm ml-1 transition-colors duration-300",
-              isScrolled ? "text-nav-scrolled-text/75" : "text-muted-text"
-            )}>
-              Charitable Trust
+              Dua <span className="hidden sm:inline">Charitable Trust</span>
             </span>
           </Link>
 
