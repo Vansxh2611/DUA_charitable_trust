@@ -31,8 +31,8 @@ export const NavLink: React.FC<NavLinkProps> = ({ href, label, isScrolled = fals
       className={cn(
         "relative py-2 text-sm font-semibold font-body transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-md px-2",
         isScrolled
-          ? (isActive ? "text-accent" : "text-[#F8F6F1]/85 hover:text-white")
-          : (isActive ? "text-forest" : "text-[#0a142f]/80 hover:text-forest")
+          ? (isActive ? "text-nav-scrolled-active" : "text-nav-scrolled-text/85 hover:text-nav-scrolled-hover")
+          : (isActive ? "text-forest" : "text-charcoal/80 hover:text-forest")
       )}
     >
       <span className="relative z-10">{label}</span>
@@ -41,7 +41,7 @@ export const NavLink: React.FC<NavLinkProps> = ({ href, label, isScrolled = fals
           layoutId="activeIndicator"
           className={cn(
             "absolute bottom-0 left-2 right-2 h-0.5 rounded-full",
-            isScrolled ? "bg-accent" : "bg-forest"
+            isScrolled ? "bg-nav-scrolled-active" : "bg-forest"
           )}
           transition={
             shouldReduceMotion

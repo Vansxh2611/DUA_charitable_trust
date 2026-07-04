@@ -46,18 +46,19 @@ export const Navbar: React.FC = () => {
       </a>
 
       {/* Full-width fixed header — floats + rounds on scroll */}
+      {/* Fixed header — detaches, shrinks, and floats on scroll */}
       <header
         className={cn(
-          "fixed z-50 transition-all duration-500 ease-in-out",
+          "fixed z-50 transition-all duration-300 ease-in-out",
           isScrolled
-            ? "top-3 left-5 right-5 rounded-2xl bg-cream/80 backdrop-blur-xl shadow-lg border border-card-border"
-            : "top-0 left-0 right-0 w-full border-b border-card-border bg-sage/95 backdrop-blur-md shadow-xs"
+            ? "top-3 left-5 right-5 rounded-2xl bg-nav-scrolled-bg backdrop-blur-xl shadow-lg border border-card-border/20"
+            : "top-0 left-0 right-0 w-full border-b border-transparent bg-transparent shadow-none"
         )}
       >
         <div
           className={cn(
             "mx-auto w-full flex items-center justify-between transition-all duration-300",
-            isScrolled ? "px-5 py-3 max-w-full" : "px-6 max-w-[90rem] py-4 md:py-5"
+            isScrolled ? "px-5 py-2.5 max-w-full" : "px-6 py-4 md:py-5 max-w-[90rem]"
           )}
         >
           {/* Logo */}
@@ -65,8 +66,8 @@ export const Navbar: React.FC = () => {
             href="/"
             onClick={handleLogoClick}
             className={cn(
-              "flex items-center gap-1.5 text-charcoal focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-md transition-transform duration-300 origin-left",
-              isScrolled ? "scale-95" : "scale-100"
+              "flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-md transition-all duration-300 origin-left",
+              isScrolled ? "scale-92" : "scale-100"
             )}
             aria-label={`${siteConfig.name} Home`}
           >
@@ -81,10 +82,16 @@ export const Navbar: React.FC = () => {
                 priority
               />
             </div>
-            <span className="font-heading font-extrabold text-lg sm:text-xl tracking-tight text-charcoal">
+            <span className={cn(
+              "font-heading font-extrabold text-lg sm:text-xl tracking-tight transition-colors duration-300",
+              isScrolled ? "text-nav-scrolled-text" : "text-charcoal"
+            )}>
               Dua
             </span>
-            <span className="hidden sm:inline font-body font-normal text-xs sm:text-sm text-muted-text ml-1">
+            <span className={cn(
+              "hidden sm:inline font-body font-normal text-xs sm:text-sm ml-1 transition-colors duration-300",
+              isScrolled ? "text-nav-scrolled-text/75" : "text-muted-text"
+            )}>
               Charitable Trust
             </span>
           </Link>
@@ -98,7 +105,7 @@ export const Navbar: React.FC = () => {
             aria-label="Main Navigation"
           >
             {navItems.map((item, index) => (
-              <NavLink key={index} href={item.href} label={item.label} />
+              <NavLink key={index} href={item.href} label={item.label} isScrolled={isScrolled} />
             ))}
           </nav>
 
@@ -112,7 +119,12 @@ export const Navbar: React.FC = () => {
                 variant="outline"
                 size={isScrolled ? "sm" : "md"}
                 href={siteConfig.donateLink}
-                className="bg-transparent border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-cream rounded-full transition-all duration-300 shadow-none font-bold"
+                className={cn(
+                  "bg-transparent rounded-full transition-all duration-300 shadow-none font-bold",
+                  isScrolled
+                    ? "border-nav-scrolled-text/30 text-nav-scrolled-text hover:bg-nav-scrolled-text hover:text-[#FAF8F3]!"
+                    : "border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-cream"
+                )}
                 aria-label="Get Involved - Make a donation"
               />
             </div>
@@ -120,7 +132,12 @@ export const Navbar: React.FC = () => {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="md:hidden p-2 text-charcoal hover:text-forest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-full cursor-pointer flex items-center justify-center"
+              className={cn(
+                "md:hidden p-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded-full cursor-pointer flex items-center justify-center",
+                isScrolled
+                  ? "text-nav-scrolled-text hover:text-nav-scrolled-hover"
+                  : "text-charcoal hover:text-forest"
+              )}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-nav-drawer"
               aria-label="Open navigation menu"

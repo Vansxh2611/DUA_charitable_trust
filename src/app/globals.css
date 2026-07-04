@@ -30,6 +30,11 @@
   --color-pistachio: #C89B52; /* Mapped to warm ochre secondary */
   --color-pistachio-hover: #A97B34;
 
+  --color-nav-scrolled-bg: var(--nav-scrolled-bg);
+  --color-nav-scrolled-text: var(--nav-scrolled-text);
+  --color-nav-scrolled-hover: var(--nav-scrolled-hover);
+  --color-nav-scrolled-active: var(--nav-scrolled-active);
+
   /* Fonts */
   --font-heading: "Bricolage Grotesque", sans-serif;
   --font-body: "Albert Sans", sans-serif;
@@ -62,6 +67,12 @@
   --background: var(--cream);
   --footer-bg: #3E4A36; /* Footer Background (Deep Olive) */
   --footer-text: #F8F6F1; /* Footer Text (Warm White) */
+
+  /* Scrolled Navbar Theme-Adaptive Green Colors */
+  --nav-scrolled-bg: rgba(221, 243, 228, 0.85); /* #DDF3E4 with opacity */
+  --nav-scrolled-text: #1F3D2B; /* deep forest green */
+  --nav-scrolled-hover: #2E5E3E; /* slightly darker green */
+  --nav-scrolled-active: #1F3D2B;
 
   /* Status Colors */
   --success: #566246; /* Success (Olive Green) */
@@ -100,6 +111,12 @@
   --background: var(--cream);
   --footer-bg: #1E251A;
   --footer-text: #F8F6F1;
+
+  /* Scrolled Navbar Theme-Adaptive Green Colors */
+  --nav-scrolled-bg: rgba(47, 62, 46, 0.85); /* #2F3E2E with opacity */
+  --nav-scrolled-text: #E6F2E9; /* soft sage */
+  --nav-scrolled-hover: #A7D7B5; /* pastel green accent */
+  --nav-scrolled-active: #A7D7B5;
 
   /* Gold/Accent stops for dark mode - softer, less neon */
   --gold-text-from: #D9B372;
