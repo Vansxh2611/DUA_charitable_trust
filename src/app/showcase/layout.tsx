@@ -15,5 +15,5 @@ interface ShowcaseLayoutProps {
 }
 
 export default function ShowcaseLayout({ children }: ShowcaseLayoutProps) {
-  return <>{children}</>;
+  return children;
 }

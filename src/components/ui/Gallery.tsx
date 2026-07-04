@@ -180,7 +180,12 @@ export const Gallery: React.FC<GalleryProps> = ({
       {/* Lightbox dialog */}
       <AnimatePresence>
         {isOpen && activeLightboxIndex !== null && (
-          <div
+          <motion.div
+            key="lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             ref={lightboxRef}
             role="dialog"
             aria-modal="true"
@@ -252,7 +257,7 @@ export const Gallery: React.FC<GalleryProps> = ({
             >
               <X className="w-5 h-5" />
             </button>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

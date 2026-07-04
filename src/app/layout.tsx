@@ -83,6 +83,25 @@ export default function RootLayout({
                   document.documentElement.setAttribute('data-theme', theme);
                   document.documentElement.style.colorScheme = theme;
                 } catch (e) {}
+
+                // Suppress Next.js 16 internal OuterLayoutRouter BF-cache key warning.
+                // OuterLayoutRouter returns an unkeyed array for back/forward cache support.
+                // This is a framework bug, not application code. Remove when Next.js fixes it.
+                var origErr = console.error;
+                console.error = function() {
+                  if (
+                    typeof arguments[0] === 'string' &&
+                    arguments[0].indexOf('unique') !== -1 &&
+                    arguments[0].indexOf('key') !== -1
+                  ) {
+                    for (var i = 0; i < arguments.length; i++) {
+                      if (typeof arguments[i] === 'string' && arguments[i].indexOf('OuterLayoutRouter') !== -1) {
+                        return;
+                      }
+                    }
+                  }
+                  return origErr.apply(console, arguments);
+                };
               })();
             `,
           }}

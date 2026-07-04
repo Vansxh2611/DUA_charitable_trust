@@ -19,12 +19,18 @@ const AboutHero = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
         {/* Left Content Card — 50% */}
         <div
-          className="relative bg-sage border border-card-border rounded-lg overflow-hidden shadow-xs"
-          style={{ height: "calc(100vh - 120px)", minHeight: "650px" }}
+          className="relative border border-card-border rounded-lg overflow-hidden shadow-xs"
+          style={{ 
+            height: "calc(100vh - 120px)", 
+            minHeight: "650px",
+            backgroundImage: "url('/together-bg.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center"
+          }}
         >
-          <BackgroundPattern variant="leaf" opacity={0.3} className="text-forest/10 animate-pulse" />
+          <BackgroundPattern variant="leaf" opacity={0.15} className="text-forest/10 animate-pulse" />
           {/* Inner overlay card — centered */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[72%] h-[84%] bg-white border border-[#DDD5C8] rounded-lg z-10 flex flex-col justify-center items-center text-center p-8 lg:p-12 shadow-md overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[72%] h-[84%] bg-white/90 backdrop-blur-md border border-[#DDD5C8] rounded-lg z-10 flex flex-col justify-center items-center text-center p-8 lg:p-12 shadow-md overflow-hidden animate-fade-in">
             <span className="text-xs font-mono text-accent font-extrabold uppercase tracking-widest block mb-3">
               Who We Are
             </span>
@@ -155,16 +161,16 @@ const FoundersMessage = () => (
           />
         </div>
         <div className="flex-grow">
-          <span className="text-xs font-mono text-accent font-extrabold uppercase tracking-widest block mb-2">Founder's Vision</span>
+          <span className="text-xs font-mono text-accent font-extrabold uppercase tracking-widest block mb-2">Founder&apos;s Vision</span>
           <h3 className="text-2xl sm:text-3xl font-black text-charcoal font-heading leading-tight mb-4">
-            "True development is holistic; it unites learning, art, ecology, and health to empower the whole community."
+            &ldquo;True development is holistic; it unites learning, art, ecology, and health to empower the whole community.&rdquo;
           </h3>
           <p className="text-sm sm:text-base text-charcoal/70 leading-relaxed font-body mb-5">
-            Dua was founded to provide holistic, multi-domain support. We believe that curiosity, sustainable ecosystems, creative expression, and physical well-being are key pillars in unlocking a community's true potential.
+            Dua was founded to provide holistic, multi-domain support. We believe that curiosity, sustainable ecosystems, creative expression, and physical well-being are key pillars in unlocking a community&apos;s true potential.
           </p>
           <div>
             <span className="block text-sm font-bold text-charcoal font-heading">Dr. Alisha Dua</span>
-            <span className="block text-xs text-muted-text font-semibold font-body">Founder & Trustee, Dua Charitable Trust</span>
+            <span className="block text-xs text-muted-text font-semibold font-body">Founder &amp; Trustee, Dua Charitable Trust</span>
           </div>
         </div>
       </div>

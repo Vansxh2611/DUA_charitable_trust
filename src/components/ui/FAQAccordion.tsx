@@ -135,6 +135,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
                   <AnimatePresence initial={false}>
                     {isOpen && (
                       <motion.div
+                        key="content"
                         id={`faq-panel-${id}`}
                         role="region"
                         aria-labelledby={`faq-btn-${id}`}
@@ -153,7 +154,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
               );
             })
           ) : (
-            <div className="text-center py-12 text-charcoal/55 text-sm font-body">
+            <div key="no-results" className="text-center py-12 text-charcoal/55 text-sm font-body">
               No questions found matching your search.
             </div>
           )}

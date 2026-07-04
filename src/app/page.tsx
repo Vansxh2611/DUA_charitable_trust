@@ -20,7 +20,7 @@ import {
 
 export default function Home(): React.ReactNode {
   return (
-    <>
+    <div className="w-full bg-cream">
       <Hero
         heading={heroData.heading}
         subheading={heroData.subheading}
@@ -71,6 +71,6 @@ export default function Home(): React.ReactNode {
         secondaryCtaText={ctaData.secondaryCtaText}
         secondaryCtaLink={ctaData.secondaryCtaLink}
       />
-    </>
+    </div>
   );
 }

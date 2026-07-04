@@ -57,7 +57,7 @@ const SeedsTextReveal: React.FC<{
           {title}
         </m.h3>
       </div>
-      
+
       <div className="overflow-hidden">
         <m.p
           variants={textItem}
@@ -69,7 +69,7 @@ const SeedsTextReveal: React.FC<{
       </div>
 
       <div className="overflow-hidden">
-        <m.div 
+        <m.div
           variants={textItem}
           style={{ willChange: "transform, opacity" }}
         >
@@ -99,15 +99,15 @@ export const SeedsOfChange: React.FC = () => {
   };
 
   const textItem = {
-    hidden: { 
-      opacity: 0, 
-      x: shouldReduceMotion ? 0 : -24 
+    hidden: {
+      opacity: 0,
+      x: shouldReduceMotion ? 0 : -24
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
-      transition: { 
-        duration: 0.9, 
+      transition: {
+        duration: 0.9,
         ease: [0.22, 1, 0.36, 1] // smooth easeOutQuart
       }
     },
@@ -128,10 +128,15 @@ export const SeedsOfChange: React.FC = () => {
           {/* Top Intro Card - Static */}
           <div
             className={cn(
-              "relative bg-gradient-to-br from-cream via-sage/10 to-cream p-8 sm:p-12 md:p-14 rounded-lg border border-charcoal/10 shadow-soft overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-6",
+              "relative bg-cream p-8 sm:p-12 md:p-14 rounded-lg border border-charcoal/10 shadow-soft overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-6",
               "hover:shadow-card hover:-translate-y-0.5 transition-all duration-300"
             )}
           >
+            {/* Background Image Container with scale to crop out baked-in white margins */}
+            <div
+              className="absolute inset-0 bg-cover bg-no-repeat bg-center scale-[1.08] pointer-events-none z-0"
+              style={{ backgroundImage: "url('/seeds-box-bg.png')" }}
+            />
             {/* Watercolor paper wash overlay */}
             <div
               className="absolute inset-0 pointer-events-none opacity-30 mix-blend-overlay bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.7)_0%,transparent_75%)]"
@@ -192,10 +197,16 @@ export const SeedsOfChange: React.FC = () => {
                     className={cn(
                       "relative p-8 sm:p-12 md:p-14 min-h-[320px] sm:min-h-[360px] lg:min-h-[400px] rounded-lg overflow-hidden border border-charcoal/10 shadow-soft flex flex-col justify-center items-start w-full",
                       isEven ? "lg:order-2" : "lg:order-1",
-                      washClasses[item.wash],
+                      item.bgImage ? "" : washClasses[item.wash],
                       "hover:shadow-card hover:-translate-y-0.5 transition-all duration-300"
                     )}
                   >
+                    {item.bgImage && (
+                      <div
+                        className="absolute inset-0 bg-cover bg-no-repeat bg-center scale-[1.08] pointer-events-none z-0"
+                        style={{ backgroundImage: `url('${item.bgImage}')` }}
+                      />
+                    )}
                     {/* Watercolor paper wash overlay */}
                     <div
                       className="absolute inset-0 pointer-events-none opacity-30 mix-blend-overlay bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.7)_0%,transparent_75%)]"

@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { HeroProps } from "@/types";
 import { Button } from "../ui/Button";
-import { BackgroundPattern } from "../ui/BackgroundPattern";
-import { TextReveal, Magnetic } from "../ui";
+import { TextReveal, BackgroundPattern } from "../ui";
 import Image from "next/image";
 import { Container } from "../ui/Container";
 import { cn } from "@/utils/cn";
@@ -52,6 +51,18 @@ export const Hero: React.FC<HeroProps> = ({
   const [progress, setProgress] = useState(0);
   const INTERVAL = 5000;
 
+  const goToSlide = useCallback((next: number) => {
+    if (next === activeSlide || sliding) return;
+    setPrevSlide(activeSlide);
+    setSliding(true);
+    setProgress(0);
+    setTimeout(() => {
+      setActiveSlide(next);
+      setPrevSlide(null);
+      setSliding(false);
+    }, 600);
+  }, [activeSlide, sliding]);
+
   useEffect(() => {
     if (isAboutPage) return;
     Promise.resolve().then(() => setProgress(0));
@@ -66,19 +77,7 @@ export const Hero: React.FC<HeroProps> = ({
       clearInterval(progressTimer);
       clearTimeout(slideTimer);
     };
-  }, [activeSlide, isAboutPage, homeSlides.length]);
-
-  const goToSlide = (next: number) => {
-    if (next === activeSlide || sliding) return;
-    setPrevSlide(activeSlide);
-    setSliding(true);
-    setProgress(0);
-    setTimeout(() => {
-      setActiveSlide(next);
-      setPrevSlide(null);
-      setSliding(false);
-    }, 600);
-  };
+  }, [activeSlide, isAboutPage, homeSlides.length, goToSlide]);
 
   // ── About page slides ────────────────────────────────────────────
   const aboutSlides = [
@@ -205,10 +204,13 @@ export const Hero: React.FC<HeroProps> = ({
 
           {/* Left Content Card — 50% */}
           <div
-            className="relative bg-sage border border-card-border rounded-lg overflow-hidden shadow-xs"
-            style={{ height: "calc(100vh - 120px)", minHeight: "650px" }}
+            className="relative bg-sage bg-cover bg-center border border-card-border rounded-lg overflow-hidden shadow-xs"
+            style={{ 
+              height: "calc(100vh - 120px)", 
+              minHeight: "650px",
+              backgroundImage: "url('/watercolor-bg.png')"
+            }}
           >
-            <BackgroundPattern variant="leaf" opacity={0.3} className="text-forest/10 animate-pulse" />
             {/* Inner overlay card — 68% width × 80% height, perfectly centered. Static light background. */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[68%] h-[80%] bg-white border border-[#DDD5C8] rounded-lg z-10 flex flex-col justify-center items-center text-center p-8 lg:p-12 shadow-md overflow-hidden">
               <h1 className="text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight text-[#0a142f]! font-heading leading-tight mb-4">
