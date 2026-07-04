@@ -134,7 +134,7 @@ export const SeedsOfChange: React.FC = () => {
           >
             {/* Background Image Container with scale to crop out baked-in white margins */}
             <div
-              className="absolute inset-0 bg-cover bg-no-repeat bg-center scale-[1.08] pointer-events-none z-0 dark:opacity-10"
+              className="absolute inset-0 bg-cover bg-no-repeat bg-center scale-[1.08] pointer-events-none z-0"
               style={{ backgroundImage: "url('/seeds-box-bg.png')" }}
             />
             {/* Watercolor paper wash overlay */}
@@ -197,13 +197,13 @@ export const SeedsOfChange: React.FC = () => {
                     className={cn(
                       "relative p-8 sm:p-12 md:p-14 min-h-[320px] sm:min-h-[360px] lg:min-h-[400px] rounded-lg overflow-hidden border border-charcoal/10 shadow-soft flex flex-col justify-center items-start w-full",
                       isEven ? "lg:order-2" : "lg:order-1",
-                      item.bgImage ? "bg-cream" : washClasses[item.wash],
+                      item.bgImage ? "" : washClasses[item.wash],
                       "hover:shadow-card hover:-translate-y-0.5 transition-all duration-300"
                     )}
                   >
                     {item.bgImage && (
                       <div
-                        className="absolute inset-0 bg-cover bg-no-repeat bg-center scale-[1.08] pointer-events-none z-0 dark:opacity-10"
+                        className="absolute inset-0 bg-cover bg-no-repeat bg-center scale-[1.08] pointer-events-none z-0"
                         style={{ backgroundImage: `url('${item.bgImage}')` }}
                       />
                     )}
