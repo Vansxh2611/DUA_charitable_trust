@@ -71,21 +71,21 @@
 
   /* Used in JS for theme transition ripple colors */
   --light-bg: #FAF8F3;
-  --dark-bg: #1A2016;
+  --dark-bg: #2C3528;
 }
 
 [data-theme="dark"] {
   /* Dark Theme Variables adapted for dark readability while maintaining brand tone */
-  --cream: #1A2016; /* Dark Olive Black */
-  --sage: #232C1E;  /* Dark Olive Card */
-  --mint: #232C1E;
-  --beige: #2E3A28; /* Feature Sections */
-  --card-bg: #232C1E;
+  --cream: #2C3528; /* Lighter Dark Olive Black */
+  --sage: #364231;  /* Lighter Dark Olive Card */
+  --mint: #364231;
+  --beige: #41503C; /* Lighter Feature Sections */
+  --card-bg: #364231;
   --card-border: rgba(221, 213, 200, 0.12);
 
   --forest: #8FA67C; /* Soft light olive */
   --forest-dark: #A4B993;
-  --navy: #12170E;
+  --navy: #1E251A;
   --secondary: #D9B372; /* Soft ochre */
 
   --charcoal: #FAF8F3;
@@ -98,7 +98,7 @@
   --emergency-accent: #E57373;
 
   --background: var(--cream);
-  --footer-bg: #12170E;
+  --footer-bg: #1E251A;
   --footer-text: #F8F6F1;
 
   /* Gold/Accent stops for dark mode - softer, less neon */

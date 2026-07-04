@@ -52,7 +52,7 @@ const SeedsTextReveal: React.FC<{
         <m.h3
           variants={textItem}
           style={{ willChange: "transform, opacity" }}
-          className="text-2xl sm:text-3xl font-extrabold text-charcoal font-heading leading-tight mb-4"
+          className="text-2xl sm:text-3xl font-extrabold text-[#0a142f]! font-heading leading-tight mb-4"
         >
           {title}
         </m.h3>
@@ -62,7 +62,7 @@ const SeedsTextReveal: React.FC<{
         <m.p
           variants={textItem}
           style={{ willChange: "transform, opacity" }}
-          className="text-sm sm:text-base text-charcoal/70 leading-relaxed font-body mb-6"
+          className="text-sm sm:text-base text-[#0a142f]/70! leading-relaxed font-body mb-6"
         >
           {description}
         </m.p>
@@ -75,7 +75,7 @@ const SeedsTextReveal: React.FC<{
         >
           <Link
             href={href}
-            className="inline-flex items-center text-sm font-bold font-body text-forest hover:text-charcoal transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded px-1 -ml-1"
+            className="inline-flex items-center text-sm font-bold font-body text-[#566246]! hover:text-[#0a142f]! transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40 rounded px-1 -ml-1"
           >
             Learn More
           </Link>
@@ -128,7 +128,7 @@ export const SeedsOfChange: React.FC = () => {
           {/* Top Intro Card - Static */}
           <div
             className={cn(
-              "relative bg-cream p-8 sm:p-12 md:p-14 rounded-lg border border-charcoal/10 shadow-soft overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-6",
+              "relative bg-[#FAF8F3]! p-8 sm:p-12 md:p-14 rounded-lg border border-[#0a142f]/10 shadow-soft overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-6",
               "hover:shadow-card hover:-translate-y-0.5 transition-all duration-300"
             )}
           >
@@ -146,11 +146,11 @@ export const SeedsOfChange: React.FC = () => {
             <div className="max-w-2xl relative z-10">
               <h2
                 id="seeds-section-title"
-                className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-charcoal font-heading leading-tight mb-3"
+                className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#0a142f]! font-heading leading-tight mb-3"
               >
                 {seedsIntro.title}
               </h2>
-              <p className="text-sm sm:text-base text-charcoal/70 leading-relaxed font-body">
+              <p className="text-sm sm:text-base text-[#0a142f]/70! leading-relaxed font-body">
                 {seedsIntro.description}
               </p>
             </div>
@@ -158,7 +158,7 @@ export const SeedsOfChange: React.FC = () => {
             <div className="relative z-10 shrink-0">
               <Link
                 href={seedsIntro.buttonHref}
-                className="inline-flex items-center justify-center px-6 py-3 bg-accent/20 border border-accent/30 text-charcoal hover:bg-accent/30 rounded-lg font-heading font-extrabold text-sm shadow-xs hover:shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40"
+                className="inline-flex items-center justify-center px-6 py-3 bg-accent/20 border border-accent/30 text-[#0a142f]! hover:bg-accent/30 rounded-lg font-heading font-extrabold text-sm shadow-xs hover:shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/40"
               >
                 {seedsIntro.buttonLabel}
               </Link>
@@ -175,7 +175,7 @@ export const SeedsOfChange: React.FC = () => {
                   {/* Image Tile - Static */}
                   <div
                     className={cn(
-                      "relative min-h-[320px] sm:min-h-[360px] lg:min-h-[400px] rounded-lg overflow-hidden border border-charcoal/10 shadow-soft w-full",
+                      "relative min-h-[320px] sm:min-h-[360px] lg:min-h-[400px] rounded-lg overflow-hidden border border-[#0a142f]/10 shadow-soft w-full",
                       isEven ? "lg:order-1" : "lg:order-2",
                       "hover:shadow-card hover:-translate-y-0.5 transition-all duration-300"
                     )}
@@ -195,9 +195,9 @@ export const SeedsOfChange: React.FC = () => {
                   {/* Text Tile - Static Container */}
                   <div
                     className={cn(
-                      "relative p-8 sm:p-12 md:p-14 min-h-[320px] sm:min-h-[360px] lg:min-h-[400px] rounded-lg overflow-hidden border border-charcoal/10 shadow-soft flex flex-col justify-center items-start w-full",
+                      "relative p-8 sm:p-12 md:p-14 min-h-[320px] sm:min-h-[360px] lg:min-h-[400px] rounded-lg overflow-hidden border border-[#0a142f]/10 shadow-soft flex flex-col justify-center items-start w-full",
                       isEven ? "lg:order-2" : "lg:order-1",
-                      item.bgImage ? "" : washClasses[item.wash],
+                      item.bgImage ? "bg-[#FAF8F3]!" : washClasses[item.wash],
                       "hover:shadow-card hover:-translate-y-0.5 transition-all duration-300"
                     )}
                   >
