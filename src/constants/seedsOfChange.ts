@@ -10,8 +10,8 @@ export interface SeedItem {
 }
 
 export const seedsIntro = {
-  title: "Seeds of Change in Action",
-  description: "From mobile libraries to pop-up science fairs, our projects are designed to meet communities where they are, sparking a lifelong love for discovery.",
+  title: "Empowerment in Action",
+  description: "From women's tailoring cooperatives to native seed banks, our projects are designed to meet communities where they are, sparking sustainable local development.",
   buttonLabel: "Explore All Projects",
   buttonHref: "/our-projects",
 };
@@ -19,8 +19,8 @@ export const seedsIntro = {
 export const seedsItems: SeedItem[] = [
   {
     id: "seeds-1",
-    title: "Digital Literacy for All",
-    description: "Bridging the technological divide by providing digital tools and training to students in underserved urban centers.",
+    title: "Digital Literacy & Tech Bootcamps",
+    description: "Bridging the technological divide by delivering computer coding workshops and tech certifications for rural youth.",
     href: "/our-projects/code-bloom",
     imageSrc: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop",
     imageAlt: "Child in classroom using a digital tablet and smiling",
@@ -29,9 +29,9 @@ export const seedsItems: SeedItem[] = [
   },
   {
     id: "seeds-2",
-    title: "STEAM Workshops in Rural Peru",
-    description: "Empowering students through hands-on science and technology projects that solve local community challenges.",
-    href: "/our-projects/curiosity-labs",
+    title: "Sustainable Community Farming",
+    description: "Empowering rural households with organic agriculture training, native seed vaults, and compost chemistry education.",
+    href: "/our-projects/green-roots",
     imageSrc: "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800&auto=format&fit=crop",
     imageAlt: "Student in rural Peru Andes holding and assembling a wooden science project",
     wash: "mint",
@@ -39,9 +39,9 @@ export const seedsItems: SeedItem[] = [
   },
   {
     id: "seeds-3",
-    title: "The Mobile Library Initiative",
-    description: "Bringing curated book collections and reading workshops to remote areas where access to libraries is limited.",
-    href: "/our-projects/the-wisdom-collective",
+    title: "Interactive Mobile Classrooms",
+    description: "Bringing books, educational tablets, and trained mentors directly to remote areas where access to quality schooling is limited.",
+    href: "/our-projects/curiosity-labs",
     imageSrc: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop",
     imageAlt: "Mobile library yellow trailer with books and students reading outside",
     wash: "beige",
@@ -49,9 +49,9 @@ export const seedsItems: SeedItem[] = [
   },
   {
     id: "seeds-4",
-    title: "Art & Gardening for Empowerment",
-    description: "Using creative expression as a tool for building confidence and community identity among young learners.",
-    href: "/our-projects/canvas-of-hope",
+    title: "Vocational Tailoring Cooperatives",
+    description: "Providing women with sewing machines, financial literacy classes, and cooperative hubs to build sustainable livelihoods.",
+    href: "/our-projects/the-wisdom-collective",
     imageSrc: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=800&auto=format&fit=crop",
     imageAlt: "Group of children planting and watering green saplings in a community garden",
     wash: "mint",
