@@ -12,8 +12,10 @@ import { NavLink } from "./NavLink";
 import { MobileNavDrawer } from "./MobileNavDrawer";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { useLoading } from "@/context/LoadingContext";
 
 export const Navbar: React.FC = () => {
+  const { isLoaded } = useLoading();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -155,9 +157,13 @@ export const Navbar: React.FC = () => {
             : "top-0 left-0 right-0 w-full border-b border-transparent bg-transparent shadow-none"
         )}
       >
-        <div
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={isLoaded ? { y: 0, opacity: 1 } : { y: -20, opacity: 0 }}
+          transition={{ duration: 0.55, ease: [0.25, 1, 0.5, 1], delay: 0.18 }}
+          style={{ willChange: "transform, opacity" }}
           className={cn(
-            "mx-auto w-full flex items-center justify-between transition-all duration-300",
+            "mx-auto w-full flex items-center justify-between transition-[padding,max-width] duration-300",
             isScrolled ? "px-5 py-2.5 max-w-full" : "px-6 py-4 md:py-5 max-w-[90rem]"
           )}
         >
@@ -255,7 +261,7 @@ export const Navbar: React.FC = () => {
               <Menu size={24} />
             </button>
           </div>
-        </div>
+        </motion.div>
       </header>
 
       {/* Mobile Drawer */}
