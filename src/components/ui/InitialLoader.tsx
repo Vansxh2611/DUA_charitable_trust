@@ -66,20 +66,10 @@ export const InitialLoader: React.FC = () => {
     };
   }, [startReveal, completeLoading, shouldReduceMotion]);
 
-  // Cubic Bezier SVG Path Morphing Coordinate Stages (Stage 3)
-  // Sized at R = 47.5 to run exactly along the outer edge of the viewBox with 2.5% padding to prevent stroke clipping.
-  // Kept as a perfect circle for all loading stages (2, 3, 4, 5, 7) to align cleanly with the logo border.
+  // Cubic Bezier SVG Path Circle
+  // Sized at R = 47.5 (perimeter = 298.45) to run exactly along the outer edge of the viewBox with 2.5% padding to prevent stroke clipping.
+  // Kept constant at all times to prevent CPU redraw cost and guarantee 60 FPS compositor-only transitions.
   const pathCircle = "M 50,2.5 C 76.2,2.5 97.5,23.8 97.5,50 C 97.5,76.2 76.2,97.5 50,97.5 C 23.8,97.5 2.5,76.2 2.5,50 C 2.5,23.8 23.8,2.5 50,2.5 Z";
-
-  const pathD = {
-    // Tiny pulsing circle (Stage 1)
-    1: "M 50,44 C 53.3,44 56,46.7 56,50 C 56,53.3 53.3,56 50,56 C 46.7,56 44,53.3 44,50 C 44,46.7 46.7,44 50,44 Z",
-    2: pathCircle,
-    3: pathCircle,
-    4: pathCircle,
-    5: pathCircle,
-    7: pathCircle,
-  };
 
   // Glassmorphic Mission Badges Configurations (Stage 5)
   const badgesList = [
@@ -113,35 +103,43 @@ export const InitialLoader: React.FC = () => {
               className="absolute w-[124px] h-[124px] rounded-full bg-white/5 dark:bg-white/[0.02] backdrop-blur-xs border border-charcoal/[0.04] dark:border-white/[0.04] z-0 shadow-inner pointer-events-none"
             />
 
-            {/* The actual brand logo image (reveals in Stage 4) */}
-            <AnimatePresence>
-              {stage >= 4 && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute w-[121px] h-[121px] rounded-full overflow-hidden z-10 flex items-center justify-center bg-white border border-charcoal/5 shadow-xs"
-                >
-                  <Image
-                    src="/Dua Charitable Trust_LOGO_2026.jpg (3).jpeg"
-                    alt="Dua Logo Icon"
-                    fill
-                    className="object-cover p-0.5 rounded-full"
-                    sizes="121px"
-                    priority
-                  />
+            {/* Logo Image wrapper: soft watermark at stages 1-3, solid at stage 4-7 */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 10 }}
+              animate={{
+                opacity: stage >= 4 ? 1 : 0.25,
+                scale: stage >= 4 ? 1 : 0.85,
+                y: stage >= 2 ? 0 : 10,
+              }}
+              transition={{
+                opacity: { duration: 0.75, ease: [0.16, 1, 0.3, 1] },
+                scale: { duration: 0.75, ease: [0.16, 1, 0.3, 1] },
+                y: { duration: 0.65, ease: "easeOut" },
+              }}
+              className="absolute w-[121px] h-[121px] rounded-full overflow-hidden z-10 flex items-center justify-center bg-white border border-charcoal/5 shadow-xs"
+            >
+              <Image
+                src="/Dua Charitable Trust_LOGO_2026.jpg (3).jpeg"
+                alt="Dua Logo Icon"
+                fill
+                className="object-cover p-0.5 rounded-full"
+                sizes="121px"
+                priority
+              />
 
-                  {/* Golden Sheen light sweep overlay */}
+              {/* Golden Sheen light sweep overlay (sweeps in Stage 4) */}
+              <AnimatePresence>
+                {stage >= 4 && (
                   <motion.div
                     initial={{ x: "-120%" }}
                     animate={{ x: "160%" }}
+                    exit={{ opacity: 0 }}
                     transition={{ duration: 1.35, ease: "easeInOut", delay: 0.5 }}
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 via-amber-100/30 via-white/40 to-transparent -skew-x-12 z-20 pointer-events-none"
                   />
-                </motion.div>
-              )}
-            </AnimatePresence>
+                )}
+              </AnimatePresence>
+            </motion.div>
 
             {/* SVG Morphing Circle Ring (Stages 1-4) - Sized exactly at 128px (w-32) to align directly with logo image borders */}
             <motion.svg
@@ -149,35 +147,48 @@ export const InitialLoader: React.FC = () => {
               height="128"
               viewBox="0 0 100 100"
               className="absolute z-20 pointer-events-none w-32 h-32"
-              animate={stage === 1 ? { scale: 1.05 } : { scale: 1 }}
-              transition={stage === 1 ? { duration: 0.8, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" } : { duration: 0.3 }}
+              animate={
+                stage === 7
+                  ? { scale: 0.9, opacity: 0 }
+                  : stage === 1
+                  ? { scale: [0.12, 0.14, 0.12], opacity: 0.6 }
+                  : { scale: 1, opacity: 1, rotate: 360 }
+              }
+              transition={
+                stage === 7
+                  ? { duration: 0.4 }
+                  : stage === 1
+                  ? { duration: 1.25, repeat: Infinity, ease: "easeInOut" }
+                  : {
+                      scale: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+                      opacity: { duration: 0.4 },
+                      rotate: { duration: 3.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }
+                    }
+              }
             >
               {/* Ambient Back Glow (Stage 1-2) */}
               <motion.circle
                 cx="50"
                 cy="50"
-                r={stage === 1 ? 6 : 47.5}
+                r={47.5}
                 fill="none"
                 stroke="#2C3E2B"
                 strokeWidth="1.5"
                 opacity={stage === 1 ? 0.2 : 0.05}
-                animate={stage === 1 ? { r: [5, 9, 5] } : {}}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                 className="blur-xs"
               />
 
-              {/* Central Morphing Path - Animated smoothly from 0 to 101% pathLength as the progress line */}
+              {/* Central Circle Path - Multi-segment Dash Draw (3 segments meeting at 100% solid circle) */}
               <motion.path
-                d={pathD[stage]}
-                initial={{ pathLength: 0 }}
+                d={pathCircle}
+                initial={{ strokeDasharray: "15 84.48" }}
                 animate={{
-                  pathLength: 1.01, // Slightly overlap (1.01) to completely merge start/end joint gaps
+                  strokeDasharray: stage === 1 ? "15 84.48" : "99.48 0",
                   stroke: stage >= 4 ? "var(--forest, #2C3E2B)" : "rgba(44, 62, 43, 0.25)",
                   strokeWidth: 1.5,
                 }}
                 transition={{
-                  d: { duration: 1.0, ease: [0.76, 0, 0.24, 1] },
-                  pathLength: { duration: 3.8, ease: [0.22, 1, 0.36, 1], delay: 0.4 },
+                  strokeDasharray: { duration: 3.8, ease: [0.22, 1, 0.36, 1], delay: 0.4 },
                   stroke: { duration: 0.5 },
                 }}
                 strokeLinecap="round"
