@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { LazyMotion, domAnimation, MotionConfig } from "framer-motion";
+import { LazyMotion, domMax, MotionConfig } from "framer-motion";
 
 interface MotionProviderProps {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ interface MotionProviderProps {
 
 export const MotionProvider: React.FC<MotionProviderProps> = ({ children }) => {
   return (
-    <LazyMotion features={domAnimation}>
+    <LazyMotion features={domMax}>
       <MotionConfig reducedMotion="user">
         {children}
       </MotionConfig>

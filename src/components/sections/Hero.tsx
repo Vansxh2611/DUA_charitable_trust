@@ -205,8 +205,8 @@ export const Hero: React.FC<HeroProps> = ({
           {/* Left Content Card — 50% */}
           <div
             className="relative bg-sage bg-cover bg-center border border-card-border rounded-lg overflow-hidden shadow-xs"
-            style={{ 
-              height: "calc(100vh - 120px)", 
+            style={{
+              height: "calc(100vh - 120px)",
               minHeight: "650px",
               backgroundImage: "url('/watercolor-bg.png')"
             }}

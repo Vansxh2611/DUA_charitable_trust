@@ -255,7 +255,7 @@ export default function ShowcasePage() {
             Premium Component Playground
           </h1>
           <p className="text-sm sm:text-base text-charcoal/70 max-w-2xl mt-2 leading-relaxed">
-            Interact with our accessible, modular UI library powered by Tailwind v4 & Framer Motion. 
+            Interact with our accessible, modular UI library powered by Tailwind v4 & Framer Motion.
             Select components from the left menu to configure properties and grab production-ready code.
           </p>
         </div>

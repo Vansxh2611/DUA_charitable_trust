@@ -37,3 +37,4 @@ export { Parallax } from "./Parallax";
 export { Skeleton, CardSkeleton, SectionSkeleton, ImageSkeleton } from "./Skeleton";
 export { Section, Prose } from "./Section";
 export { styles } from "./styles";
+export { InitialLoader } from "./InitialLoader";
