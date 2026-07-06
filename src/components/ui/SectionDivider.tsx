@@ -331,6 +331,18 @@ export const SectionDivider: React.FC<SectionDividerProps> = ({
   // NEW PREMIUM FULL-WIDTH SVG dividers
   // -------------------------------------------------------------
   
+  // Wavy/curvy shape dividers that should be removed/returned as null
+  const isWavy = variant === "wave" || 
+                  variant === "curve" || 
+                  variant === "blob" || 
+                  variant === "liquid" || 
+                  variant === "layered" || 
+                  variant === "organic";
+
+  if (isWavy) {
+    return null;
+  }
+
   // Custom transform style for vertical and/or horizontal flipping
   const flipStyle = flip ? { transform: "scaleY(-1)" } : undefined;
 
