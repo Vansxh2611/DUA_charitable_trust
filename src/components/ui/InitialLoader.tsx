@@ -72,11 +72,12 @@ export const InitialLoader: React.FC = () => {
   const pathCircle = "M 50,2.5 C 76.2,2.5 97.5,23.8 97.5,50 C 97.5,76.2 76.2,97.5 50,97.5 C 23.8,97.5 2.5,76.2 2.5,50 C 2.5,23.8 23.8,2.5 50,2.5 Z";
 
   // Glassmorphic Mission Badges Configurations (Stage 5)
+  // Adjusted offsets on mobile to clear the central logo circle without overflowing the screen edges
   const badgesList = [
-    { label: "📚 Education", pos: "right-1/2 bottom-1/2 mr-8 mb-8 md:mr-14 md:mb-14", floatX: [0, 4, 0], floatY: [0, -6, 0], delay: 0, dur: 4.5 },
-    { label: "❤️ Healthcare", pos: "left-1/2 bottom-1/2 ml-8 mb-8 md:ml-14 md:mb-14", floatX: [0, -3, 0], floatY: [0, -8, 0], delay: 0.25, dur: 5.2 },
-    { label: "🌱 Environment", pos: "right-1/2 top-1/2 mr-8 mt-8 md:mr-14 md:mt-14", floatX: [0, 5, 0], floatY: [0, -5, 0], delay: 0.5, dur: 4.8 },
-    { label: "👧 Women Empowerment", pos: "left-1/2 top-1/2 ml-8 mt-8 md:ml-14 md:mt-14", floatX: [0, -4, 0], floatY: [0, -7, 0], delay: 0.75, dur: 5.5 },
+    { label: "📚 Education", pos: "right-1/2 bottom-1/2 mr-12 mb-12 md:mr-14 md:mb-14", floatX: [0, 4, 0], floatY: [0, -6, 0], delay: 0, dur: 4.5 },
+    { label: "❤️ Healthcare", pos: "left-1/2 bottom-1/2 ml-12 mb-12 md:ml-14 md:mb-14", floatX: [0, -3, 0], floatY: [0, -8, 0], delay: 0.25, dur: 5.2 },
+    { label: "🌱 Environment", pos: "right-1/2 top-1/2 mr-12 mt-12 md:mr-14 md:mt-14", floatX: [0, 5, 0], floatY: [0, -5, 0], delay: 0.5, dur: 4.8 },
+    { label: "👧 Women Empowerment", pos: "left-1/2 top-1/2 ml-10 mt-10 sm:ml-12 sm:mt-12 md:ml-14 md:mt-14", floatX: [0, -4, 0], floatY: [0, -7, 0], delay: 0.75, dur: 5.5 },
   ];
 
   return (
@@ -222,7 +223,7 @@ export const InitialLoader: React.FC = () => {
                       }
                     : { duration: 0.25 }
                 }
-                className={`absolute ${badge.pos} flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-charcoal/10 bg-white/20 dark:bg-white/5 backdrop-blur-md shadow-xs select-none pointer-events-none text-charcoal/90 font-body text-[11px] sm:text-xs font-semibold whitespace-nowrap z-10`}
+                className={`absolute ${badge.pos} flex items-center gap-1 sm:gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded-full border border-charcoal/10 bg-white/20 dark:bg-white/5 backdrop-blur-md shadow-xs select-none pointer-events-none text-charcoal/90 font-body text-[10px] sm:text-xs font-semibold whitespace-nowrap z-10`}
               >
                 {badge.label}
               </motion.div>
