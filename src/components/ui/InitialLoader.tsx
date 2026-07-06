@@ -77,7 +77,7 @@ export const InitialLoader: React.FC = () => {
     { label: "📚 Education", pos: "right-1/2 bottom-1/2 mr-12 mb-12 md:mr-14 md:mb-14", floatX: [0, 4, 0], floatY: [0, -6, 0], delay: 0, dur: 4.5 },
     { label: "❤️ Healthcare", pos: "left-1/2 bottom-1/2 ml-12 mb-12 md:ml-14 md:mb-14", floatX: [0, -3, 0], floatY: [0, -8, 0], delay: 0.25, dur: 5.2 },
     { label: "🌱 Environment", pos: "right-1/2 top-1/2 mr-12 mt-12 md:mr-14 md:mt-14", floatX: [0, 5, 0], floatY: [0, -5, 0], delay: 0.5, dur: 4.8 },
-    { label: "👧 Women Empowerment", pos: "left-1/2 top-1/2 ml-10 mt-10 sm:ml-12 sm:mt-12 md:ml-14 md:mt-14", floatX: [0, -4, 0], floatY: [0, -7, 0], delay: 0.75, dur: 5.5 },
+    { label: "👧 Women Empowerment", pos: "left-1/2 top-1/2 ml-12 mt-12 md:ml-14 md:mt-14", floatX: [0, -4, 0], floatY: [0, -7, 0], delay: 0.75, dur: 5.5 },
   ];
 
   return (
