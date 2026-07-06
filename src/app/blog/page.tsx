@@ -6,6 +6,7 @@ import { BlogCard } from "@/components/ui/BlogCard";
 import { BackgroundPattern } from "@/components/ui/BackgroundPattern";
 import { blogData } from "@/constants/data";
 import { Search, Calendar, MapPin, CheckCircle } from "lucide-react";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 
 export default function Blog(): React.ReactNode {
   const [email, setEmail] = useState("");
@@ -66,8 +67,11 @@ export default function Blog(): React.ReactNode {
         </Container>
       </section>
 
+      {/* 1. Header (cream) -> Search & Grid (sage) */}
+      <SectionDivider variant="curve" color="sage" bgColor="cream" height={90} />
+
       {/* Search and Filters Section */}
-      <section className="py-8 bg-cream">
+      <section className="py-12 bg-sage">
         <Container>
           <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-4 items-center justify-between">
             {/* Search Input */}
@@ -100,26 +104,27 @@ export default function Blog(): React.ReactNode {
             </div>
           </div>
         </Container>
+
+        {/* Blog Cards Grid Section */}
+        <Container className="mt-8">
+          {filteredPosts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredPosts.map((post) => (
+                <BlogCard key={post.slug} post={post} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16 bg-card-bg border border-card-border rounded-lg max-w-xl mx-auto">
+              <p className="text-sm sm:text-base text-charcoal/50 font-body">
+                No articles matched your search query. Try another term!
+              </p>
+            </div>
+          )}
+        </Container>
       </section>
 
-      {/* Blog Cards Grid Section */}
-      <Container className="mt-8">
-        {filteredPosts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-16 bg-card-bg border border-card-border rounded-lg max-w-xl mx-auto">
-            <p className="text-sm sm:text-base text-charcoal/50 font-body">
-              No articles matched your search query. Try another term!
-            </p>
-          </div>
-        )}
-      </Container>
-
-      <div className="border-t border-card-border/50 mx-5 mt-16" />
+      {/* 2. Search & Grid (sage) -> Events (cream) */}
+      <SectionDivider variant="diagonal" color="cream" bgColor="sage" height={90} />
 
       {/* Events Section */}
       <section className="py-12 bg-cream">
@@ -190,7 +195,8 @@ export default function Blog(): React.ReactNode {
         </Container>
       </section>
 
-      <div className="border-t border-card-border/50 mx-5 mt-8" />
+      {/* 3. Events (cream) -> Newsletter (cream) */}
+      <SectionDivider variant="minimal" color="forest/10" bgColor="cream" height={50} />
 
       {/* Stay Inspired Newsletter Section */}
       <Container className="mt-16">
@@ -245,6 +251,8 @@ export default function Blog(): React.ReactNode {
           </div>
         </section>
       </Container>
+      {/* 4. Newsletter (cream) -> Footer (footer-bg) */}
+      <SectionDivider variant="layered" color="footer-bg" bgColor="cream" height={110} />
     </div>
   );
 }

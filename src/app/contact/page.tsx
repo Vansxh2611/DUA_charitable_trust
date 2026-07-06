@@ -6,6 +6,7 @@ import { FAQ } from "@/components/sections/FAQ";
 import { Container } from "@/components/ui/Container";
 import { FAQData } from "@/constants/data";
 import { Clock, Building, CheckCircle, Mail, Phone, MapPin } from "lucide-react";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 
 const OfficeHoursAndDepartments = () => {
   const departments = [
@@ -15,7 +16,7 @@ const OfficeHoursAndDepartments = () => {
   ];
 
   return (
-    <section className="py-12 bg-cream">
+    <section className="py-12 bg-sage">
       <Container size="xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Office Hours */}
@@ -141,7 +142,7 @@ const VolunteerForm = () => {
   };
 
   return (
-    <section className="py-12 bg-cream">
+    <section className="py-12 bg-sage">
       <Container size="xl">
         <div className="bg-card-bg border border-card-border rounded-lg p-8 sm:p-12 shadow-sm max-w-3xl mx-auto text-left">
           <div className="text-center max-w-xl mx-auto mb-8">
@@ -250,7 +251,7 @@ const VolunteerForm = () => {
 export default function Contact(): React.ReactNode {
   return (
     <div className="pt-24 sm:pt-28 bg-cream min-h-screen pb-20">
-      <section className="py-16 sm:py-20 gradient-bg border-b border-forest/10 text-center">
+      <section className="py-16 sm:py-20 text-center">
         <Container>
           <div className="max-w-3xl mx-auto flex flex-col items-center">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
@@ -264,32 +265,40 @@ export default function Contact(): React.ReactNode {
         </Container>
       </section>
 
-      <div className="border-t border-card-border/50 mx-5" />
+      {/* 1. Header (cream) -> ContactForm (cream) */}
+      <SectionDivider variant="minimal" color="forest/10" bgColor="cream" height={50} />
 
       <ContactForm
         title="We would love to hear from you"
         subtitle="Please fill out the form below or use our email/phone channels to speak directly with an organizer."
       />
 
-      <div className="border-t border-card-border/50 mx-5" />
+      {/* 2. ContactForm (cream) -> OfficeHoursAndDepartments (sage) */}
+      <SectionDivider variant="curve" color="sage" bgColor="cream" height={90} />
 
       <OfficeHoursAndDepartments />
 
-      <div className="border-t border-card-border/50 mx-5" />
+      {/* 3. OfficeHoursAndDepartments (sage) -> HubMap (cream) */}
+      <SectionDivider variant="diagonal" color="cream" bgColor="sage" height={90} />
 
       <HubMap />
 
-      <div className="border-t border-card-border/50 mx-5" />
+      {/* 4. HubMap (cream) -> VolunteerForm (sage) */}
+      <SectionDivider variant="wave" color="sage" bgColor="cream" height={100} />
 
       <VolunteerForm />
 
-      <div className="border-t border-card-border/50 mx-5" />
+      {/* 5. VolunteerForm (sage) -> FAQ (cream) */}
+      <SectionDivider variant="blob" color="cream" bgColor="sage" height={95} />
 
       <FAQ
         title="Inquiries FAQ"
         subtitle="Quick answers concerning response timelines, school programs, and regional boundaries."
         faqs={FAQData}
       />
+      
+      {/* 6. FAQ (cream) -> Footer (footer-bg) */}
+      <SectionDivider variant="layered" color="footer-bg" bgColor="cream" height={110} />
     </div>
   );
 }

@@ -12,6 +12,7 @@ import { PageRoutes } from "@/types";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTA } from "@/components/sections/CTA";
 import { FAQData, ctaData } from "@/constants/data";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 
 const AboutHero = () => {
   return (
@@ -20,8 +21,8 @@ const AboutHero = () => {
         {/* Left Content Card — 50% */}
         <div
           className="relative border border-card-border rounded-lg overflow-hidden shadow-xs"
-          style={{ 
-            height: "calc(100vh - 120px)", 
+          style={{
+            height: "calc(100vh - 120px)",
             minHeight: "650px",
             backgroundImage: "url('/together-bg.jpg')",
             backgroundSize: "cover",
@@ -40,7 +41,7 @@ const AboutHero = () => {
             <p className="text-sm sm:text-base text-[#0a142f]/70! leading-relaxed font-body mb-8 max-w-md mx-auto">
               Join us in bringing hope, structured science labs, creative art workshops, and well-being programs to local student cohorts. Every voice and hand helps make a lasting impact.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full">
               <Link
                 href={PageRoutes.DONATE}
@@ -78,7 +79,7 @@ const AboutHero = () => {
 
 const EmpoweringSection = () => {
   return (
-    <section className="py-16 bg-cream">
+    <section className="py-16 bg-sage">
       <Container size="xl">
         {/* Heading at the top */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -188,7 +189,7 @@ const Timeline = () => {
   ];
 
   return (
-    <section className="py-16 bg-cream overflow-hidden">
+    <section className="py-16 bg-sage overflow-hidden">
       <Container size="xl">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
@@ -308,7 +309,7 @@ const TransparencySection = () => {
   ];
 
   return (
-    <section className="py-12 bg-cream">
+    <section className="py-12 bg-sage">
       <Container size="xl">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
@@ -346,35 +347,44 @@ export default function AboutUs(): React.ReactNode {
   return (
     <div className="bg-cream">
       <AboutHero />
-
-      <div className="border-t border-card-border/50 mx-5" />
-
+      
+      {/* AboutHero (cream) -> EmpoweringSection (sage) */}
+      <SectionDivider variant="curve" color="sage" bgColor="cream" height={90} />
+      
       <EmpoweringSection />
-
-      <div className="border-t border-card-border/50 mx-5" />
-
+      
+      {/* EmpoweringSection (sage) -> FoundersMessage (cream) */}
+      <SectionDivider variant="diagonal" color="cream" bgColor="sage" height={90} />
+      
       <FoundersMessage />
-
-      <div className="border-t border-card-border/50 mx-5" />
-
+      
+      {/* FoundersMessage (cream) -> Timeline (sage) */}
+      <SectionDivider variant="wave" color="sage" bgColor="cream" height={100} />
+      
       <Timeline />
-
-      <div className="border-t border-card-border/50 mx-5" />
-
+      
+      {/* Timeline (sage) -> VolunteersSection (cream) */}
+      <SectionDivider variant="liquid" color="cream" bgColor="sage" height={100} />
+      
       <VolunteersSection />
-
-      <div className="border-t border-card-border/50 mx-5" />
-
+      
+      {/* VolunteersSection (cream) -> TransparencySection (sage) */}
+      <SectionDivider variant="blob" color="sage" bgColor="cream" height={95} />
+      
       <TransparencySection />
-
-      <div className="border-t border-card-border/50 mx-5" />
-
+      
+      {/* TransparencySection (sage) -> FAQ (cream) */}
+      <SectionDivider variant="organic" color="cream" bgColor="sage" height={105} />
+      
       <FAQ
         title="About Our Operations"
         subtitle="Learn about our legal status, funding streams, volunteer guides, and local coordination."
         faqs={FAQData}
       />
-
+      
+      {/* FAQ (cream) -> CTA (cream) */}
+      <SectionDivider variant="minimal" color="forest/10" bgColor="cream" height={50} />
+      
       <CTA
         title={ctaData.title}
         description={ctaData.description}
@@ -383,6 +393,9 @@ export default function AboutUs(): React.ReactNode {
         secondaryCtaText={ctaData.secondaryCtaText}
         secondaryCtaLink={ctaData.secondaryCtaLink}
       />
+      
+      {/* CTA (cream) -> Footer (footer-bg) */}
+      <SectionDivider variant="layered" color="footer-bg" bgColor="cream" height={110} />
     </div>
   );
 }

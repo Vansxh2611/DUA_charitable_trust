@@ -38,3 +38,4 @@ export { Skeleton, CardSkeleton, SectionSkeleton, ImageSkeleton } from "./Skelet
 export { Section, Prose } from "./Section";
 export { styles } from "./styles";
 export { InitialLoader } from "./InitialLoader";
+export { BackToTop } from "./BackToTop";

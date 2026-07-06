@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { CheckCircle2, Gift, MessageSquare, Laptop, Flower, Sparkles } from "lucide-react";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 
 export default function Donate(): React.ReactNode {
   const [name, setName] = useState("");
@@ -24,7 +25,7 @@ export default function Donate(): React.ReactNode {
 
   return (
     <div className="pt-24 sm:pt-28 bg-cream min-h-screen pb-20 animate-fade-in">
-      <section className="py-16 sm:py-20 border-b border-card-border/50 text-center">
+      <section className="py-16 sm:py-20 text-center">
         <Container>
           <div className="max-w-3xl mx-auto flex flex-col items-center">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
@@ -37,7 +38,11 @@ export default function Donate(): React.ReactNode {
         </Container>
       </section>
 
-      <Container className="mt-12">
+      {/* 1. Header (cream) -> Ways/Form (sage) */}
+      <SectionDivider variant="curve" color="sage" bgColor="cream" height={90} />
+
+      <section className="py-12 bg-sage">
+        <Container>
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           
           {/* Left Panel: Information on What to Contribute */}
@@ -171,11 +176,12 @@ export default function Donate(): React.ReactNode {
               </form>
             )}
           </div>
-
         </div>
       </Container>
+    </section>
 
-      <div className="border-t border-card-border/50 mx-5 mt-16" />
+      {/* 2. Ways/Form (sage) -> Impact Levels (cream) */}
+      <SectionDivider variant="diagonal" color="cream" bgColor="sage" height={90} />
 
       {/* Re-aligned Support Impact Levels (No dollar values) */}
       <section className="py-12 bg-cream">
@@ -233,10 +239,11 @@ export default function Donate(): React.ReactNode {
         </Container>
       </section>
 
-      <div className="border-t border-card-border/50 mx-5" />
+      {/* 3. Impact Levels (cream) -> FAQ (sage) */}
+      <SectionDivider variant="wave" color="sage" bgColor="cream" height={90} />
 
       {/* Donation FAQs */}
-      <section className="py-12 bg-cream">
+      <section className="py-12 bg-sage">
         <Container size="xl">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
@@ -278,6 +285,9 @@ export default function Donate(): React.ReactNode {
           </div>
         </Container>
       </section>
+      
+      {/* 4. FAQ (sage) -> Footer (footer-bg) */}
+      <SectionDivider variant="layered" color="footer-bg" bgColor="sage" height={110} />
     </div>
   );
 }

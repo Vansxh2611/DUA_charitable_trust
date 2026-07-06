@@ -226,16 +226,16 @@ export const Hero: React.FC<HeroProps> = ({
       <section className="relative bg-cream" style={{ paddingTop: "100px", paddingLeft: "20px", paddingRight: "20px", paddingBottom: "20px" }}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
 
-          {/* Left Content Card — 50% */}
+          {/* Left Content Card — 50% on desktop, full-width on mobile */}
           <motion.div
             initial={{ opacity: 0, y: 40, scale: 0.97 }}
             animate={isLoaded ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.97 }}
             transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
-            className="relative bg-sage bg-cover bg-center border border-card-border rounded-lg overflow-hidden shadow-xs"
+            className="relative bg-sage bg-cover bg-center border border-card-border rounded-lg overflow-hidden shadow-xs flex items-center justify-center"
             style={{
               willChange: "transform, opacity",
-              height: "calc(100vh - 120px)",
-              minHeight: "650px",
+              minHeight: "420px",
+              height: "clamp(420px, calc(100vh - 120px), 900px)",
               backgroundImage: "url('/watercolor-bg.png')"
             }}
           >
@@ -295,10 +295,13 @@ export const Hero: React.FC<HeroProps> = ({
               </motion.svg>
             </motion.div>
 
-            {/* Inner overlay card — 68% width × 80% height, perfectly centered. Static light background. */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[68%] h-[80%] bg-white border border-[#DDD5C8] rounded-lg z-10 flex flex-col justify-center items-center text-center p-8 lg:p-12 shadow-md overflow-hidden">
-              <div className="overflow-hidden mb-4">
-                <h1 className="text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight text-[#0a142f]! font-heading leading-tight">
+            {/* Inner overlay card — fluid width, auto height, centered */}
+            <div className="relative z-10 w-[88%] sm:w-[78%] lg:w-[72%] xl:w-[68%] bg-white border border-[#DDD5C8] rounded-lg flex flex-col justify-center items-center text-center px-6 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14 shadow-md">
+              <div className="overflow-hidden mb-4 w-full">
+                <h1
+                  className="font-black tracking-tight text-[#0a142f] font-heading leading-tight"
+                  style={{ fontSize: "clamp(1.6rem, 4vw + 0.5rem, 3.75rem)" }}
+                >
                   <TextReveal mode="words" stagger={0.03} duration={0.8} animate={animateText}>{heading}</TextReveal>
                 </h1>
               </div>
@@ -306,8 +309,8 @@ export const Hero: React.FC<HeroProps> = ({
                 initial={{ opacity: 0, y: 20 }}
                 animate={animateText === "visible" ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                style={{ willChange: "transform, opacity" }}
-                className="text-sm sm:text-base text-[#0a142f]/70! leading-relaxed font-body mb-8 max-w-md mx-auto"
+                style={{ willChange: "transform, opacity", fontSize: "clamp(0.8rem, 1.2vw + 0.2rem, 1rem)" }}
+                className="text-[#0a142f]/70 leading-relaxed font-body mb-8 max-w-sm mx-auto"
               >
                 {subheading}
               </motion.p>
@@ -327,7 +330,7 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
           </motion.div>
 
-          {/* Right Carousel — 50%, same height, slide transitions */}
+          {/* Right Carousel — 50% on desktop, same fluid height */}
           <motion.div
             initial={{ opacity: 0, y: 40, scale: 0.97 }}
             animate={isLoaded ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.97 }}
@@ -335,8 +338,8 @@ export const Hero: React.FC<HeroProps> = ({
             className="relative w-full rounded-lg overflow-hidden border border-card-border shadow-sm"
             style={{
               willChange: "transform, opacity",
-              height: "calc(100vh - 120px)",
-              minHeight: "650px"
+              minHeight: "300px",
+              height: "clamp(300px, calc(100vh - 120px), 900px)"
             }}
           >
             {homeSlides.map((slide, idx) => {

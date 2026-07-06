@@ -180,6 +180,14 @@ export default function ShowcasePage() {
 
   const [cHeadingUnderline, setCHeadingUnderline] = useState(true);
 
+  // SectionDivider states
+  const [cDividerVariant, setCDividerVariant] = useState<"wave" | "curve" | "blob" | "diagonal" | "liquid" | "layered" | "minimal" | "organic" | "premium" | "decorative" | "minimal-line">("wave");
+  const [cDividerFlip, setCDividerFlip] = useState(false);
+  const [cDividerAnimated, setCDividerAnimated] = useState(true);
+  const [cDividerHeight, setCDividerHeight] = useState(100);
+  const [cDividerColor, setCDividerColor] = useState("forest");
+  const [cDividerBgColor, setCDividerBgColor] = useState("cream");
+
   const categoriesList = [
     {
       group: "Cards",
@@ -224,7 +232,7 @@ export default function ShowcasePage() {
     GlassCard: `<GlassCard\n  opacity={${cGlassOpacity}}\n  blur={${cGlassBlur}}\n  glow={${cGlassGlow}}\n  gradientBorder={true}\n>\n  <div className="p-8">\n    <h3 className="text-xl font-bold font-heading mb-2">Glassmorphism</h3>\n    <p className="text-sm text-charcoal/70">Radial cursor-following glow spotlight.</p>\n  </div>\n</GlassCard>`,
     TiltCard: `<TiltCard\n  intensity={${cTiltIntensity}}\n  glare={${cTiltGlare}}\n  scale={1.04}\n>\n  <div className="p-8">\n    <h3 className="text-lg font-bold font-heading">3D Tilt Effect</h3>\n    <p className="text-xs opacity-70 mt-1">Parallax mouse coordinate transitions.</p>\n  </div>\n</TiltCard>`,
     GradientHeading: `<GradientHeading\n  variant="section"\n  level={2}\n  underline={${cHeadingUnderline}}\n  highlightWords={["Curiosity", "Wisdom"]}\n>\n  Sparking Universal Curiosity & Wisdom\n</GradientHeading>`,
-    SectionDivider: `<SectionDivider\n  variant="premium"\n  animate={true}\n/>`,
+    SectionDivider: `<SectionDivider\n  variant="${cDividerVariant}"\n  flip={${cDividerFlip}}\n  animate={${cDividerAnimated}}\n  height={${cDividerHeight}}\n  color="${cDividerColor}"\n  bgColor="${cDividerBgColor}"\n/>`,
     AnimatedCounter: `<AnimatedCounter\n  target={12450}\n  prefix="$"\n  suffix="+"\n  decimals={0}\n  formatting={true}\n/>`,
     ImpactCounter: `<ImpactCounter\n  stats={[\n    { value: 5000, label: "Students", type: "counter" },\n    { value: 85, label: "Efficiency", type: "circle", progressValue: 85 },\n    { value: 1200, label: "Laptops", type: "progress", progressValue: 78 }\n  ]}\n/>`,
     Timeline: `<Timeline\n  items={timelineItems}\n  orientation="vertical"\n  variant="premium"\n/>`,
@@ -386,7 +394,31 @@ export default function ShowcasePage() {
                   )}
 
                   {activeTab === "SectionDivider" && (
-                    <SectionDivider variant="premium" className="my-0 w-full" />
+                    <div className="w-full border border-forest/10 rounded-2xl overflow-hidden py-10 bg-cream flex flex-col justify-center items-center">
+                      <p className="text-xs text-charcoal/40 font-body mb-6">
+                        Transition Preview (Simulated between sections)
+                      </p>
+                      <div className="w-full bg-cream relative">
+                        <div className="h-20 w-full flex items-center justify-center bg-cream border-b border-forest/5">
+                          <span className="text-xs font-bold opacity-30">SECTION A (Bg: Cream)</span>
+                        </div>
+                        <SectionDivider
+                          variant={cDividerVariant}
+                          flip={cDividerFlip}
+                          animate={cDividerAnimated}
+                          height={cDividerHeight}
+                          color={cDividerColor}
+                          bgColor={cDividerBgColor}
+                          className="my-0 w-full"
+                        />
+                        <div 
+                          className="h-24 w-full flex items-center justify-center transition-colors duration-300"
+                          style={{ backgroundColor: cDividerColor === "forest" ? "var(--forest)" : cDividerColor === "navy" ? "var(--navy)" : cDividerColor === "footer-bg" ? "var(--footer-bg)" : "var(--sage)" }}
+                        >
+                          <span className="text-xs font-bold text-white/50">SECTION B (Color: {cDividerColor})</span>
+                        </div>
+                      </div>
+                    </div>
                   )}
 
                   {activeTab === "AnimatedCounter" && (
@@ -685,7 +717,78 @@ export default function ShowcasePage() {
                   </div>
                 )}
 
-                {!["AnimatedCard", "GlassCard", "TiltCard", "GradientHeading", "AnimatedButton"].includes(activeTab) && (
+                {activeTab === "SectionDivider" && (
+                  <div className="flex flex-wrap gap-6 items-center">
+                    <div className="flex flex-col gap-1">
+                      <span className="text-xs text-charcoal/55 font-body">Variant</span>
+                      <select
+                        value={cDividerVariant}
+                        onChange={(e) => setCDividerVariant(e.target.value as typeof cDividerVariant)}
+                        className="bg-transparent border border-forest/15 rounded-lg py-1 px-3 text-xs font-semibold"
+                      >
+                        <option value="wave">Wave</option>
+                        <option value="curve">Curve</option>
+                        <option value="blob">Blob</option>
+                        <option value="diagonal">Diagonal</option>
+                        <option value="liquid">Liquid</option>
+                        <option value="layered">Layered</option>
+                        <option value="minimal">Minimal Curve</option>
+                        <option value="organic">Organic Shape</option>
+                        <option value="premium">Legacy Premium Line</option>
+                        <option value="decorative">Legacy Decorative Line</option>
+                        <option value="minimal-line">Legacy Minimal Line</option>
+                      </select>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                      <span className="text-xs text-charcoal/55 font-body">Color</span>
+                      <select
+                        value={cDividerColor}
+                        onChange={(e) => setCDividerColor(e.target.value)}
+                        className="bg-transparent border border-forest/15 rounded-lg py-1 px-3 text-xs font-semibold"
+                      >
+                        <option value="forest">Forest (Green)</option>
+                        <option value="sage">Sage (Soft Beige)</option>
+                        <option value="mint">Mint (Soft Beige)</option>
+                        <option value="navy">Navy (Dark Blue)</option>
+                        <option value="beige">Beige (Light Sand)</option>
+                        <option value="footer-bg">Deep Olive</option>
+                      </select>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                      <span className="text-xs text-charcoal/55 font-body">Height ({cDividerHeight}px)</span>
+                      <input
+                        type="range"
+                        min="40"
+                        max="160"
+                        step="10"
+                        value={cDividerHeight}
+                        onChange={(e) => setCDividerHeight(parseInt(e.target.value, 10))}
+                      />
+                    </div>
+
+                    <label className="flex items-center gap-2 text-xs text-charcoal select-none cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={cDividerFlip}
+                        onChange={(e) => setCDividerFlip(e.target.checked)}
+                      />
+                      <span>Flip Vertically</span>
+                    </label>
+
+                    <label className="flex items-center gap-2 text-xs text-charcoal select-none cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={cDividerAnimated}
+                        onChange={(e) => setCDividerAnimated(e.target.checked)}
+                      />
+                      <span>Animate</span>
+                    </label>
+                  </div>
+                )}
+
+                {!["AnimatedCard", "GlassCard", "TiltCard", "GradientHeading", "AnimatedButton", "SectionDivider"].includes(activeTab) && (
                   <p className="text-xs text-charcoal/50 font-body">
                     This component is configured with optimal premium defaults. Custom code handles responsiveness and touch details automatically.
                   </p>

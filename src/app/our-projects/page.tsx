@@ -10,6 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Search } from "lucide-react";
 import { CTA } from "@/components/sections/CTA";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 
 // Project Supporters Data
 const supporters = [
@@ -50,7 +51,7 @@ const ProjectGallery = ({ onCategorySelect }: { onCategorySelect: (cat: string) 
   };
 
   return (
-    <section className="py-16 bg-cream">
+    <section className="py-16 bg-sage">
       <Container size="xl">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-charcoal font-heading leading-tight mb-4">
@@ -133,6 +134,9 @@ export default function OurProjects(): React.ReactNode {
           </Container>
         </section>
 
+        {/* 1. Header (cream) -> Filter/Grid (cream) */}
+        <SectionDivider variant="minimal" color="forest/10" bgColor="cream" height={50} />
+
         {/* Filter controls */}
         <Container className="mb-12">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 max-w-6xl mx-auto border-b border-card-border pb-8">
@@ -191,12 +195,14 @@ export default function OurProjects(): React.ReactNode {
           )}
         </Container>
 
-        <div className="border-t border-card-border/50 mx-5 mt-16" />
+        {/* 2. Project Grid (cream) -> Project Gallery (sage) */}
+        <SectionDivider variant="curve" color="sage" bgColor="cream" height={90} />
 
         {/* Project Gallery */}
         <ProjectGallery onCategorySelect={setActiveCategory} />
 
-        <div className="border-t border-card-border/50 mx-5" />
+        {/* 3. Project Gallery (sage) -> Key Contributors (cream) */}
+        <SectionDivider variant="diagonal" color="cream" bgColor="sage" height={90} />
 
         {/* Project Supporters Section (Volunteers & Donors) */}
         <section className="py-20 bg-cream">
@@ -231,7 +237,8 @@ export default function OurProjects(): React.ReactNode {
           </Container>
         </section>
 
-        <div className="border-t border-card-border/50 mx-5" />
+        {/* 4. Key Contributors (cream) -> CTA (cream) */}
+        <SectionDivider variant="minimal" color="forest/10" bgColor="cream" height={50} />
 
         {/* Support Callout Section */}
         <CTA
@@ -242,6 +249,9 @@ export default function OurProjects(): React.ReactNode {
           secondaryCtaText="Volunteer"
           secondaryCtaLink={PageRoutes.CONTACT}
         />
+
+        {/* 5. CTA (cream) -> Footer (footer-bg) */}
+        <SectionDivider variant="layered" color="footer-bg" bgColor="cream" height={110} />
       </div>
     </div>
   );

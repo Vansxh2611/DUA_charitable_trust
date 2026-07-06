@@ -3,7 +3,7 @@ import "./globals.css";
 import MainLayout from "@/layouts/MainLayout";
 import AppProviders from "@/components/providers/AppProviders";
 import { siteName, siteTagline, siteDescription, siteUrl } from "@/constants/site";
-import { InitialLoader } from "@/components/ui/InitialLoader";
+import { InitialLoader } from "@/components/ui";
 import Script from "next/script";
 
 export const metadata: Metadata = {
@@ -108,6 +108,7 @@ export default function RootLayout({
         <AppProviders>
           <InitialLoader />
           <MainLayout>{children}</MainLayout>
+
         </AppProviders>
       </body>
     </html>
