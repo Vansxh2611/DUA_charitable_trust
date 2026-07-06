@@ -332,12 +332,14 @@ export const SectionDivider: React.FC<SectionDividerProps> = ({
   // -------------------------------------------------------------
   
   // Wavy/curvy shape dividers that should be removed/returned as null
-  const isWavy = variant === "wave" || 
-                  variant === "curve" || 
-                  variant === "blob" || 
-                  variant === "liquid" || 
-                  variant === "layered" || 
-                  variant === "organic";
+  // Typed as string | undefined to prevent TypeScript from narrowing the type of 'variant' downstream
+  const currentVariant: string | undefined = variant;
+  const isWavy = currentVariant === "wave" || 
+                  currentVariant === "curve" || 
+                  currentVariant === "blob" || 
+                  currentVariant === "liquid" || 
+                  currentVariant === "layered" || 
+                  currentVariant === "organic";
 
   if (isWavy) {
     return null;
